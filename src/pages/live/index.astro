@@ -1,5 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro'
+import RedditFeed from '../../components/RedditFeed.astro'
+import livePosts from '../../data/reddit-seed/live.json'
 ---
 
 <Base
@@ -90,4 +92,6 @@ import Base from '../../layouts/Base.astro'
     </section>
 
   </div>
+
+  <RedditFeed posts={livePosts} />
 </Base>

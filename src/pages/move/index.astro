@@ -2,6 +2,8 @@
 import Base from '../../layouts/Base.astro'
 import Disclaimer from '../../components/Disclaimer.astro'
 import VerifyBadge from '../../components/VerifyBadge.astro'
+import RedditFeed from '../../components/RedditFeed.astro'
+import movePosts from '../../data/reddit-seed/move.json'
 ---
 
 <Base
@@ -175,4 +177,6 @@ import VerifyBadge from '../../components/VerifyBadge.astro'
     </div>
 
   </div>
+
+  <RedditFeed posts={movePosts} />
 </Base>
