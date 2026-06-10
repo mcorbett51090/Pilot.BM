@@ -1,0 +1,14 @@
+{
+  "slug": "fourways-inn",
+  "name": "Fourways Inn Restaurant",
+  "category": "restaurant",
+  "parish": "Paget",
+  "audience_tags": ["visit", "live"],
+  "description": "One of Bermuda's most acclaimed fine dining restaurants, set in a beautifully restored 17th-century manor house in Paget. Classic European cuisine with Bermudian touches. Dress code applies (smart casual to formal). A genuine special-occasion restaurant — the Sunday brunch is legendary. Expect $80–120+ per person for dinner.",
+  "phone": "+1-441-236-6517",
+  "url": "https://www.fourwaysinn.com",
+  "hours": "Tues–Sun dinner from 6:30pm; Sunday brunch 11:30am–2:30pm",
+  "tier": "free",
+  "status": "active",
+  "verified_on": "2026-06-10"
+}

@@ -5,18 +5,32 @@ const siteUrl = 'https://pilot.bm'
 
 const pages = [
   { url: '/', priority: '1.0', changefreq: 'weekly' },
+  // Visitor section
   { url: '/visit/', priority: '0.9', changefreq: 'weekly' },
   { url: '/visit/getting-around/', priority: '0.9', changefreq: 'weekly' },
   { url: '/visit/beaches/', priority: '0.8', changefreq: 'monthly' },
+  { url: '/visit/do/', priority: '0.8', changefreq: 'monthly' },
+  { url: '/visit/eat/', priority: '0.8', changefreq: 'monthly' },
+  { url: '/visit/stay/', priority: '0.8', changefreq: 'monthly' },
+  { url: '/visit/itineraries/', priority: '0.8', changefreq: 'monthly' },
+  // Movers section
   { url: '/move/', priority: '0.9', changefreq: 'weekly' },
   { url: '/move/work-permit/', priority: '0.8', changefreq: 'monthly' },
   { url: '/move/cost-of-living/', priority: '0.8', changefreq: 'monthly' },
+  { url: '/move/healthcare/', priority: '0.7', changefreq: 'monthly' },
+  { url: '/move/schools/', priority: '0.7', changefreq: 'monthly' },
+  { url: '/move/banking/', priority: '0.7', changefreq: 'monthly' },
   { url: '/move/tools/assessment-number/', priority: '0.7', changefreq: 'monthly' },
   { url: '/move/tools/compensation/', priority: '0.7', changefreq: 'monthly' },
   { url: '/move/tools/pathway/', priority: '0.7', changefreq: 'monthly' },
+  // Residents section
   { url: '/live/', priority: '0.6', changefreq: 'weekly' },
+  { url: '/live/events/', priority: '0.7', changefreq: 'weekly' },
+  { url: '/live/deals/', priority: '0.6', changefreq: 'weekly' },
+  // Directory
   { url: '/directory/', priority: '0.8', changefreq: 'weekly' },
   { url: '/directory/claim/', priority: '0.6', changefreq: 'monthly' },
+  // Info pages
   { url: '/about/', priority: '0.6', changefreq: 'monthly' },
   { url: '/legal/terms/', priority: '0.3', changefreq: 'yearly' },
   { url: '/legal/privacy/', priority: '0.3', changefreq: 'yearly' },

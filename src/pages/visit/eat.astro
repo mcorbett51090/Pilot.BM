@@ -1,0 +1,368 @@
+---
+import Base from '../../layouts/Base.astro'
+---
+
+<Base
+  title="Where to Eat in Bermuda — The Curated Guide"
+  description="The best restaurants in Bermuda: from fish sandwiches and local fish chowder to Fourways Inn and Waterloo House. Honest pricing, real recommendations."
+>
+  <!-- Hero -->
+  <section class="hero" style="padding-block: var(--space-16);">
+    <div class="hero__inner">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb" style="justify-content: center; color: rgba(255,255,255,0.6);">
+          <li><a href="/" style="color: rgba(255,255,255,0.6);">Home</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li><a href="/visit" style="color: rgba(255,255,255,0.6);">Visiting</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li style="color: rgba(255,255,255,0.9);">Where to Eat</li>
+        </ol>
+      </nav>
+      <h1 class="hero-title">Where to Eat in Bermuda</h1>
+      <p class="hero-subtitle">
+        Bermuda's dining scene punches above its weight for an island of 64,000 people.
+        Eating well here is entirely possible — it just requires knowing where to go
+        and what you'll actually spend.
+      </p>
+    </div>
+  </section>
+
+  <div class="container" style="padding-block: var(--space-12);">
+    <div style="max-width: 800px; margin: 0 auto;">
+
+      <!-- Intro / pricing context -->
+      <div class="alert alert-info" style="margin-bottom: var(--space-8);">
+        <strong>Pricing reality:</strong> Bermuda is genuinely expensive. A mid-range dinner
+        for two with wine will run $100–140. Fine dining is $160–240 for two. A fish sandwich
+        at a takeaway counter is $12–16. These are not tourist prices — they reflect the actual
+        cost of importing almost everything. Budget accordingly and you won't be unpleasantly
+        surprised.
+      </div>
+
+      <!-- Bermuda food you should know -->
+      <section style="margin-bottom: var(--space-12);">
+        <h2 style="margin-bottom: var(--space-6);">The food you need to know about</h2>
+
+        <article style="margin-bottom: var(--space-8);">
+          <span class="badge badge-tier-anchor" style="margin-bottom: var(--space-2);">Bermuda institution</span>
+          <h3 style="margin: 0 0 var(--space-3);">The Bermuda fish sandwich</h3>
+          <p>
+            If you eat one thing in Bermuda, make it a fish sandwich. This is not a cautious tourist
+            recommendation — it is what Bermudians eat. The classic version is a fried wahoo or
+            rockfish fillet, tartar sauce, a slice of tomato, and coleslaw on a raisin bread roll
+            (occasionally a white roll, but raisin is traditional). The bread is slightly sweet, the
+            fish is fresh, and the whole construction is considerably better than the sum of its parts.
+          </p>
+          <p>
+            <strong>Art Mel's Spicy Dicy</strong> in Hamilton is the most cited name — a small
+            counter-service spot on North Street that has been making fish sandwiches for decades.
+            Lunchtimes only; cash preferred; queue expected. Worth it. Other good options include
+            Wahoo's Bistro in St. George's and various takeaway counters around the island.
+            Do not eat your first fish sandwich at a hotel — the hotel version exists, but it is
+            rarely the real thing.
+          </p>
+        </article>
+
+        <article style="margin-bottom: var(--space-8);">
+          <h3 style="margin: 0 0 var(--space-3);">Bermuda fish chowder</h3>
+          <p>
+            Bermuda fish chowder is the island's signature dish and is nothing like New England
+            clam chowder. It is a deep-red, tomato-based stew with a complex, dark flavour that
+            comes from long-cooked fish stock (traditionally rockfish or snapper), vegetables,
+            and Bermudian black rum and sherry peppers sauce added at the table. Some versions
+            have been simmering the base for days.
+          </p>
+          <p>
+            The sherry peppers sauce — a Bermuda condiment made from small hot peppers infused
+            in dry sherry — is essential. You'll find bottles of it on most restaurant tables.
+            The rum finish is traditional and the dish is better with both. Most sit-down
+            restaurants offer it as a starter; quality varies considerably between kitchens.
+            The Hog Penny Pub version is a reliable benchmark.
+          </p>
+        </article>
+      </section>
+
+      <!-- Full restaurant round-up table -->
+      <section style="margin-bottom: var(--space-12);">
+        <h2 style="margin-bottom: var(--space-4);">Restaurant round-up</h2>
+        <p style="margin-bottom: var(--space-6); color: var(--color-muted);">
+          Price guide: $ = under $20pp / $$ = $20–40pp / $$$ = $40–70pp / $$$$ = $80–120pp+
+        </p>
+        <p style="font-size: var(--text-sm); color: var(--color-muted); margin-bottom: var(--space-6);">
+          Prices correct at time of research — verify before booking. Exchange rates and import
+          costs mean menus can shift meaningfully year to year.
+        </p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Restaurant</th>
+                <th>Area</th>
+                <th>Style</th>
+                <th>Price</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Fourways Inn</strong></td>
+                <td>Paget</td>
+                <td>Fine dining, continental</td>
+                <td>$$$$</td>
+                <td>Historic property; one of the island's most formal rooms</td>
+              </tr>
+              <tr>
+                <td><strong>Waterloo House</strong></td>
+                <td>Hamilton</td>
+                <td>Fine dining, European</td>
+                <td>$$$$</td>
+                <td>Harbour views; consistently the most polished service on the island</td>
+              </tr>
+              <tr>
+                <td><strong>Barracuda Grill</strong></td>
+                <td>Hamilton</td>
+                <td>Seafood, contemporary</td>
+                <td>$$$–$$$$</td>
+                <td>Best fish cookery in Hamilton; book a week ahead in summer</td>
+              </tr>
+              <tr>
+                <td><strong>Hog Penny Pub</strong></td>
+                <td>Hamilton</td>
+                <td>British pub, local dishes</td>
+                <td>$$$</td>
+                <td>Bermuda fish chowder benchmark; good for solo diners at the bar</td>
+              </tr>
+              <tr>
+                <td><strong>Port O' Call</strong></td>
+                <td>Hamilton</td>
+                <td>Seafood, casual fine</td>
+                <td>$$$</td>
+                <td>Reliable mid-upscale option; strong local fish selection</td>
+              </tr>
+              <tr>
+                <td><strong>Lemon Tree Cafe</strong></td>
+                <td>Hamilton</td>
+                <td>Cafe, light meals</td>
+                <td>$$</td>
+                <td>Best daytime option in the city; solid sandwiches and salads</td>
+              </tr>
+              <tr>
+                <td><strong>Art Mel's Spicy Dicy</strong></td>
+                <td>Hamilton</td>
+                <td>Takeaway, fish sandwiches</td>
+                <td>$</td>
+                <td>The fish sandwich. Lunch only. Cash. Worth the queue.</td>
+              </tr>
+              <tr>
+                <td><strong>Wahoo's Bistro</strong></td>
+                <td>St. George's</td>
+                <td>Beach bar, casual seafood</td>
+                <td>$$</td>
+                <td>Harbourside; good fish sandwich, frozen cocktails; tourist-friendly</td>
+              </tr>
+              <tr>
+                <td><strong>Wahoo's Bar &amp; Grill</strong></td>
+                <td>St. George's</td>
+                <td>Casual, local</td>
+                <td>$$</td>
+                <td>Relaxed option near the UNESCO town; pair with a St. George's afternoon</td>
+              </tr>
+              <tr>
+                <td><strong>Beau Rivage</strong></td>
+                <td>Paget (Newstead)</td>
+                <td>French-Mediterranean</td>
+                <td>$$$$</td>
+                <td>Terrace dining over Harbour; special-occasion option away from Hamilton</td>
+              </tr>
+              <tr>
+                <td><strong>Mickey's Beach Bistro</strong></td>
+                <td>Elbow Beach (Paget)</td>
+                <td>Beach bar, casual</td>
+                <td>$$$</td>
+                <td>Relaxed beachside lunch; expect resort markup but a hard-to-beat setting</td>
+              </tr>
+              <tr>
+                <td><strong>Rustico Restaurant</strong></td>
+                <td>Flatts (Hamilton Parish)</td>
+                <td>Italian, pizza</td>
+                <td>$$–$$$</td>
+                <td>Best pizza on the island; family-run; less expensive than Hamilton</td>
+              </tr>
+              <tr>
+                <td><strong>Swizzle Inn</strong></td>
+                <td>Bailey's Bay</td>
+                <td>Pub, local staples</td>
+                <td>$$</td>
+                <td>Home of the Rum Swizzle; historic walls covered in business cards; don't miss it</td>
+              </tr>
+              <tr>
+                <td><strong>Tio Pepe</strong></td>
+                <td>Southampton</td>
+                <td>Italian-American</td>
+                <td>$$$</td>
+                <td>Consistent local favourite; good for groups; south shore location</td>
+              </tr>
+              <tr>
+                <td><strong>Henry VIII</strong></td>
+                <td>Southampton</td>
+                <td>British/Continental, pub</td>
+                <td>$$$</td>
+                <td>Old-school atmosphere; convenient to south shore beaches and hotels</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- By vibe -->
+      <section style="margin-bottom: var(--space-12);">
+        <h2 style="margin-bottom: var(--space-6);">By vibe</h2>
+
+        <article style="margin-bottom: var(--space-8);">
+          <span class="badge badge-tier-anchor" style="margin-bottom: var(--space-2);">Splurge</span>
+          <h3 style="margin: 0 0 var(--space-3);">Fine dining: Fourways Inn and Waterloo House</h3>
+          <p>
+            Fourways Inn in Paget is housed in a 17th-century manor and occupies a category of
+            its own on the island — proper tablecloths, formal service, and a wine list that
+            takes itself seriously. It is old Bermuda in a way that is either appealing or not,
+            depending on your temperament. The food is competent European continental with local
+            fish well represented. Budget $80–120 per person before wine.
+          </p>
+          <p>
+            Waterloo House on Hamilton Harbour is the more contemporary of the two top-end
+            options. The terrace over the water is one of the best tables on the island and
+            the service is reliably the most polished in Hamilton. If you're going to spend
+            serious money once, this is the room to do it in. Reserve well ahead for terrace
+            seating in summer.
+          </p>
+        </article>
+
+        <article style="margin-bottom: var(--space-8);">
+          <span class="badge badge-tier-featured" style="margin-bottom: var(--space-2);">Mid-range</span>
+          <h3 style="margin: 0 0 var(--space-3);">Hog Penny, Port O' Call, and Lemon Tree</h3>
+          <p>
+            The <strong>Hog Penny Pub</strong> on Burnaby Street in Hamilton is the island's most
+            reliable mid-range restaurant — a British pub format with a proper kitchen, good
+            Bermuda fish chowder, a decent burger, and a convivial atmosphere. It is a good place
+            to eat alone. $40–55 per person with a drink.
+          </p>
+          <p>
+            <strong>Port O' Call</strong>, also in Hamilton, is a step up in formality — seafood
+            focused, with a stronger local fish selection than most Hamilton restaurants and a
+            room that works for a business dinner or a slightly nicer evening out. $50–70 per person.
+          </p>
+          <p>
+            <strong>Lemon Tree Cafe</strong> on Queen Street is the best daytime option in
+            Hamilton — good sandwiches, fresh salads, reliable coffee, and a reasonable pace.
+            Useful for a quick lunch between activities. $15–25 per person.
+          </p>
+        </article>
+
+        <article style="margin-bottom: var(--space-8);">
+          <span class="badge badge-tier-standard" style="margin-bottom: var(--space-2);">Casual / local</span>
+          <h3 style="margin: 0 0 var(--space-3);">Art Mel's and the local chowder circuit</h3>
+          <p>
+            <strong>Art Mel's Spicy Dicy</strong> on North Street, Hamilton, is the fish sandwich
+            institution. It is a small counter-service operation with no ambience and occasionally
+            a long queue. Go anyway. It is one of the few genuinely local eating experiences that
+            visitors can access without navigating private networks, and the food is excellent on
+            its own terms.
+          </p>
+          <p>
+            For fish chowder in a more casual register, the Swizzle Inn in Bailey's Bay
+            (the famous rum swizzle pub) serves a solid bowl alongside the island's most
+            atmospheric drinking room. Hog Penny remains the benchmark for the more refined
+            version. Both are worth a visit; they are not interchangeable experiences.
+          </p>
+        </article>
+
+        <article style="margin-bottom: var(--space-8);">
+          <span class="badge badge-tier-standard" style="margin-bottom: var(--space-2);">Beach bar</span>
+          <h3 style="margin: 0 0 var(--space-3);">Wahoo's Bistro, St. George's</h3>
+          <p>
+            Wahoo's Bistro sits on the harbour in St. George's and does exactly what a good
+            beach bar should: cold drinks, a decent fish sandwich, some frozen cocktails, and a
+            view of the water. It is tourist-friendly in the way that means it works for visitors
+            without being an embarrassment. Combine with an afternoon at Tobacco Bay, which is
+            a short taxi or scooter ride away.
+          </p>
+          <p>
+            Mickey's Beach Bistro at Elbow Beach is the other obvious beach lunch option —
+            right on the sand, with a longer menu than Wahoo's and a resort price premium that
+            comes with the setting. Expect $50–70 per person for a lunch with drinks. The
+            location is hard to argue with.
+          </p>
+        </article>
+      </section>
+
+      <!-- Practical notes -->
+      <section style="background-color: var(--color-sand); border-radius: var(--radius-lg); padding: var(--space-8); margin-bottom: var(--space-10);">
+        <h2 style="margin-bottom: var(--space-6);">Practical notes</h2>
+
+        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3);">Resort and hotel markup</h3>
+        <p style="margin-bottom: var(--space-5);">
+          Eating at your hotel or resort will cost significantly more than eating in Hamilton
+          or at a standalone local restaurant. This is not a hidden surcharge — it reflects the
+          genuine cost of operating a resort kitchen on a small island with high import costs.
+          But if you eat every meal on-property, you are leaving most of Bermuda's dining scene
+          on the table and spending more for the privilege. Even for one meal a day, making the
+          effort to eat in town changes your trip noticeably.
+        </p>
+
+        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3);">Reservations</h3>
+        <p style="margin-bottom: var(--space-5);">
+          Bermuda's restaurant sector is small. Popular places — particularly in Hamilton — fill
+          up earlier than visitors expect. For any mid-range or above restaurant on a Friday or
+          Saturday night between May and September, book at least three to five days ahead. For
+          Fourways or Waterloo House at the weekend, book further ahead than that.
+        </p>
+        <p style="margin-bottom: var(--space-4);">
+          OpenTable covers about 88 Bermuda restaurants and is the easiest way to check
+          availability and book online. The local alternative is Table.bm, which lists some
+          properties not on OpenTable.
+        </p>
+
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-4);">
+          <div>
+            <a href="/go/opentable-bermuda" rel="nofollow sponsored" class="btn btn-primary">
+              Check Availability on OpenTable →
+            </a>
+            <p style="font-size: var(--text-xs); color: var(--color-muted); margin-top: var(--space-1);">
+              [PLACEHOLDER affiliate link — real ID to be set in affiliate-links.ts after approval]
+            </p>
+          </div>
+          <div style="display: flex; align-items: center;">
+            <a href="https://www.table.bm" rel="noopener noreferrer" target="_blank" class="btn btn-secondary">
+              Browse Table.bm (local listings) →
+            </a>
+          </div>
+        </div>
+
+        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3); margin-top: var(--space-6);">Tipping</h3>
+        <p style="margin-bottom: var(--space-2);">
+          Bermuda follows roughly the same tipping convention as the US: 15–20% on restaurant
+          bills where service is not included. Check the bill — some restaurants add a service
+          charge automatically (typically 15–17%), in which case no additional tip is expected
+          unless service was exceptional. The practice varies by restaurant.
+        </p>
+
+        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3); margin-top: var(--space-6);">Alcohol</h3>
+        <p>
+          Rum is Bermuda's signature spirit — Gosling's Black Seal is the local brand. The
+          Dark 'n' Stormy (Black Seal rum, ginger beer, lime) is Gosling's trademarked cocktail
+          and available everywhere. The Rum Swizzle — rum, falernum, citrus, bitters — is the
+          other Bermuda cocktail worth having at least once. You can try both at the Swizzle Inn
+          in Bailey's Bay, which lends the drink its name.
+        </p>
+      </section>
+
+      <p style="font-size: var(--text-sm); color: var(--color-muted);">
+        Restaurant details, hours, and prices change. Verify before visiting. Pilot.BM earns
+        a small commission on OpenTable reservations made through the link above at no extra
+        cost to you. See our <a href="/legal/affiliate-disclosure">affiliate disclosure</a>.
+      </p>
+
+    </div>
+  </div>
+</Base>

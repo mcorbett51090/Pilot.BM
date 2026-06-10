@@ -1,0 +1,331 @@
+---
+import Base from '../../layouts/Base.astro'
+---
+
+<Base
+  title="Bermuda Itineraries — 3, 5 & 7 Days"
+  description="Three opinionated Bermuda itineraries: a tight 3-day first visit, a comfortable 5-day trip, and a full 7-day island week. Logistics, what to skip, and honest timing."
+>
+  <!-- Hero -->
+  <section class="hero" style="padding-block: var(--space-16);">
+    <div class="hero__inner">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb" style="justify-content: center; color: rgba(255,255,255,0.6);">
+          <li><a href="/" style="color: rgba(255,255,255,0.6);">Home</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li><a href="/visit" style="color: rgba(255,255,255,0.6);">Visiting</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li style="color: rgba(255,255,255,0.9);">Itineraries</li>
+        </ol>
+      </nav>
+      <h1 class="hero-title">Bermuda Itineraries</h1>
+      <p class="hero-subtitle">
+        Three opinionated plans: a tight 3-day first visit, a comfortable 5-day trip,
+        and a full 7-day week that gets into the island's corners.
+      </p>
+    </div>
+  </section>
+
+  <div class="container" style="padding-block: var(--space-12);">
+    <div style="max-width: 800px; margin: 0 auto;">
+
+      <!-- Best time to visit callout -->
+      <div style="background-color: var(--color-ocean-muted); border-radius: var(--radius-lg); padding: var(--space-6) var(--space-8); margin-bottom: var(--space-10);">
+        <h2 style="font-size: var(--text-xl); margin-bottom: var(--space-4);">Best time to visit</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Season</th>
+                <th>Months</th>
+                <th>Verdict</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Spring</strong></td>
+                <td>April–June</td>
+                <td>Ideal. Warm, uncrowded, everything open. The clear choice for a first visit.</td>
+              </tr>
+              <tr>
+                <td><strong>Summer</strong></td>
+                <td>July–August</td>
+                <td>Busy and hot (30°C / 86°F). Peak prices, peak crowds. Great if you want the full beach experience; less good for sightseeing.</td>
+              </tr>
+              <tr>
+                <td><strong>Shoulder</strong></td>
+                <td>September–October</td>
+                <td>Excellent value, quieter beaches, warm water. Hurricane risk is real — purchase travel insurance and watch forecasts.</td>
+              </tr>
+              <tr>
+                <td><strong>Winter</strong></td>
+                <td>November–March</td>
+                <td>Quiet. Some restaurants and beach bars close or reduce hours. Water too cool for most swimmers. Good for a low-key trip; not ideal for a beach holiday.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Logistics section -->
+      <section style="background-color: var(--color-surface); border-radius: var(--radius-lg); padding: var(--space-6) var(--space-8); margin-bottom: var(--space-10);">
+        <h2 style="margin-bottom: var(--space-4);">Bermuda logistics — what you need to know before planning</h2>
+        <p>
+          Bermuda is not like other island destinations. The logistics matter and shape how you spend your days.
+          The most important fact: <strong>tourists cannot rent cars.</strong> There are no car hire companies for visitors.
+          Plan your itinerary around that constraint.
+        </p>
+        <h3 style="font-size: var(--text-lg); margin-top: var(--space-6); margin-bottom: var(--space-3);">Getting around</h3>
+        <ul class="prose" style="padding-left: var(--space-6); margin-bottom: var(--space-4);">
+          <li>
+            <strong>Bus + ferry pass ($62/week):</strong> The best value option for visitors staying five or more days.
+            Covers all public bus routes and the Hamilton–Dockyard ferry. Slower than a taxi but covers almost
+            every major attraction. Buy at the Hamilton Ferry Terminal.
+          </li>
+          <li>
+            <strong>Scooter (from ~$65/day):</strong> The flexibility choice. Lets you go at your own pace,
+            stop where you want, and reach beaches that buses don't serve directly. Requires a valid driving licence.
+            Keep left — Bermuda drives on the left.
+          </li>
+          <li>
+            <strong>Taxi ($60–85/hour):</strong> Comfortable and air-conditioned. Adds up quickly over a week.
+            Best used for transfers, airport runs, and the odd evening when you don't want to wait for a bus.
+            Taxis are metered; there are no ride-hailing apps in Bermuda.
+          </li>
+          <li>
+            <strong>Ferry (Hamilton–Dockyard route):</strong> Scenic and useful if you're heading to the Royal Naval
+            Dockyard. Roughly 60–75 minutes, covered by the bus pass.
+          </li>
+        </ul>
+        <p style="margin-bottom: 0;">
+          Full transport guide: <a href="/visit/getting-around">Getting Around Bermuda →</a>
+        </p>
+      </section>
+
+      <!-- 3-Day Itinerary -->
+      <article style="margin-bottom: var(--space-14);">
+        <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-6);">
+          <span class="badge badge-tier-anchor" style="font-size: var(--text-base); padding: var(--space-2) var(--space-4);">3 Days</span>
+          <h2 style="margin: 0;">The First-Timer's Bermuda</h2>
+        </div>
+        <p>
+          Three days is enough to get Bermuda right — if you don't try to do everything.
+          This plan covers the two non-negotiables (the south shore beaches and St. George's),
+          puts you in Hamilton for a proper dinner, and leaves room to breathe.
+          It works best April–October.
+        </p>
+
+        <h3 style="font-size: var(--text-xl); margin-top: var(--space-6); margin-bottom: var(--space-3);">Day 1 — Arrival and Hamilton</h3>
+        <p>
+          LF Wade International Airport sits on the east end of the island in Hamilton Parish.
+          The taxi to Hamilton runs $30–40 and takes about 20 minutes. If your hotel is in
+          Southampton or Warwick, budget $50–60.
+        </p>
+        <p>
+          Check in, then take the afternoon at Horseshoe Bay Beach (Southampton) or Elbow Beach (Paget)
+          depending on where you're staying. Horseshoe is the iconic shot — the pink sand, the turquoise
+          curve of water. Go in the late afternoon when the light is good and the midday crowd has thinned.
+        </p>
+        <p>
+          Dinner in Hamilton. Walk Front Street, have a drink at one of the harbour-facing spots,
+          eat somewhere you'd eat at home — the restaurants on Reid Street and around Hamilton centre
+          are the most consistent. See <a href="/visit/eat">Where to Eat</a> for current recommendations.
+        </p>
+
+        <h3 style="font-size: var(--text-xl); margin-top: var(--space-6); margin-bottom: var(--space-3);">Day 2 — Full Beach Day and Water</h3>
+        <p>
+          This is the day to commit to the south shore. Start at Horseshoe Bay, then walk the beach
+          path east along the shoreline to Warwick Long Bay, Chaplin Bay, and Jobson's Cove. The walk
+          takes 30–45 minutes depending on how often you stop. Bring water, reef-safe sunscreen
+          (oxybenzone and octinoxate are banned on Bermuda beaches — enforce it), and your own snorkel
+          if you have one.
+        </p>
+        <p>
+          In the afternoon: rent a scooter and ride the South Shore Road. It's one of the best
+          motorcycle roads in the world relative to its size — the Atlantic drops away on your left,
+          the vegetation is subtropical, and the road is in good condition. Stop at any beach that
+          catches your eye. Bermuda has no private beaches.
+        </p>
+        <p>
+          Return to Hamilton for the evening. The Bermuda Rum Swizzle at the Swizzle Inn (Bailey's Bay,
+          a slight detour) is a genuine local institution, not a tourist trap — worth the diversion
+          if you're on a scooter.
+        </p>
+
+        <h3 style="font-size: var(--text-xl); margin-top: var(--space-6); margin-bottom: var(--space-3);">Day 3 — St. George's and Departure</h3>
+        <p>
+          St. George's is a UNESCO World Heritage Site — the oldest continuously inhabited English
+          settlement in the New World. It earns that designation. The town centre is compact, walkable,
+          and genuinely old: the buildings, the streets, the layout. Walk King's Square, visit
+          St. Peter's Church (founded 1612), walk the fortifications.
+        </p>
+        <p>
+          From St. George's, it's a short taxi or scooter ride to <strong>Tobacco Bay</strong> for a
+          final swim and snorkel in the sheltered, shallow bay. The rock formations here are distinctive
+          and the fish activity is good even for casual snorkellers.
+        </p>
+        <p>
+          Back to your hotel, collect luggage, taxi to LF Wade. Most US east coast flights depart
+          early afternoon — check your departure time and plan backward.
+        </p>
+
+        <div style="background-color: var(--color-surface); border-radius: var(--radius-md); padding: var(--space-4) var(--space-5); margin-top: var(--space-4);">
+          <p style="font-size: var(--text-sm); margin: 0; color: var(--color-ink);">
+            <strong>Transport for this itinerary:</strong> Taxis for arrival and departure.
+            A single scooter day hire for Day 2. Bus for Day 3 (Route 1 or 3 to St. George's runs regularly from Hamilton).
+          </p>
+        </div>
+      </article>
+
+      <!-- 5-Day Itinerary -->
+      <article style="margin-bottom: var(--space-14);">
+        <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-6);">
+          <span class="badge badge-tier-featured" style="font-size: var(--text-base); padding: var(--space-2) var(--space-4);">5 Days</span>
+          <h2 style="margin: 0;">The Comfortable Bermuda Week</h2>
+        </div>
+        <p>
+          Five days is the right amount of time for a first visit if you want to actually see the island
+          rather than sprint through it. The extra two days over the 3-day plan add the west end (Dockyard),
+          a proper evening in Hamilton, and a night at a good restaurant.
+        </p>
+
+        <h3 style="font-size: var(--text-xl); margin-top: var(--space-6); margin-bottom: var(--space-3);">Days 1–3</h3>
+        <p>
+          Follow the 3-day plan above. By the end of Day 3 you'll have covered the south shore, the east
+          end, and Hamilton.
+        </p>
+
+        <h3 style="font-size: var(--text-xl); margin-top: var(--space-6); margin-bottom: var(--space-3);">Day 4 — Royal Naval Dockyard and the West End</h3>
+        <p>
+          Take the ferry from Hamilton to the Royal Naval Dockyard — the 60-minute ride across the Great
+          Sound is pleasant and the ferry is covered by the weekly bus pass. The Dockyard is Bermuda's
+          most substantial cultural attraction beyond the beaches: the former British naval base has been
+          repurposed into a working complex with the <strong>Bermuda Maritime Museum</strong>, craft studios,
+          glassblowing workshops, and several decent restaurants.
+        </p>
+        <p>
+          Book the <strong>glass-bottom boat tour</strong> from the Dockyard dock. Tours run most mornings
+          and afternoons in season. The reef formations in the Great Sound and the wrecks in the shallower
+          areas are visible even to non-divers. Bring underwater camera gear if you have it.
+        </p>
+        <p>
+          The Dockyard Craft Market (open seasonally, typically Tuesday–Sunday) is the best place on the
+          island to buy something made in Bermuda rather than imported. Bermuda cedar woodwork, hand-painted
+          glassware, and island-themed prints are the reliable finds.
+        </p>
+        <p>
+          Return by ferry in the late afternoon. Dinner in Hamilton — this is the night for a good
+          restaurant. See <a href="/visit/eat">Where to Eat</a> for the current list of places that
+          consistently justify their prices.
+        </p>
+
+        <h3 style="font-size: var(--text-xl); margin-top: var(--space-6); margin-bottom: var(--space-3);">Day 5 — Slow Day and Departure</h3>
+        <p>
+          Leave Day 5 loose. Sleep late, revisit a beach that caught you, browse the Hamilton shops on
+          Front Street, or do a second scooter run to any part of the island you didn't cover. The
+          island is 21 square miles — there's no shame in revisiting a beach you liked.
+        </p>
+        <p>
+          Early afternoon: taxi to LF Wade for your flight home.
+        </p>
+
+        <div style="background-color: var(--color-surface); border-radius: var(--radius-md); padding: var(--space-4) var(--space-5); margin-top: var(--space-4);">
+          <p style="font-size: var(--text-sm); margin: 0; color: var(--color-ink);">
+            <strong>Transport for this itinerary:</strong> Weekly bus + ferry pass ($62) earns its cost here.
+            One or two scooter day hires for flexibility. Taxis for airport transfers.
+          </p>
+        </div>
+      </article>
+
+      <!-- 7-Day Itinerary -->
+      <article style="margin-bottom: var(--space-14);">
+        <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-6);">
+          <span class="badge badge-tier-standard" style="font-size: var(--text-base); padding: var(--space-2) var(--space-4);">7 Days</span>
+          <h2 style="margin: 0;">The Full Island Week</h2>
+        </div>
+        <p>
+          Seven days lets you slow down and go deeper. This plan adds Bermuda's best underwater experience,
+          the quiet mid-island parishes, the parts of St. George's most visitors miss, and one meal that
+          justifies the flight. It's the right choice for repeat visitors and for anyone who wants to
+          understand the island beyond its postcard version.
+        </p>
+
+        <h3 style="font-size: var(--text-xl); margin-top: var(--space-6); margin-bottom: var(--space-3);">Days 1–5</h3>
+        <p>
+          Follow the 5-day plan above. By the end of Day 5 you've covered the south shore, St. George's,
+          Hamilton, and the Dockyard.
+        </p>
+
+        <h3 style="font-size: var(--text-xl); margin-top: var(--space-6); margin-bottom: var(--space-3);">Day 6 — The Underwater Island</h3>
+        <p>
+          Bermuda has more shipwrecks per square mile than almost anywhere on earth — the shallow reefs
+          that made it a navigation hazard for centuries are now its most unusual attraction.
+          This day goes underwater.
+        </p>
+        <p>
+          Morning: <strong>Bermuda Underwater Exploration Institute (BUEI)</strong>, on the Hamilton harbour
+          front. It's a genuine museum, not a tourist attraction in the pejorative sense — the
+          permanent collection covers Bermuda's shipwreck history, deep-sea exploration, and the island's
+          relationship with the ocean in an intelligent, well-curated way. Give it two hours.
+        </p>
+        <p>
+          Afternoon: if you want to actually get in the water, return to <strong>Tobacco Bay</strong>
+          for proper snorkelling. Rent gear at the bay (or bring your own). The rock formations and
+          calm, shallow water make it the most accessible snorkelling on the island. For certified divers,
+          several operators run reef and wreck dives out of Hamilton and the Dockyard — book in advance
+          in peak season.
+        </p>
+
+        <h3 style="font-size: var(--text-xl); margin-top: var(--space-6); margin-bottom: var(--space-3);">Day 7 — Mid-Island, a Beach, and One Good Dinner</h3>
+        <p>
+          The mid-island parishes — Devonshire, Smith's, Paget — are quieter Bermuda. This is where
+          Bermudians live, away from the resort hotels and tourist infrastructure. Rent a scooter for
+          the day and ride without a firm plan.
+        </p>
+        <p>
+          <strong>John Smith's Bay</strong> (Devonshire) is the beach for today: a long, unhurried
+          stretch of pink sand with no beach bar and no facilities. Bring your own supplies. This is
+          where Bermudians go on their days off.
+        </p>
+        <p>
+          Tonight is the night for the splurge dinner. <strong>The Reefs</strong> (Southampton) for
+          the cliff-side setting and seafood, or <strong>Fourways Inn</strong> (Paget) for a more
+          formal, historic-property dinner. Both require advance reservations and are priced at
+          $80–120 per person. Neither disappoints at that price point.
+          See <a href="/visit/eat">Where to Eat</a> for full details and current booking guidance.
+        </p>
+
+        <div style="background-color: var(--color-surface); border-radius: var(--radius-md); padding: var(--space-4) var(--space-5); margin-top: var(--space-4);">
+          <p style="font-size: var(--text-sm); margin: 0; color: var(--color-ink);">
+            <strong>Transport for this itinerary:</strong> Weekly bus + ferry pass for the first seven days.
+            Scooter day hire on Days 2, 6, and 7. Taxi for airport transfers.
+          </p>
+        </div>
+      </article>
+
+      <!-- Bottom links -->
+      <section style="border-top: 1px solid var(--color-border); padding-top: var(--space-8); margin-top: var(--space-4);">
+        <h2 style="margin-bottom: var(--space-6);">Plan the rest of your trip</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-4);">
+          <a href="/visit/do" style="display: block; background-color: var(--color-surface); border-radius: var(--radius-md); padding: var(--space-5); text-decoration: none; color: var(--color-ink);">
+            <p style="font-weight: 600; margin-bottom: var(--space-1);">Things to Do →</p>
+            <p style="font-size: var(--text-sm); color: var(--color-muted); margin: 0;">Activities, tours, and experiences</p>
+          </a>
+          <a href="/visit/eat" style="display: block; background-color: var(--color-surface); border-radius: var(--radius-md); padding: var(--space-5); text-decoration: none; color: var(--color-ink);">
+            <p style="font-weight: 600; margin-bottom: var(--space-1);">Where to Eat →</p>
+            <p style="font-size: var(--text-sm); color: var(--color-muted); margin: 0;">Hamilton restaurants and resort dining</p>
+          </a>
+          <a href="/visit/stay" style="display: block; background-color: var(--color-surface); border-radius: var(--radius-md); padding: var(--space-5); text-decoration: none; color: var(--color-ink);">
+            <p style="font-weight: 600; margin-bottom: var(--space-1);">Where to Stay →</p>
+            <p style="font-size: var(--text-sm); color: var(--color-muted); margin: 0;">Hotels, cottages, and apartments</p>
+          </a>
+          <a href="/visit/getting-around" style="display: block; background-color: var(--color-surface); border-radius: var(--radius-md); padding: var(--space-5); text-decoration: none; color: var(--color-ink);">
+            <p style="font-weight: 600; margin-bottom: var(--space-1);">Getting Around →</p>
+            <p style="font-size: var(--text-sm); color: var(--color-muted); margin: 0;">Bus, ferry, scooter, and taxi</p>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</Base>

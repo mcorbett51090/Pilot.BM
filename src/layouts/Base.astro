@@ -57,6 +57,12 @@ const orgSchema = {
     <!-- JSON-LD Organization -->
     <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
 
+    <!-- Analytics seam — replace with real script tag once provider is chosen -->
+    <!-- TODO: Choose Plausible ($9/mo, privacy-first) or Cloudflare Web Analytics (free) -->
+    <!-- Plausible: <script defer data-domain="pilot.bm" src="https://plausible.io/js/script.js"></script> -->
+    <!-- Cloudflare: <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "TODO_CF_TOKEN"}'></script> -->
+    <!-- PLACEHOLDER — analytics not yet active. Wire after domain + provider confirmed. -->
+
     <!-- Named slot for page-level head injection (e.g. FAQPage schema) -->
     <slot name="head" />
   </head>
