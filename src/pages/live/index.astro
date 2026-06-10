@@ -24,53 +24,45 @@ import Base from '../../layouts/Base.astro'
 
   <div class="container" style="padding-block: var(--space-12);">
 
-    <div style="background-color: var(--color-amber-muted); border: 1px solid var(--color-amber); border-radius: var(--radius-lg); padding: var(--space-8); margin-bottom: var(--space-10);">
-      <h2 style="font-size: var(--text-xl); margin-bottom: var(--space-3);">This section is growing</h2>
-      <p style="color: var(--color-ink); margin-bottom: var(--space-2);">
-        The residents section launches with the directory and key links.
-        Events and local deals are Phase 2 — they require regular curation that comes after
-        the foundation is solid.
-      </p>
-      <p style="color: var(--color-muted); font-size: var(--text-sm); margin: 0;">
-        Notable gap: nothingtodoinbermuda.com (the go-to local events calendar) was absorbed
-        into the Bermuda Tourism Authority portal. A genuine community events digest is an
-        unmet need. Coming in Phase 2.
-      </p>
-    </div>
-
     <div class="card-grid card-grid-3">
+      <!-- Events -->
+      <a href="/live/events" class="link-card link-card--featured">
+        <p class="link-card__eyebrow">★ Events</p>
+        <h3 class="link-card__title">Events Calendar</h3>
+        <p class="link-card__desc">
+          Cup Match, Bermuda Day, Heroes Weekend, Restaurant Week, the Christmas Boat Parade —
+          the full year, month by month.
+        </p>
+        <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-ocean); font-weight: 600;">
+          See the events guide →
+        </p>
+      </a>
+
+      <!-- Deals -->
+      <a href="/live/deals" class="link-card">
+        <p class="link-card__eyebrow">Deals</p>
+        <h3 class="link-card__title">Local Deals</h3>
+        <p class="link-card__desc">
+          Restaurant Week prix-fixe, the Bus+Ferry pass, grocery shopping strategies,
+          and free things that are genuinely worth your time.
+        </p>
+        <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-ocean); font-weight: 600;">
+          Browse deals →
+        </p>
+      </a>
+
       <!-- Directory -->
-      <a href="/directory" class="link-card link-card--featured">
+      <a href="/directory" class="link-card">
         <p class="link-card__eyebrow">Directory</p>
         <h3 class="link-card__title">Browse Local Businesses</h3>
         <p class="link-card__desc">
-          Restaurants, schools, insurers, real estate, events — filtered for residents.
-          The directory includes businesses relevant to daily life, not just tourist needs.
+          Restaurants, schools, insurers, healthcare, real estate, banking — curated for residents.
+          Filter by category and parish.
         </p>
         <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-ocean); font-weight: 600;">
           Browse directory →
         </p>
       </a>
-
-      <!-- Events placeholder -->
-      <div class="link-card" style="opacity: 0.6; cursor: default;">
-        <p class="link-card__eyebrow">Coming in Phase 2</p>
-        <h3 class="link-card__title">Events Calendar</h3>
-        <p class="link-card__desc">
-          Local events, community notices, Bermuda Heroes Weekend, Restaurant Week,
-          Cup Match — curated so you don't miss them.
-        </p>
-      </div>
-
-      <!-- Deals placeholder -->
-      <div class="link-card" style="opacity: 0.6; cursor: default;">
-        <p class="link-card__eyebrow">Coming in Phase 2</p>
-        <h3 class="link-card__title">Local Deals</h3>
-        <p class="link-card__desc">
-          Restaurant Week prix-fixe offers, accommodation deals, seasonal promotions
-          from directory partners. A genuine gap nobody is filling well right now.
-        </p>
-      </div>
     </div>
 
     <!-- For movers who just arrived -->

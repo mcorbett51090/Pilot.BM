@@ -1,0 +1,14 @@
+{
+  "slug": "hsbc-bermuda",
+  "name": "HSBC Bermuda",
+  "category": "financial",
+  "parish": "Hamilton",
+  "audience_tags": ["move", "live"],
+  "description": "HSBC's Bermuda operation, offering personal and business banking. A common choice for international hires from the US and UK who already have HSBC relationships elsewhere. Note: HSBC Bermuda is legally a separate entity from HSBC UK/US — accounts are not automatically linked. Personal banking, mortgages, and investment services available. Account opening timeline: 2–4 weeks with required documentation (work permit, employer letter, ID, proof of address).",
+  "phone": "+1-441-295-4000",
+  "url": "https://www.hsbc.bm",
+  "hours": "Mon–Fri 9am–4pm",
+  "tier": "free",
+  "status": "active",
+  "verified_on": "2026-06-10"
+}

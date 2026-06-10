@@ -41,9 +41,45 @@ const cardClass = [
 ]
   .filter(Boolean)
   .join(' ')
+
+// LocalBusiness schema type mapping
+const schemaTypeMap: Record<string, string> = {
+  accommodation: 'LodgingBusiness',
+  restaurant: 'Restaurant',
+  dining_event: 'FoodEstablishment',
+  attraction: 'TouristAttraction',
+  transport: 'LocalBusiness',
+  real_estate: 'RealEstateAgent',
+  insurance: 'InsuranceAgency',
+  financial: 'FinancialService',
+  healthcare: 'MedicalOrganization',
+  education: 'EducationalOrganization',
+  relocation: 'LocalBusiness',
+  retail: 'Store',
+  tourism: 'TouristInformationCenter',
+  legal: 'LegalService',
+  other: 'LocalBusiness',
+}
+
+const schemaType = schemaTypeMap[data.category] ?? 'LocalBusiness'
+const ldJson = {
+  '@context': 'https://schema.org',
+  '@type': schemaType,
+  name: data.name,
+  description: data.description,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: data.parish,
+    addressCountry: 'BM',
+  },
+  ...(data.phone ? { telephone: data.phone } : {}),
+  ...(data.url ? { url: data.url } : {}),
+  ...(data.hours ? { openingHours: data.hours } : {}),
+}
 ---
 
 <article class={cardClass}>
+  <script type="application/ld+json" set:html={JSON.stringify(ldJson)} />
   <div class="directory-card__header">
     <div>
       <h3 class="directory-card__name">{data.name}</h3>

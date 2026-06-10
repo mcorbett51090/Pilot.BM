@@ -1,0 +1,14 @@
+{
+  "slug": "kemh-hospital",
+  "name": "King Edward VII Memorial Hospital (KEMH)",
+  "category": "healthcare",
+  "parish": "Pembroke",
+  "audience_tags": ["move", "live"],
+  "description": "The only public hospital in Bermuda, operated by the Bermuda Hospitals Board. Provides emergency care, surgery, maternity, and most specialist services. The Emergency Department is the first point of contact for acute care. Bermuda's small size means some highly specialised procedures require medical evacuation to the US or Canada — confirm with your employer's health plan. Accepts SHB and most supplemental insurance plans.",
+  "phone": "+1-441-236-2345",
+  "url": "https://www.bermudahospitals.bm",
+  "hours": "Emergency: 24/7; Outpatient clinics: Mon–Fri",
+  "tier": "free",
+  "status": "active",
+  "verified_on": "2026-06-10"
+}
