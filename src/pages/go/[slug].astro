@@ -1,0 +1,57 @@
+---
+// Affiliate redirect pages — pre-generated at build time.
+// Uses fallbackUrl until affiliate links are approved (active: true).
+// TODO: log click to DB + append affiliate params once approved (Phase 2).
+// TODO: Wire real affiliate IDs — see src/data/affiliate-links.ts for the seam.
+
+import { affiliateLinks } from '../../data/affiliate-links'
+
+export function getStaticPaths() {
+  return affiliateLinks.map((link) => ({
+    params: { slug: link.slug },
+    props: { link },
+  }))
+}
+
+const { link } = Astro.props
+const targetUrl =
+  link.active && link.targetUrl !== 'TODO_AFFILIATE_URL'
+    ? link.targetUrl
+    : link.fallbackUrl
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <title>Redirecting... | Pilot.BM</title>
+    <!-- Meta refresh as fallback -->
+    <meta http-equiv="refresh" content={`0; url=${targetUrl}`} />
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+        padding: 2rem;
+        background: #f9fafb;
+        color: #1a1a2e;
+      }
+      a { color: #0d4f5c; }
+    </style>
+  </head>
+  <body>
+    <p>Redirecting you to <strong>{link.label}</strong>...</p>
+    <p style="font-size: 14px; color: #6b7280; margin-top: 8px;">
+      If you're not redirected automatically,
+      <a href={targetUrl} rel={link.rel}>{link.label} →</a>
+    </p>
+    <script define:vars={{ targetUrl }}>
+      window.location.replace(targetUrl)
+    </script>
+  </body>
+</html>

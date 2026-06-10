@@ -1,0 +1,122 @@
+---
+import Base from '../../layouts/Base.astro'
+import Disclaimer from '../../components/Disclaimer.astro'
+import VerifyBadge from '../../components/VerifyBadge.astro'
+---
+
+<Base
+  title="Bermuda Work Permits — What You Need to Know"
+  description="How Bermuda work permits work: employer sponsorship, the job advertising requirement, EIRC investor pathway, and what the Work From Bermuda closure means for you."
+>
+  <section class="hero" style="padding-block: var(--space-16);">
+    <div class="hero__inner">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb" style="justify-content: center; color: rgba(255,255,255,0.6);">
+          <li><a href="/" style="color: rgba(255,255,255,0.6);">Home</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li><a href="/move" style="color: rgba(255,255,255,0.6);">Moving</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li style="color: rgba(255,255,255,0.9);">Work Permits</li>
+        </ol>
+      </nav>
+      <h1 class="hero-title">Bermuda Work Permits</h1>
+      <p class="hero-subtitle">
+        Every non-Bermudian who works on the island needs one.
+        Here's how the system works.
+      </p>
+    </div>
+  </section>
+
+  <div class="container" style="padding-block: var(--space-12);">
+    <div style="max-width: 800px; margin: 0 auto;">
+
+      <!-- REQUIRED disclaimer above the fold -->
+      <Disclaimer variant="immigration" />
+
+      <!-- Work From Bermuda closure — critical alert -->
+      <div class="alert alert-closed" style="margin-bottom: var(--space-8);" role="alert">
+        <strong>Programme closed — 28 February 2025:</strong> The Work From Bermuda digital-nomad
+        programme closed permanently. It is no longer accepting applications.
+        If you have read elsewhere that this programme is available, that information is out of date.
+        Verify at <a href="https://www.gov.bm" rel="noopener" target="_blank" style="color: #991b1b;">gov.bm</a>.
+      </div>
+
+      <h2>How Bermuda work permits work</h2>
+      <p>
+        Bermuda requires a work permit for all non-Bermudians (and non-spouses of Bermudians with PRC status)
+        to work on the island. There is no independent work visa — the permit is employer-sponsored.
+      </p>
+      <p>
+        This means: <strong>you need a job offer from a Bermuda-based employer before you can legally move
+        to work there.</strong> There is no path to move speculatively and job-hunt on arrival
+        (unless you qualify for the EIRC investor certificate — see below).
+      </p>
+
+      <h3>The employer's obligations</h3>
+      <p>
+        Before hiring a non-Bermudian, the employer must:
+      </p>
+      <ol class="prose" style="padding-left: var(--space-6); margin-bottom: var(--space-6);">
+        <li>Advertise the position to Bermudians and Permanent Resident Certificate (PRC) holders</li>
+        <li>Demonstrate that no qualified Bermudian or PRC holder was available for the role</li>
+        <li>Apply to the Department of Immigration for a work permit on behalf of the prospective employee</li>
+        <li>Pay the permit fees (fees vary by salary band and permit duration)</li>
+      </ol>
+      <p>
+        This Bermudianisation requirement is enforced. Employers in industries with available Bermudian
+        talent face more scrutiny than those in specialist sectors (e.g. reinsurance, risk modelling,
+        fund administration, tech).
+      </p>
+
+      <h3>Permit duration and renewal</h3>
+      <p>
+        Work permits are typically issued for 1–5 years depending on the role and employer.
+        They are tied to the employer — if you change jobs, a new permit is required.
+        Term limits (a maximum number of years working in Bermuda for foreign nationals)
+        were removed in 2016, but this area has historically changed; verify current policy at gov.bm.
+        <VerifyBadge date="2026-06-10" sourceLabel="gov.bm" sourceUrl="https://www.gov.bm/working-in-bermuda" />
+      </p>
+
+      <h3>Permit fees</h3>
+      <p>
+        Permit fees vary by the employee's annual salary and the permit duration. They are paid by the
+        employer but may affect your compensation negotiation. Verify current fee schedules at
+        <a href="https://www.gov.bm" rel="noopener" target="_blank">gov.bm</a> — fees are subject to Budget changes.
+        <VerifyBadge date="2026-06-10" />
+      </p>
+
+      <!-- EIRC -->
+      <h2>EIRC — Economic Investment Residential Certificate</h2>
+      <p>
+        The EIRC is Bermuda's investor pathway. It grants residential rights (not work rights directly)
+        to investors who meet the minimum investment threshold.
+      </p>
+      <ul class="prose" style="padding-left: var(--space-6); margin-bottom: var(--space-6);">
+        <li><strong>Minimum investment:</strong> $2.5 million in qualifying Bermuda assets or real property</li>
+        <li><strong>What it grants:</strong> Residential rights — the ability to live in Bermuda</li>
+        <li><strong>Work rights:</strong> Separate work permit still required to work for a Bermuda employer</li>
+        <li><strong>Verify:</strong> EIRC rules have changed over the years — confirm current terms at <a href="https://www.gov.bm" rel="noopener" target="_blank">gov.bm</a></li>
+      </ul>
+
+      <!-- Spouse / PRC -->
+      <h2>Spouse of a Bermudian or PRC holder</h2>
+      <p>
+        Spouses of Bermudians and holders of a Permanent Resident Certificate (PRC) have broader
+        rights to work in Bermuda. If this applies to you, the pathway is materially different —
+        consult a Bermuda immigration attorney for your specific situation.
+      </p>
+
+      <!-- Source / verify -->
+      <div style="background-color: var(--color-ocean-muted); border-radius: var(--radius-md); padding: var(--space-5) var(--space-6); margin-top: var(--space-10);">
+        <p style="font-size: var(--text-sm); margin: 0; color: var(--color-ink);">
+          <strong>Verify current requirements:</strong> This page is informational only.
+          Work permit rules, fees, and term limits are subject to legislative change.
+          The authoritative source is the Bermuda Department of Immigration:
+          <a href="https://www.gov.bm/working-in-bermuda" rel="noopener" target="_blank">gov.bm/working-in-bermuda</a>.
+          Consider engaging a Bermuda immigration attorney before making commitments.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</Base>

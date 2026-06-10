@@ -1,0 +1,101 @@
+---
+import Base from '../../layouts/Base.astro'
+---
+
+<Base
+  title="Living in Bermuda — Residents Guide"
+  description="For people who call Bermuda home: local events, deals, the directory, and the things you discover after the first six months."
+>
+  <section class="hero" style="padding-block: var(--space-16);">
+    <div class="hero__inner">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb" style="justify-content: center; color: rgba(255,255,255,0.6);">
+          <li><a href="/" style="color: rgba(255,255,255,0.6);">Home</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li style="color: rgba(255,255,255,0.9);">Living</li>
+        </ol>
+      </nav>
+      <h1 class="hero-title">Living in Bermuda</h1>
+      <p class="hero-subtitle">
+        For people who call it home.
+      </p>
+    </div>
+  </section>
+
+  <div class="container" style="padding-block: var(--space-12);">
+
+    <div style="background-color: var(--color-amber-muted); border: 1px solid var(--color-amber); border-radius: var(--radius-lg); padding: var(--space-8); margin-bottom: var(--space-10);">
+      <h2 style="font-size: var(--text-xl); margin-bottom: var(--space-3);">This section is growing</h2>
+      <p style="color: var(--color-ink); margin-bottom: var(--space-2);">
+        The residents section launches with the directory and key links.
+        Events and local deals are Phase 2 — they require regular curation that comes after
+        the foundation is solid.
+      </p>
+      <p style="color: var(--color-muted); font-size: var(--text-sm); margin: 0;">
+        Notable gap: nothingtodoinbermuda.com (the go-to local events calendar) was absorbed
+        into the Bermuda Tourism Authority portal. A genuine community events digest is an
+        unmet need. Coming in Phase 2.
+      </p>
+    </div>
+
+    <div class="card-grid card-grid-3">
+      <!-- Directory -->
+      <a href="/directory" class="link-card link-card--featured">
+        <p class="link-card__eyebrow">Directory</p>
+        <h3 class="link-card__title">Browse Local Businesses</h3>
+        <p class="link-card__desc">
+          Restaurants, schools, insurers, real estate, events — filtered for residents.
+          The directory includes businesses relevant to daily life, not just tourist needs.
+        </p>
+        <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-ocean); font-weight: 600;">
+          Browse directory →
+        </p>
+      </a>
+
+      <!-- Events placeholder -->
+      <div class="link-card" style="opacity: 0.6; cursor: default;">
+        <p class="link-card__eyebrow">Coming in Phase 2</p>
+        <h3 class="link-card__title">Events Calendar</h3>
+        <p class="link-card__desc">
+          Local events, community notices, Bermuda Heroes Weekend, Restaurant Week,
+          Cup Match — curated so you don't miss them.
+        </p>
+      </div>
+
+      <!-- Deals placeholder -->
+      <div class="link-card" style="opacity: 0.6; cursor: default;">
+        <p class="link-card__eyebrow">Coming in Phase 2</p>
+        <h3 class="link-card__title">Local Deals</h3>
+        <p class="link-card__desc">
+          Restaurant Week prix-fixe offers, accommodation deals, seasonal promotions
+          from directory partners. A genuine gap nobody is filling well right now.
+        </p>
+      </div>
+    </div>
+
+    <!-- For movers who just arrived -->
+    <section style="margin-top: var(--space-12); padding: var(--space-8); background-color: var(--color-sand); border-radius: var(--radius-lg);">
+      <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-4);">New to Bermuda? Start with these</h2>
+      <ul class="prose" style="padding-left: var(--space-6); max-width: 640px;">
+        <li style="margin-bottom: var(--space-3);">
+          <a href="/move/tools/assessment-number">The one-car-per-household rule</a> —
+          understand this before you try to bring a car over.
+        </li>
+        <li style="margin-bottom: var(--space-3);">
+          <a href="/directory?filter=insurance">Mandatory health insurance</a> —
+          you need SHB coverage from day one. Argus Group and BF&M are the main providers.
+        </li>
+        <li style="margin-bottom: var(--space-3);">
+          <a href="/directory?filter=education">Schools</a> —
+          Saltus, Bermuda High School, Warwick Academy, The Bermuda Institute.
+          Apply early — competitive year groups fill fast.
+        </li>
+        <li style="margin-bottom: var(--space-3);">
+          <a href="https://www.table.bm" rel="noopener" target="_blank">Table.bm</a> —
+          the best way to discover restaurants and catch Restaurant Week.
+        </li>
+      </ul>
+    </section>
+
+  </div>
+</Base>

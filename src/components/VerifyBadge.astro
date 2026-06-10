@@ -1,0 +1,23 @@
+---
+/**
+ * VerifyBadge — inline badge showing "Verified [date] · [source link]"
+ * Used on pages with regulated figures (immigration, health, cost of living).
+ */
+interface Props {
+  date: string
+  sourceLabel?: string
+  sourceUrl?: string
+}
+
+const { date, sourceLabel = 'gov.bm', sourceUrl = 'https://www.gov.bm' } = Astro.props
+---
+
+<span class="verify-badge">
+  ✓ Verified {date}
+  {sourceUrl && (
+    <>
+      {' · '}
+      <a href={sourceUrl} rel="noopener" target="_blank">{sourceLabel}</a>
+    </>
+  )}
+</span>

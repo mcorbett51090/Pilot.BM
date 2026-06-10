@@ -1,0 +1,213 @@
+---
+import Base from '../../../layouts/Base.astro'
+import Disclaimer from '../../../components/Disclaimer.astro'
+---
+
+<Base
+  title="Bermuda Compensation Calculator — What Salary Do You Need?"
+  description="Calculate the gross salary you need in Bermuda to cover your lifestyle: rent, health insurance, school, groceries. Beta tool — verify figures before making decisions."
+  noindex={false}
+>
+  <section class="hero" style="padding-block: var(--space-16);">
+    <div class="hero__inner">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb" style="justify-content: center; color: rgba(255,255,255,0.6);">
+          <li><a href="/" style="color: rgba(255,255,255,0.6);">Home</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li><a href="/move" style="color: rgba(255,255,255,0.6);">Moving</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li style="color: rgba(255,255,255,0.9);">Compensation Calculator</li>
+        </ol>
+      </nav>
+      <h1 class="hero-title">What Salary Do You Need in Bermuda?</h1>
+      <p class="hero-subtitle">
+        Work backwards from your lifestyle requirements to the gross salary you need to break even.
+      </p>
+    </div>
+  </section>
+
+  <div class="container" style="padding-block: var(--space-12);">
+    <div style="max-width: 800px; margin: 0 auto;">
+
+      <!-- REQUIRED disclaimer -->
+      <Disclaimer variant="tax" />
+
+      <!-- Beta banner -->
+      <div class="beta-banner" role="note">
+        <strong>Beta — figures pending official verification.</strong>
+        The payroll tax rate used in this calculator is an estimate.
+        <span style="font-style: italic;">[unverified — settling step: read gov.bm payroll tax schedule for your salary band]</span>
+        Verify all outputs at <a href="https://www.gov.bm" rel="noopener" target="_blank" style="color: #92400e;">gov.bm</a>
+        before making any employment or relocation decisions.
+      </div>
+
+      <!-- The calculator -->
+      <div id="calc" style="background-color: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md);">
+        <div style="background: linear-gradient(135deg, var(--color-ocean) 0%, var(--color-ocean-light) 100%); padding: var(--space-6) var(--space-8); color: white;">
+          <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); margin-bottom: var(--space-2);">
+            Beta Calculator
+          </p>
+          <h2 style="font-family: var(--font-serif); font-size: var(--text-2xl); color: white; margin-bottom: var(--space-2);">
+            Bermuda Compensation Estimator
+          </h2>
+          <p style="font-size: 14px; color: rgba(255,255,255,0.8); margin: 0;">
+            Enter your expected lifestyle costs to estimate the gross salary you need.
+          </p>
+        </div>
+
+        <form id="comp-form" style="padding: var(--space-8);" onsubmit="return false;">
+          <!-- Rent band -->
+          <div style="margin-bottom: var(--space-6);">
+            <label for="rent" style="display: block; font-weight: 600; font-size: var(--text-sm); margin-bottom: var(--space-2);">
+              Monthly rent (USD)
+            </label>
+            <select
+              id="rent"
+              style="width: 100%; padding: var(--space-3) var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md); font-size: var(--text-sm); background-color: var(--color-white);"
+            >
+              <option value="2500">1-bedroom, Hamilton area (~$2,500–3,000/mo) → $2,750</option>
+              <option value="3500">2-bedroom apartment (~$3,500–4,500/mo) → $4,000</option>
+              <option value="5000" selected>2-bed cottage/house (~$4,500–6,000/mo) → $5,000</option>
+              <option value="7000">3-bed family home (~$6,000–8,000+/mo) → $7,000</option>
+            </select>
+          </div>
+
+          <!-- Household size (for SHB) -->
+          <div style="margin-bottom: var(--space-6);">
+            <label for="household" style="display: block; font-weight: 600; font-size: var(--text-sm); margin-bottom: var(--space-2);">
+              Adults in household (for health insurance)
+            </label>
+            <select
+              id="household"
+              style="width: 100%; padding: var(--space-3) var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md); font-size: var(--text-sm); background-color: var(--color-white);"
+            >
+              <option value="1" selected>1 adult</option>
+              <option value="2">2 adults</option>
+            </select>
+            <p style="font-size: var(--text-xs); color: var(--color-muted); margin-top: var(--space-1);">
+              SHB rate: $400.31/adult/month. Employers typically contribute for the employee; add dependents separately.
+            </p>
+          </div>
+
+          <!-- School -->
+          <div style="margin-bottom: var(--space-6);">
+            <label for="school" style="display: block; font-weight: 600; font-size: var(--text-sm); margin-bottom: var(--space-2);">
+              Private school?
+            </label>
+            <select
+              id="school"
+              style="width: 100%; padding: var(--space-3) var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md); font-size: var(--text-sm); background-color: var(--color-white);"
+            >
+              <option value="0">No school fees (no children / public school)</option>
+              <option value="24000">1 child in private school (~$24,000/yr)</option>
+              <option value="48000">2 children in private school (~$48,000/yr)</option>
+            </select>
+          </div>
+
+          <button
+            type="button"
+            id="calc-btn"
+            class="btn btn-primary btn-lg"
+            style="width: 100%;"
+          >
+            Calculate required salary →
+          </button>
+
+          <!-- Results -->
+          <div id="calc-results" style="display: none; margin-top: var(--space-6); padding: var(--space-6); background-color: var(--color-ocean-muted); border-radius: var(--radius-md);">
+            <h3 style="font-family: var(--font-serif); font-size: var(--text-xl); margin-bottom: var(--space-4);">
+              Estimated annual costs
+            </h3>
+            <div id="cost-breakdown" style="font-size: var(--text-sm); color: var(--color-ink); margin-bottom: var(--space-6);"></div>
+            <div style="border-top: 2px solid var(--color-ocean); padding-top: var(--space-4);">
+              <p style="font-size: var(--text-sm); color: var(--color-muted); margin-bottom: var(--space-2);">
+                Estimated required gross salary:
+              </p>
+              <p id="required-gross" style="font-size: var(--text-4xl); font-family: var(--font-serif); color: var(--color-ocean); margin: 0;"></p>
+            </div>
+            <p style="font-size: var(--text-xs); color: var(--color-muted); margin-top: var(--space-4); font-style: italic;">
+              Formula: Required gross ≈ annual costs ÷ (1 − payroll tax rate).
+              Payroll tax rate assumed ~10% — <span style="color: var(--color-amber);">[unverified — verify at gov.bm payroll tax schedule]</span>.
+              This does not include pension contributions, car costs, entertainment, utilities, or flights home.
+              Verify with a Bermuda employer or accountant before negotiating salary.
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <!-- Methodology note -->
+      <div style="margin-top: var(--space-8); padding: var(--space-5) var(--space-6); background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md);">
+        <h3 style="font-size: var(--text-base); margin-bottom: var(--space-3);">How this calculator works</h3>
+        <p style="font-size: var(--text-sm); color: var(--color-muted); margin-bottom: var(--space-2);">
+          The formula: <code>Required gross ≈ (monthly costs × 12) ÷ (1 − payroll_tax_rate)</code>
+        </p>
+        <p style="font-size: var(--text-sm); color: var(--color-muted); margin-bottom: var(--space-2);">
+          Monthly costs included: rent + groceries estimate ($1,500/month) + Standard Health Benefit
+          (employee share, $400.31 × adults / 2 roughly, but varies by employer contribution) +
+          school fees (annual ÷ 12).
+        </p>
+        <p style="font-size: var(--text-sm); color: var(--color-amber); margin: 0; font-weight: 500;">
+          Payroll tax rate used: ~10% (employee portion approximation).
+          This is an estimate — the actual rate depends on your salary band and employer contribution.
+          Settling step: read the Bermuda payroll tax schedule at gov.bm before relying on this figure.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</Base>
+
+<script>
+  const btn = document.getElementById('calc-btn')
+  const results = document.getElementById('calc-results')
+  const breakdown = document.getElementById('cost-breakdown')
+  const grossEl = document.getElementById('required-gross')
+
+  btn?.addEventListener('click', () => {
+    const rent = parseFloat((document.getElementById('rent') as HTMLSelectElement).value)
+    const household = parseInt((document.getElementById('household') as HTMLSelectElement).value)
+    const schoolAnnual = parseFloat((document.getElementById('school') as HTMLSelectElement).value)
+
+    // Monthly costs
+    const monthlyRent = rent
+    const monthlyGroceries = 1500
+    // SHB: employer must contribute 50%; employee pays ~50% of SHB premium
+    // However the full SHB is $400.31/adult — we include 50% as employee-borne
+    const monthlyShb = 400.31 * household * 0.5
+    const monthlySchool = schoolAnnual / 12
+    const monthlyTotal = monthlyRent + monthlyGroceries + monthlyShb + monthlySchool
+
+    const annualCosts = monthlyTotal * 12
+
+    // Payroll tax rate — UNVERIFIED ESTIMATE
+    const payrollTaxRate = 0.10 // [unverified]
+
+    const requiredGross = annualCosts / (1 - payrollTaxRate)
+
+    const fmt = (n: number) =>
+      n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 })
+
+    if (breakdown) {
+      breakdown.innerHTML = `
+        <table style="width:100%; font-size: 13px; border-collapse: collapse;">
+          <tr><td style="padding: 4px 0; color: #6b7280;">Monthly rent</td><td style="text-align: right; font-weight: 600;">${fmt(monthlyRent)}</td></tr>
+          <tr><td style="padding: 4px 0; color: #6b7280;">Groceries (estimate)</td><td style="text-align: right; font-weight: 600;">${fmt(monthlyGroceries)}</td></tr>
+          <tr><td style="padding: 4px 0; color: #6b7280;">SHB health insurance (employee ~50%)</td><td style="text-align: right; font-weight: 600;">${fmt(monthlyShb)}</td></tr>
+          <tr><td style="padding: 4px 0; color: #6b7280;">School fees</td><td style="text-align: right; font-weight: 600;">${fmt(monthlySchool)}</td></tr>
+          <tr style="border-top: 1px solid #e5e7eb;"><td style="padding: 8px 0 0; font-weight: 600;">Monthly subtotal</td><td style="text-align: right; font-weight: 700; padding-top: 8px;">${fmt(monthlyTotal)}</td></tr>
+          <tr><td style="padding: 4px 0; font-weight: 600;">Annual subtotal</td><td style="text-align: right; font-weight: 700;">${fmt(annualCosts)}</td></tr>
+        </table>
+        <p style="font-size: 12px; color: #d97706; margin-top: 8px;">Not included: pension, car costs, utilities, entertainment, flights home, misc. Add 15–25% buffer.</p>
+      `
+    }
+
+    if (grossEl) {
+      grossEl.textContent = `${fmt(requiredGross)} / year`
+    }
+
+    if (results) {
+      results.style.display = 'block'
+      results.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  })
+</script>

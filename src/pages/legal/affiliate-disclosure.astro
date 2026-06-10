@@ -1,0 +1,90 @@
+---
+import Base from '../../layouts/Base.astro'
+const lastUpdated = '2026-06-10'
+---
+
+<Base
+  title="Affiliate Disclosure"
+  description="FTC-compliant affiliate disclosure for Pilot.BM. Current affiliate relationships, the /go/ redirect system, and how sponsorship affects (and does not affect) our coverage."
+>
+  <section style="background-color: var(--color-sand); padding-block: var(--space-10);">
+    <div class="container">
+      <h1 style="font-family: var(--font-serif); font-size: var(--text-3xl);">Affiliate Disclosure</h1>
+      <p style="color: var(--color-muted); font-size: var(--text-sm);">Last updated: {lastUpdated}</p>
+    </div>
+  </section>
+
+  <div class="container" style="padding-block: var(--space-12);">
+    <div style="max-width: 720px;" class="prose">
+
+      <h2>FTC disclosure</h2>
+      <p>
+        In accordance with the U.S. Federal Trade Commission (FTC) guidelines (16 C.F.R. Part 255),
+        Pilot.BM discloses that some links on this website are affiliate links.
+        When you click an affiliate link and make a qualifying purchase, Pilot.BM may receive
+        a commission from the affiliate partner at no additional cost to you.
+      </p>
+
+      <h2>How affiliate links work on this site</h2>
+      <p>
+        Affiliate links on Pilot.BM route through our <code>/go/</code> redirect system.
+        For example, <code>pilot.bm/go/oleander-cycles</code> redirects to Oleander Cycles' website.
+        The <code>/go/</code> path:
+      </p>
+      <ul>
+        <li>Makes affiliate links clearly identifiable</li>
+        <li>Allows us to track referral volume (aggregated, no personal data)</li>
+        <li>Routes to the fallback direct URL when an affiliate programme is pending approval</li>
+        <li>Is labelled with <code>rel="nofollow sponsored"</code> per Google's link guidelines</li>
+      </ul>
+
+      <h2>Current active affiliate relationships</h2>
+      <p>
+        As of {lastUpdated}, <strong>no affiliate programmes are yet active</strong> on Pilot.BM.
+        We have applied to the following networks and are pending approval (networks have a 4–8 week
+        review period before commissions begin):
+      </p>
+      <ul>
+        <li><strong>GetYourGuide</strong> — Bermuda tours and activities (pending)</li>
+        <li><strong>Viator</strong> — Bermuda activities (pending)</li>
+        <li><strong>Booking.com via CJ/Awin</strong> — hotel search (pending)</li>
+        <li><strong>OpenTable</strong> — restaurant reservations (pending)</li>
+      </ul>
+      <p>
+        Until programmes are approved and links are activated, <code>/go/</code> redirects use direct
+        fallback URLs (non-affiliate links). This page will be updated when programmes go live.
+      </p>
+      <p>
+        <strong>Oleander Cycles</strong> (<code>/go/oleander-cycles</code>) is a direct non-affiliate link.
+        We include it as a convenience link only.
+      </p>
+
+      <h2>Directory tiers</h2>
+      <p>
+        Pilot.BM's business directory includes paid listing tiers (Standard at $30/mo,
+        Featured at $50/mo, Anchor at $100/mo). These are commercial arrangements —
+        businesses pay for enhanced placement, photos, and partner badges.
+        Paid listings are clearly labelled with their tier badge and "Pilot.BM Partner" designation.
+      </p>
+      <p>
+        Payment for a directory listing does not influence our editorial coverage or the content
+        of our guides. We will not write favourably about a business in our editorial content
+        because they have a paid directory listing.
+      </p>
+
+      <h2>Editorial independence</h2>
+      <p>
+        Affiliate relationships and directory fees do not influence our editorial content.
+        We will recommend a non-affiliate option if it genuinely serves the reader better.
+        When a sponsored or affiliate option is the genuine recommendation, we will say so.
+      </p>
+
+      <h2>Questions</h2>
+      <p>
+        Questions about our affiliate relationships or disclosure:
+        <a href="mailto:matt@ravenpower.net">matt@ravenpower.net</a>
+      </p>
+
+    </div>
+  </div>
+</Base>

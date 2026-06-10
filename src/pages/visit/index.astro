@@ -1,0 +1,133 @@
+---
+import Base from '../../layouts/Base.astro'
+---
+
+<Base
+  title="Visiting Bermuda"
+  description="Everything you need to plan a Bermuda trip: getting around without a car, the best beaches, where to eat, where to stay, and what to do. Real information, no fluff."
+>
+  <!-- Hero -->
+  <section class="hero" style="padding-block: var(--space-16);">
+    <div class="hero__inner">
+      <p class="section-eyebrow" style="color: rgba(255,255,255,0.7); margin-bottom: var(--space-3);">Visit</p>
+      <h1 class="hero-title">Planning a Bermuda trip?</h1>
+      <p class="hero-subtitle" style="font-size: var(--text-lg);">
+        Air visitors spend an average of $2,051 per person per trip.
+        Make every dollar of it count.
+        <small style="display: block; margin-top: 8px; font-size: var(--text-xs); opacity: 0.6;">
+          Source: Bermuda Tourism Authority visitor expenditure data
+        </small>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <!-- Featured: Getting Around -->
+      <div style="margin-bottom: var(--space-10);">
+        <a href="/visit/getting-around" class="link-card link-card--featured" style="display: block;">
+          <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+            <p class="link-card__eyebrow" style="margin: 0;">★ Flagship Guide</p>
+            <span class="badge badge-verified">Most important first</span>
+          </div>
+          <h2 class="link-card__title" style="font-size: var(--text-2xl);">Getting Around Bermuda</h2>
+          <p class="link-card__desc" style="font-size: var(--text-base);">
+            The single most important thing to know before you arrive: tourists cannot rent cars in Bermuda.
+            Scooters, electric minicars, buses, ferries, and taxis are your real options.
+            Full guide + interactive transport finder.
+          </p>
+          <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-ocean); font-weight: 600;">
+            Read the guide and use the tool →
+          </p>
+        </a>
+      </div>
+
+      <!-- Section grid -->
+      <div class="card-grid card-grid-3">
+        <a href="/visit/beaches" class="link-card">
+          <p class="link-card__eyebrow">Beaches</p>
+          <h3 class="link-card__title">Beaches</h3>
+          <p class="link-card__desc">
+            Five beaches worth your time — including the iconic Horseshoe Bay pink sand, locals'
+            favourites, and the quieter spots most tourists never find.
+          </p>
+        </a>
+
+        <a href="/visit" class="link-card">
+          <p class="link-card__eyebrow">Eat &amp; Drink</p>
+          <h3 class="link-card__title">Eat &amp; Drink</h3>
+          <p class="link-card__desc">
+            Fish chowder, wahoo, Bermuda fish sandwiches, Dark 'n' Stormy. Where to eat well
+            without paying resort prices every meal. Coming soon — subscribe for updates.
+          </p>
+        </a>
+
+        <a href="/directory" class="link-card">
+          <p class="link-card__eyebrow">Where to Stay</p>
+          <h3 class="link-card__title">Where to Stay</h3>
+          <p class="link-card__desc">
+            Bermuda isn't cheap. The Fairmont Southampton, Elbow Beach, and Hamilton Princess
+            are the anchors. See the accommodation directory.
+          </p>
+        </a>
+
+        <a href="/visit" class="link-card">
+          <p class="link-card__eyebrow">Things to Do</p>
+          <h3 class="link-card__title">Things to Do</h3>
+          <p class="link-card__desc">
+            St. George's (UNESCO World Heritage), Crystal Caves, the Railway Trail, Port Royal Golf,
+            snorkelling, cliff jumping at Admiralty House. Coming soon.
+          </p>
+        </a>
+
+        <a href="/visit" class="link-card">
+          <p class="link-card__eyebrow">Itineraries</p>
+          <h3 class="link-card__title">Itineraries</h3>
+          <p class="link-card__desc">
+            3 days, 5 days, or a week — what to prioritise at each length of stay. Coming soon.
+          </p>
+        </a>
+
+        <a href="/directory" class="link-card">
+          <p class="link-card__eyebrow">Directory</p>
+          <h3 class="link-card__title">Browse the Directory</h3>
+          <p class="link-card__desc">
+            Hotels, restaurants, transport operators, tour providers — curated and verified.
+            Filter by category and parish.
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick tips -->
+  <section class="section" style="background-color: var(--color-sand);">
+    <div class="container">
+      <span class="section-eyebrow">Before you go</span>
+      <h2 class="section-title" style="font-size: var(--text-2xl);">Quick tips for Bermuda first-timers</h2>
+
+      <div style="max-width: 720px;">
+        <ul class="prose" style="padding-left: var(--space-6); color: var(--color-ink);">
+          <li style="margin-bottom: var(--space-3);">
+            <strong>No rental cars.</strong> Bermuda bans tourist car rental — one of the few destinations in the world to do so. Plan your transport before you arrive. <a href="/visit/getting-around">Full guide →</a>
+          </li>
+          <li style="margin-bottom: var(--space-3);">
+            <strong>Reef-safe sunscreen only.</strong> Bermuda enforces a reef-safe sunscreen rule at its beaches. Bring one or buy on-island.
+          </li>
+          <li style="margin-bottom: var(--space-3);">
+            <strong>Cash on buses.</strong> Bermuda's public buses accept exact coins or pre-purchased tokens/passes only. No bills, no cards.
+          </li>
+          <li style="margin-bottom: var(--space-3);">
+            <strong>Dress code for Hamilton.</strong> Bermuda has a famously smart-casual dress culture — the "Bermuda shorts" worn in the city are proper, tailored shorts with knee-length socks. Beachwear stays at the beach.
+          </li>
+          <li style="margin-bottom: var(--space-3);">
+            <strong>Drive on the left.</strong> Roads are narrow. 35 km/h speed limit. Take the scooter orientation seriously.
+          </li>
+          <li style="margin-bottom: var(--space-3);">
+            <strong>Portuguese man-o-war.</strong> Stinging jellyfish-like creatures appear on south shore beaches mainly Oct–May. Check with your hotel before swimming.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Base>

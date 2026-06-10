@@ -1,0 +1,292 @@
+---
+import Base from '../../layouts/Base.astro'
+import GettingAround from '../../components/tools/GettingAround.tsx'
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Can tourists rent cars in Bermuda?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. Tourist car rental is banned in Bermuda. Bermuda enforces a strict one-car-per-household quota island-wide and has prohibited rental cars for tourists for decades. Visitors must use scooters, electric minicars, buses, ferries, taxis, or bicycles.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does a scooter cost to rent in Bermuda?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Scooters cost approximately $55–85 per day from major operators like Oleander Cycles and Wheels Cycles. The rental includes a helmet, lock, and rain gear. A tourist driving licence is required and can be obtained quickly on-island.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How much does the bus and ferry pass cost in Bermuda?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A 7-day unlimited bus and ferry pass costs $62 (as of 2026). Individual rides are $4. Passes can be purchased at the Ferry Terminal and Central Bus Station in Hamilton. Buses accept exact coins or passes only — no bills or credit cards on board.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I get from Bermuda airport to my hotel?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'LF Wade International Airport is in St. George\'s parish, on the east end of the island. A taxi to Hamilton hotels takes approximately 40 minutes and costs $55–70. Bus Route 1 also connects the airport to Hamilton for $4 but takes about 55 minutes and is not convenient with large luggage. Taxis are strongly recommended for airport transfers.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What side of the road do they drive on in Bermuda?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Bermuda drives on the left (British side). The speed limit is 35 km/h (22 mph) island-wide. Roads are narrow with many blind corners. Scooter renters receive a safety orientation and are strongly advised to drive cautiously.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I bring a passenger on a scooter in Bermuda?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Most tourist scooter licences in Bermuda are single-seat only. If you want to carry a passenger, discuss this explicitly with the rental operator — some two-seat scooters are available but less common. Couples often opt for the electric minicar (Renault Twizy) instead.',
+      },
+    },
+  ],
+}
+---
+
+<Base
+  title="Getting Around Bermuda — Transport Guide"
+  description="The complete guide to getting around Bermuda without a rental car. Tourists cannot rent cars here — scooters, minicars, buses, ferries, and taxis explained with real costs. Interactive transport finder included."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <!-- Hero -->
+  <section class="hero" style="padding-block: var(--space-16);">
+    <div class="hero__inner">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb" style="justify-content: center; color: rgba(255,255,255,0.6);">
+          <li><a href="/" style="color: rgba(255,255,255,0.6);">Home</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li><a href="/visit" style="color: rgba(255,255,255,0.6);">Visiting</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li style="color: rgba(255,255,255,0.9);">Getting Around</li>
+        </ol>
+      </nav>
+      <h1 class="hero-title">Getting Around Bermuda</h1>
+      <p class="hero-subtitle">
+        The most important thing to know before you arrive — and everything else you need.
+      </p>
+    </div>
+  </section>
+
+  <div class="container" style="padding-block: var(--space-12);">
+    <div style="max-width: 800px; margin: 0 auto;">
+
+      <!-- The most important thing -->
+      <div
+        style="background-color: #fee2e2; border: 2px solid #dc2626; border-radius: var(--radius-lg); padding: var(--space-6); margin-bottom: var(--space-10); text-align: center;"
+        role="alert"
+      >
+        <p style="font-size: var(--text-2xl); font-weight: 700; color: #991b1b; margin-bottom: var(--space-2); font-family: var(--font-serif);">
+          🚗 Tourists cannot rent cars in Bermuda.
+        </p>
+        <p style="color: #7f1d1d; font-size: var(--text-base); margin: 0;">
+          Bermuda is one of the few destinations in the world where rental cars for tourists are entirely banned.
+          The island enforces a one-car-per-household quota and has prohibited tourist car rental for decades.
+          This catches many visitors off-guard. Plan your transport before you arrive.
+        </p>
+      </div>
+
+      <!-- Overview table -->
+      <h2>Section 1: Your transport options at a glance</h2>
+      <p>Here is every real option available to tourists in Bermuda:</p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Option</th>
+              <th>Cost</th>
+              <th>Best for</th>
+              <th>Tourists can use?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Scooter</strong></td>
+              <td>$55–85/day</td>
+              <td>Solo/couples, exploring</td>
+              <td class="td-yes">✓ Yes</td>
+            </tr>
+            <tr>
+              <td><strong>Electric minicar</strong></td>
+              <td>$70–100/day</td>
+              <td>2 people, easier than scooter</td>
+              <td class="td-yes">✓ Yes</td>
+            </tr>
+            <tr>
+              <td><strong>Bus + Ferry Pass</strong></td>
+              <td>$62/week unlimited</td>
+              <td>Budget travelers, most sightseeing</td>
+              <td class="td-yes">✓ Yes</td>
+            </tr>
+            <tr>
+              <td><strong>Taxi</strong></td>
+              <td>$60–85/hr or metered</td>
+              <td>Airport, nightlife, groups</td>
+              <td class="td-yes">✓ Yes</td>
+            </tr>
+            <tr>
+              <td><strong>Water taxi</strong></td>
+              <td>~$5/crossing</td>
+              <td>Summer, Hamilton ↔ Dockyard</td>
+              <td class="td-yes">✓ Seasonal</td>
+            </tr>
+            <tr>
+              <td><strong>Bicycle</strong></td>
+              <td>$25–35/day</td>
+              <td>Fit travelers, flat areas only</td>
+              <td class="td-yes">✓ Yes</td>
+            </tr>
+            <tr style="background-color: #fee2e2;">
+              <td><strong>Car rental</strong></td>
+              <td>N/A</td>
+              <td>—</td>
+              <td class="td-no">✗ BANNED for tourists</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Section 2: Scooters -->
+      <h2>Section 2: Scooters — the Bermuda way</h2>
+      <p>
+        Renting a scooter is the classic Bermuda experience. Most visitors who do it come back saying it was one of the highlights of the trip. But there are several things to know before you book.
+      </p>
+      <p>
+        <strong>Bermuda drives on the left</strong> — the British side. If you're from North America, this takes some adjustment. The island-wide speed limit is <strong>35 km/h (22 mph)</strong>, which is slower than it sounds on roads this narrow.
+      </p>
+      <ul class="prose" style="padding-left: var(--space-6); margin-bottom: var(--space-6);">
+        <li><strong>Tourist driving licence</strong> — required, easy to get on-island. Ask your rental operator; the process takes minutes and costs very little.</li>
+        <li><strong>Helmet</strong> — mandatory, included in the rental.</li>
+        <li><strong>Single-seat only</strong> — most tourist licences cover single-seat scooters only. If you want a passenger, confirm with the operator before booking.</li>
+        <li><strong>Rain gear</strong> — usually included. Bermuda weather changes fast; pack it even if the forecast looks clear.</li>
+        <li><strong>Airport runs</strong> — NOT recommended with luggage. Use a taxi for airport transfers and rent the scooter from your hotel once you've settled in.</li>
+      </ul>
+      <p>
+        <strong>Main operators:</strong> <a href="https://www.oleandercycles.bm" rel="noopener nofollow" target="_blank">Oleander Cycles</a>
+        (locations in Hamilton, Paget, and Southampton) and Wheels Cycles.
+        In peak season (May–October), <strong>book 24–48 hours ahead</strong>. Same-day walk-up availability is not guaranteed.
+      </p>
+
+      <!-- Section 3: Bus + Ferry -->
+      <h2>Section 3: The Bus + Ferry system — better than you think</h2>
+      <p>
+        Bermuda's public bus and ferry system is genuinely excellent for tourist use. Every major site
+        is reachable. The <strong>$62 weekly unlimited pass</strong> is outstanding value — buy it on arrival
+        and use it without thinking.
+      </p>
+      <ul class="prose" style="padding-left: var(--space-6); margin-bottom: var(--space-6);">
+        <li><strong>Individual fare:</strong> $4 per ride</li>
+        <li><strong>Weekly unlimited:</strong> $62 (bus + ferry)</li>
+        <li><strong>Where to buy:</strong> Ferry Terminal in Hamilton or the Central Bus Station on Washington Street</li>
+        <li><strong>Buses accept:</strong> Exact coins, tokens, or passes. No bills. No credit/debit cards on board.</li>
+        <li><strong>Hours:</strong> Most routes run 7am–11pm</li>
+      </ul>
+      <p>
+        <strong>Key ferry routes:</strong>
+      </p>
+      <ul class="prose" style="padding-left: var(--space-6); margin-bottom: var(--space-6);">
+        <li><strong>Hamilton ↔ Royal Naval Dockyard (Sandys)</strong> — most scenic, 35 min, runs year-round</li>
+        <li><strong>Hamilton ↔ St. George's</strong> — seasonal (typically April–October)</li>
+        <li><strong>Hamilton ↔ Rockaway</strong> — local route</li>
+      </ul>
+      <p>
+        Pink buses cover all 14 routes from St. George's on the east to the Royal Naval Dockyard in the west.
+        Route 7 goes directly to Horseshoe Bay Beach — the most-used tourist route.
+        Route 1 connects the airport to Hamilton.
+      </p>
+
+      <!-- Section 4: Taxis -->
+      <h2>Section 4: Taxis</h2>
+      <p>
+        Taxis in Bermuda are regulated with metered fares.
+        They are the right choice for airport transfers and any nightlife outing.
+      </p>
+      <ul class="prose" style="padding-left: var(--space-6); margin-bottom: var(--space-6);">
+        <li><strong>Bermuda Taxi Hotline:</strong> +1-441-295-4141</li>
+        <li><strong>Airport to Hamilton hotels:</strong> ~40 minutes, $55–70</li>
+        <li><strong>Credit cards:</strong> Ask when booking — acceptance varies by driver</li>
+        <li><strong>Day rate:</strong> Some drivers offer day rates for island tours (~$350–450 for 6 hours) — useful for groups of 3–4</li>
+      </ul>
+      <p>
+        <strong>Do not ride a scooter after drinking.</strong> Bermuda's roads are narrow and unlit outside Hamilton.
+        Taxis are the only sensible choice for a night out.
+      </p>
+
+      <!-- Section 5: Electric Minicars -->
+      <h2>Section 5: Electric minicars (Renault Twizy)</h2>
+      <p>
+        The electric minicar — typically the Renault Twizy — seats two people, runs on electricity,
+        and tops out around 50 km/h. It's slower than a scooter but far easier to handle.
+      </p>
+      <p>
+        At $70–100/day, it costs more than a single scooter but is often the right choice for couples who
+        want independence without the anxiety of riding on narrow Bermudian roads.
+        Available at Oleander Cycles and some hotel concierge desks.
+        <strong>Limited fleet — book ahead.</strong>
+      </p>
+
+      <!-- Section 6: From the airport -->
+      <h2>Section 6: Getting from the airport</h2>
+      <p>
+        LF Wade International Airport is located in <strong>St. George's parish</strong>, at the east end of the island.
+        It is not conveniently close to Hamilton or the south shore hotels.
+      </p>
+      <ul class="prose" style="padding-left: var(--space-6); margin-bottom: var(--space-6);">
+        <li><strong>Taxi to Hamilton hotels:</strong> ~40 minutes, $55–70 — strongly recommended if you have luggage</li>
+        <li><strong>Bus Route 1:</strong> Airport → Hamilton, ~55 minutes, $4 — feasible if you're packing light</li>
+        <li><strong>Scooter or minicar:</strong> Not suitable from the airport — leave the scooter rental for after you've checked in</li>
+      </ul>
+
+      <!-- Section 7: Water taxis -->
+      <h2>Section 7: Water taxis</h2>
+      <p>
+        Water taxis operate seasonally, approximately April–October.
+        The most popular route is <strong>Hamilton to Royal Naval Dockyard</strong> —
+        35 minutes across the Great Sound, with excellent views of the harbour and south shore.
+      </p>
+      <p>
+        Fares are approximately $5 per crossing for most routes.
+        Check the current schedule and departure points at the Hamilton Ferry Terminal.
+        St. George's routes are also available in season.
+      </p>
+
+      <!-- Section 8: Tips from experience -->
+      <h2>Section 8: Tips from experience</h2>
+      <ul class="prose" style="padding-left: var(--space-6); margin-bottom: var(--space-8);">
+        <li><strong>Book scooters and minicars 24–48 hours ahead</strong> during peak season (April–October). Don't assume walk-up availability at peak times.</li>
+        <li><strong>Road signs follow UK convention.</strong> 'Give Way' not 'Yield'. Roundabouts everywhere — yield to traffic already in the roundabout.</li>
+        <li><strong>Narrow roads.</strong> Many Bermuda lanes barely fit one vehicle. Pull over, yield, and take your time. There's no need to rush at 35 km/h.</li>
+        <li><strong>Blind corners are common.</strong> The south shore road especially has visibility issues. Use your horn before corners, as locals do.</li>
+        <li><strong>Scooter parking.</strong> Most tourist sites have dedicated scooter/minicar parking — separate from car parks.</li>
+        <li><strong>Weather changes fast.</strong> Bermuda can go from sunshine to a shower and back in 30 minutes. Always have rain gear on the scooter.</li>
+        <li><strong>Keep your rental documents.</strong> If you're stopped by police, you'll need your tourist licence and rental agreement.</li>
+      </ul>
+
+      <!-- The interactive tool -->
+      <div style="margin-top: var(--space-12);">
+        <h2>Find your best transport option</h2>
+        <p style="margin-bottom: var(--space-6);">
+          Answer two questions and get personalised recommendations for your trip type and party size.
+        </p>
+        <GettingAround client:load />
+      </div>
+
+    </div>
+  </div>
+</Base>

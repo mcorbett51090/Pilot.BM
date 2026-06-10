@@ -1,0 +1,42 @@
+---
+/**
+ * Disclaimer component — REQUIRED above the fold on all /move/* pages.
+ * Props:
+ *   variant: 'relocation' | 'immigration' | 'tax' | 'general'
+ */
+interface Props {
+  variant: 'relocation' | 'immigration' | 'tax' | 'general'
+}
+
+const { variant } = Astro.props
+
+const titles: Record<typeof variant, string> = {
+  relocation: 'For general reference only — not professional advice',
+  immigration: 'Not immigration or legal advice',
+  tax: 'Not tax or financial advice',
+  general: 'Informational purposes only',
+}
+
+const baseText =
+  'This information is for general educational purposes only. It is not legal, immigration, tax, or financial advice. Regulations and policies change frequently. Always verify current requirements at'
+
+const bodies: Record<typeof variant, string> = {
+  relocation: `${baseText} gov.bm before making any decisions.`,
+  immigration: `${baseText} gov.bm before making any decisions. Immigration law in Bermuda changes frequently. The Work From Bermuda digital-nomad programme closed 28 February 2025 and is no longer available.`,
+  tax: `${baseText} gov.bm and consult a qualified Bermuda tax or payroll professional before making any decisions. Payroll tax rates and thresholds are subject to annual Budget changes.`,
+  general: 'This page is for informational purposes only. Always verify current information at gov.bm.',
+}
+---
+
+<aside class="disclaimer-box" role="note" aria-label="Disclaimer">
+  <p class="disclaimer-box__title">
+    <span class="disclaimer-box__icon" aria-hidden="true">⚠️</span>
+    {titles[variant]}
+  </p>
+  <p class="disclaimer-box__body">
+    {bodies[variant]}
+    {' '}
+    <a href="https://www.gov.bm" rel="noopener" target="_blank">gov.bm</a>
+    {' '}is the official source of record.
+  </p>
+</aside>
