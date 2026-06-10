@@ -1,5 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro'
+import RedditFeed from '../../components/RedditFeed.astro'
+import visitPosts from '../../data/reddit-seed/visit.json'
 ---
 
 <Base
@@ -130,4 +132,6 @@ import Base from '../../layouts/Base.astro'
       </div>
     </div>
   </section>
+
+  <RedditFeed posts={visitPosts} />
 </Base>
