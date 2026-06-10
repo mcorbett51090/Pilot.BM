@@ -1,0 +1,76 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  listing: CollectionEntry<'directory'>
+}
+
+const { listing } = Astro.props
+const { data } = listing
+
+const tierLabels: Record<string, string> = {
+  free: 'Free',
+  standard: 'Standard',
+  featured: 'Featured',
+  anchor: 'Anchor',
+}
+
+const categoryLabels: Record<string, string> = {
+  accommodation: 'Accommodation',
+  attraction: 'Attraction',
+  restaurant: 'Restaurant',
+  retail: 'Retail',
+  transport: 'Transport',
+  real_estate: 'Real Estate',
+  insurance: 'Insurance',
+  relocation: 'Relocation',
+  education: 'Education',
+  tourism: 'Tourism',
+  dining_event: 'Dining Event',
+  financial: 'Financial',
+  legal: 'Legal',
+  healthcare: 'Healthcare',
+  other: 'Other',
+}
+
+const isPartner = data.tier === 'featured' || data.tier === 'anchor'
+const cardClass = [
+  'directory-card',
+  data.tier === 'featured' ? 'directory-card--featured' : '',
+  data.tier === 'anchor' ? 'directory-card--anchor' : '',
+]
+  .filter(Boolean)
+  .join(' ')
+---
+
+<article class={cardClass}>
+  <div class="directory-card__header">
+    <div>
+      <h3 class="directory-card__name">{data.name}</h3>
+      <div class="directory-card__meta">
+        <span class={`badge badge-tier-${data.tier}`}>{tierLabels[data.tier]}</span>
+        <span class="badge badge-category">{categoryLabels[data.category] ?? data.category}</span>
+        <span style="font-size: var(--text-xs); color: var(--color-muted);">{data.parish}</span>
+      </div>
+    </div>
+    {isPartner && (
+      <span class="badge badge-partner" style="flex-shrink: 0;">Pilot.BM Partner</span>
+    )}
+  </div>
+
+  <p class="directory-card__desc">{data.description.slice(0, 200)}{data.description.length > 200 ? '…' : ''}</p>
+
+  <div class="directory-card__contact">
+    {data.url && (
+      <a href={data.url} rel="noopener nofollow" target="_blank">
+        Visit website →
+      </a>
+    )}
+    {data.phone && (
+      <a href={`tel:${data.phone.replace(/\s/g, '')}`}>{data.phone}</a>
+    )}
+    {data.hours && (
+      <span style="font-size: var(--text-xs); color: var(--color-muted);">{data.hours}</span>
+    )}
+  </div>
+</article>

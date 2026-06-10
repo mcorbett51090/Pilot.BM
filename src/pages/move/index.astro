@@ -1,0 +1,151 @@
+---
+import Base from '../../layouts/Base.astro'
+import Disclaimer from '../../components/Disclaimer.astro'
+import VerifyBadge from '../../components/VerifyBadge.astro'
+---
+
+<Base
+  title="Moving to Bermuda"
+  description="The honest guide to moving to Bermuda. Work permits, cost of living, immigration pathways, the one-car rule, and what salary you actually need. Real information, not brochure copy."
+>
+  <!-- Hero -->
+  <section class="hero" style="padding-block: var(--space-16);">
+    <div class="hero__inner">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb" style="justify-content: center; color: rgba(255,255,255,0.6);">
+          <li><a href="/" style="color: rgba(255,255,255,0.6);">Home</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li style="color: rgba(255,255,255,0.9);">Moving</li>
+        </ol>
+      </nav>
+      <h1 class="hero-title">Moving to Bermuda</h1>
+      <p class="hero-subtitle">
+        The information you need before you commit — not after.
+      </p>
+    </div>
+  </section>
+
+  <div class="container" style="padding-block: var(--space-12);">
+
+    <!-- Disclaimer — REQUIRED above the fold on all /move/* pages -->
+    <Disclaimer variant="immigration" />
+
+    <!-- Key facts -->
+    <div style="background-color: var(--color-sand); border-radius: var(--radius-lg); padding: var(--space-8); margin-bottom: var(--space-10);">
+      <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-6);">What you need to know upfront</h2>
+      <div class="card-grid card-grid-2">
+        <div>
+          <h3 style="font-size: var(--text-lg); color: var(--color-ocean); margin-bottom: var(--space-2);">Work permit required</h3>
+          <p style="font-size: var(--text-sm); color: var(--color-muted); margin: 0;">
+            All non-Bermudians (and non-spouses of Bermudians) need an employer-sponsored work permit.
+            No job offer = no legal path to move. The employer must first advertise and show no qualified Bermudian was available.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-size: var(--text-lg); color: #dc2626; margin-bottom: var(--space-2);">
+            Work From Bermuda: CLOSED
+            <span class="badge badge-closed" style="margin-left: var(--space-2);">Closed 28 Feb 2025</span>
+          </h3>
+          <p style="font-size: var(--text-sm); color: var(--color-muted); margin: 0;">
+            The Work From Bermuda digital-nomad programme closed permanently on 28 February 2025.
+            It is no longer available. Verify at <a href="https://www.gov.bm" rel="noopener" target="_blank">gov.bm</a>.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-size: var(--text-lg); color: var(--color-ocean); margin-bottom: var(--space-2);">Cost of living</h3>
+          <p style="font-size: var(--text-sm); color: var(--color-muted); margin: 0;">
+            Bermuda's cost of living is approximately <strong>94% above the US average</strong>.
+            Rent alone runs ~186% above US norms. Budget accordingly.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-size: var(--text-lg); color: var(--color-ocean); margin-bottom: var(--space-2);">Mandatory health insurance</h3>
+          <p style="font-size: var(--text-sm); color: var(--color-muted); margin: 0;">
+            The Standard Health Benefit (SHB) is mandatory for all residents.
+            Current rate: <strong>$400.31/adult/month</strong>.
+            <VerifyBadge date="2026-06-10" sourceLabel="Bermuda Health Council" sourceUrl="https://www.bhec.bm" />
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section nav -->
+    <h2 style="margin-bottom: var(--space-6);">The Bermuda moving guide</h2>
+
+    <div class="card-grid card-grid-3">
+      <a href="/move/work-permit" class="link-card">
+        <p class="link-card__eyebrow">Step 1</p>
+        <h3 class="link-card__title">Work Permits</h3>
+        <p class="link-card__desc">
+          How employer sponsorship works. What the employer must do.
+          EIRC for investors. Fees and timelines.
+        </p>
+      </a>
+
+      <a href="/move/cost-of-living" class="link-card">
+        <p class="link-card__eyebrow">Step 2</p>
+        <h3 class="link-card__title">Cost of Living</h3>
+        <p class="link-card__desc">
+          Rent, groceries, health insurance, school fees, car import duty.
+          All figures with sources. What salary actually buys you here.
+        </p>
+      </a>
+
+      <a href="/move/tools/pathway" class="link-card link-card--featured">
+        <p class="link-card__eyebrow">★ Tool</p>
+        <h3 class="link-card__title">Immigration Pathway Finder</h3>
+        <p class="link-card__desc">
+          Do you even qualify to move? Answer three questions and find out which pathway —
+          if any — applies to you.
+        </p>
+      </a>
+
+      <a href="/move/tools/assessment-number" class="link-card">
+        <p class="link-card__eyebrow">★ Tool</p>
+        <h3 class="link-card__title">The Car Trap</h3>
+        <p class="link-card__desc">
+          One car per household. Assessment Numbers explained. This surprises almost every mover.
+        </p>
+      </a>
+
+      <a href="/move/tools/compensation" class="link-card">
+        <p class="link-card__eyebrow">Calculator (Beta)</p>
+        <h3 class="link-card__title">Compensation Calculator</h3>
+        <p class="link-card__desc">
+          What salary do you need in Bermuda to match your current lifestyle?
+          Calculates required gross based on rent, family size, school, and health insurance.
+        </p>
+      </a>
+
+      <a href="/directory" class="link-card">
+        <p class="link-card__eyebrow">Directory</p>
+        <h3 class="link-card__title">Movers Directory</h3>
+        <p class="link-card__desc">
+          Real estate agents, international movers, insurance brokers, relocation consultants —
+          curated for people making the move.
+        </p>
+      </a>
+    </div>
+
+    <!-- Honest summary -->
+    <div style="margin-top: var(--space-12); padding: var(--space-8); background-color: var(--color-ocean-muted); border-radius: var(--radius-lg);">
+      <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-4);">The honest summary</h2>
+      <p style="color: var(--color-ink); line-height: 1.7; margin-bottom: var(--space-4);">
+        Moving to Bermuda is a serious commitment. The pathway requires employer sponsorship —
+        there is no "move first, find work later" option unless you qualify for the EIRC investor
+        certificate ($2.5M minimum investment). The cost of living is genuinely higher than almost
+        anywhere else in the world.
+      </p>
+      <p style="color: var(--color-ink); line-height: 1.7; margin-bottom: var(--space-4);">
+        For the right person in the right role, it's an extraordinary place to live —
+        safe, beautiful, and with a tight-knit expat community. The international business sector
+        (insurance, reinsurance, asset management) compensates accordingly.
+      </p>
+      <p style="color: var(--color-muted); font-size: var(--text-sm); margin: 0;">
+        This guide is for general information only. Verify everything at <a href="https://www.gov.bm" rel="noopener" target="_blank">gov.bm</a>
+        and consult a Bermuda immigration attorney for your specific situation.
+      </p>
+    </div>
+
+  </div>
+</Base>

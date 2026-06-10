@@ -1,0 +1,110 @@
+---
+import Base from '../../layouts/Base.astro'
+import DirectoryCard from '../../components/DirectoryCard.astro'
+import { getCollection } from 'astro:content'
+
+const listings = await getCollection('directory')
+
+// Group by category
+const categories = [
+  { key: 'accommodation', label: 'Accommodation' },
+  { key: 'attraction', label: 'Attractions' },
+  { key: 'restaurant', label: 'Restaurants & Dining' },
+  { key: 'dining_event', label: 'Dining Events' },
+  { key: 'retail', label: 'Retail' },
+  { key: 'transport', label: 'Transport' },
+  { key: 'tourism', label: 'Tourism' },
+  { key: 'real_estate', label: 'Real Estate' },
+  { key: 'insurance', label: 'Insurance' },
+  { key: 'relocation', label: 'Relocation' },
+  { key: 'education', label: 'Education' },
+]
+
+const listingsByCategory = categories
+  .map((cat) => ({
+    ...cat,
+    items: listings
+      .filter((l) => l.data.category === cat.key && l.data.status === 'active')
+      .sort((a, b) => {
+        // Sort: anchor > featured > standard > free
+        const tierOrder = { anchor: 0, featured: 1, standard: 2, free: 3 }
+        return (tierOrder[a.data.tier] ?? 4) - (tierOrder[b.data.tier] ?? 4)
+      }),
+  }))
+  .filter((cat) => cat.items.length > 0)
+---
+
+<Base
+  title="Bermuda Business Directory"
+  description="Browse the Bermuda business directory: accommodation, restaurants, transport, real estate, insurance, schools, and more. Curated and verified."
+>
+  <section class="hero" style="padding-block: var(--space-16);">
+    <div class="hero__inner">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb" style="justify-content: center; color: rgba(255,255,255,0.6);">
+          <li><a href="/" style="color: rgba(255,255,255,0.6);">Home</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li style="color: rgba(255,255,255,0.9);">Directory</li>
+        </ol>
+      </nav>
+      <h1 class="hero-title">Bermuda Directory</h1>
+      <p class="hero-subtitle">
+        Curated, verified, and organised by who needs it.
+      </p>
+    </div>
+  </section>
+
+  <div class="container" style="padding-block: var(--space-12);">
+
+    <!-- Claim CTA banner -->
+    <div style="background-color: var(--color-ink); color: var(--color-white); border-radius: var(--radius-lg); padding: var(--space-6) var(--space-8); margin-bottom: var(--space-10); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-4);">
+      <div>
+        <p style="font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.6); margin-bottom: var(--space-1);">For businesses</p>
+        <p style="color: var(--color-white); font-size: var(--text-lg); margin: 0;">
+          We're seeding the directory with Bermuda's best —
+          <strong>claim your listing</strong> to add photos, hours, and a Partner badge.
+        </p>
+      </div>
+      <a href="/directory/claim" class="btn btn-primary" style="background-color: white; color: var(--color-ink); flex-shrink: 0;">
+        Claim a Listing →
+      </a>
+    </div>
+
+    <!-- Tier legend -->
+    <div style="display: flex; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-8); align-items: center;">
+      <span style="font-size: var(--text-sm); color: var(--color-muted);">Listing tiers:</span>
+      <span class="badge badge-tier-free">Free</span>
+      <span class="badge badge-tier-standard">Standard</span>
+      <span class="badge badge-tier-featured">Featured — Partner</span>
+      <span class="badge badge-tier-anchor">Anchor — Partner</span>
+    </div>
+
+    <!-- Categories -->
+    {listingsByCategory.map((cat) => (
+      <section style="margin-bottom: var(--space-12);" id={cat.key}>
+        <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-6); padding-bottom: var(--space-3); border-bottom: 2px solid var(--color-border);">
+          {cat.label}
+          <span style="font-size: var(--text-sm); color: var(--color-muted); font-family: var(--font-sans); font-weight: 400; margin-left: var(--space-2);">
+            {cat.items.length} {cat.items.length === 1 ? 'listing' : 'listings'}
+          </span>
+        </h2>
+        <div class="card-grid">
+          {cat.items.map((listing) => (
+            <DirectoryCard listing={listing} />
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <!-- Add more CTA -->
+    <div style="text-align: center; padding: var(--space-10); background-color: var(--color-sand); border-radius: var(--radius-lg);">
+      <h2 style="font-size: var(--text-2xl); margin-bottom: var(--space-3);">Is your business missing?</h2>
+      <p style="color: var(--color-muted); margin-bottom: var(--space-6);">
+        The directory is growing. Claim your listing and be found by the visitors, movers,
+        and residents who need what you offer.
+      </p>
+      <a href="/directory/claim" class="btn btn-primary">Claim Your Listing →</a>
+    </div>
+
+  </div>
+</Base>

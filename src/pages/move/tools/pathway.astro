@@ -1,0 +1,228 @@
+---
+import Base from '../../../layouts/Base.astro'
+import Disclaimer from '../../../components/Disclaimer.astro'
+---
+
+<Base
+  title="Bermuda Immigration Pathway Finder"
+  description="Do you qualify to move to Bermuda? Answer three questions to find your immigration pathway: work permit, spouse/PRC, or EIRC investor certificate."
+>
+  <section class="hero" style="padding-block: var(--space-16);">
+    <div class="hero__inner">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb" style="justify-content: center; color: rgba(255,255,255,0.6);">
+          <li><a href="/" style="color: rgba(255,255,255,0.6);">Home</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li><a href="/move" style="color: rgba(255,255,255,0.6);">Moving</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li style="color: rgba(255,255,255,0.9);">Pathway Finder</li>
+        </ol>
+      </nav>
+      <h1 class="hero-title">Bermuda Immigration Pathway Finder</h1>
+      <p class="hero-subtitle">
+        Three questions. No PII collected. Find your pathway — or find out there isn't one.
+      </p>
+    </div>
+  </section>
+
+  <div class="container" style="padding-block: var(--space-12);">
+    <div style="max-width: 720px; margin: 0 auto;">
+
+      <!-- REQUIRED disclaimer -->
+      <Disclaimer variant="immigration" />
+
+      <!-- Decision tree — React island -->
+      <div id="pathway-tool" style="background-color: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md);">
+        <div style="background: linear-gradient(135deg, var(--color-ocean) 0%, var(--color-ocean-light) 100%); padding: var(--space-6) var(--space-8); color: white;">
+          <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); margin-bottom: var(--space-2);">
+            Decision Tree
+          </p>
+          <h2 style="font-family: var(--font-serif); font-size: var(--text-2xl); color: white; margin-bottom: var(--space-2);">
+            Do you qualify to move to Bermuda?
+          </h2>
+          <p style="font-size: 14px; color: rgba(255,255,255,0.8); margin: 0;">
+            Answer three questions to identify your pathway.
+          </p>
+        </div>
+
+        <div id="tree" style="padding: var(--space-8);">
+          <!-- Question 1 -->
+          <div id="q1" class="question-block">
+            <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ocean); margin-bottom: var(--space-3);">Question 1 of 3</p>
+            <h3 style="font-family: var(--font-serif); font-size: var(--text-xl); margin-bottom: var(--space-5); color: var(--color-ink);">
+              Do you have a job offer from a Bermuda-based employer?
+            </h3>
+            <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+              <button class="btn btn-secondary" onclick="window.bmShowQ1Yes()" style="text-align: left; justify-content: flex-start;">
+                ✓ Yes — I have a job offer from a Bermuda employer
+              </button>
+              <button class="btn btn-ghost" onclick="window.bmShowQ2()" style="text-align: left; justify-content: flex-start;">
+                ✗ No — I don't have a Bermuda job offer yet
+              </button>
+            </div>
+          </div>
+
+          <!-- Result: Work Permit -->
+          <div id="result-work-permit" class="question-block" style="display: none;">
+            <div style="background-color: #dcfce7; border: 2px solid #16a34a; border-radius: var(--radius-md); padding: var(--space-6);">
+              <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #15803d; margin-bottom: var(--space-2);">Your pathway</p>
+              <h3 style="font-family: var(--font-serif); font-size: var(--text-xl); color: #14532d; margin-bottom: var(--space-4);">
+                Work Permit — employer-sponsored
+              </h3>
+              <p style="color: #166534; margin-bottom: var(--space-4);">
+                Your employer sponsors a work permit application to the Bermuda Department of Immigration.
+                The employer must first advertise the role, demonstrate no qualified Bermudian was available,
+                then apply on your behalf. The permit is tied to that employer — changing jobs requires a new permit.
+              </p>
+              <a href="/move/work-permit" class="btn btn-primary" style="background-color: #166534; border-color: #166534;">
+                Full work permit guide →
+              </a>
+            </div>
+            <button onclick="window.bmReset()" style="margin-top: var(--space-4); background: none; border: none; color: var(--color-ocean); cursor: pointer; font-size: var(--text-sm); text-decoration: underline;">
+              ← Start over
+            </button>
+          </div>
+
+          <!-- Question 2 -->
+          <div id="q2" class="question-block" style="display: none;">
+            <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ocean); margin-bottom: var(--space-3);">Question 2 of 3</p>
+            <h3 style="font-family: var(--font-serif); font-size: var(--text-xl); margin-bottom: var(--space-5); color: var(--color-ink);">
+              Are you married to, or do you hold PRC through, a Bermudian?
+            </h3>
+            <p style="font-size: var(--text-sm); color: var(--color-muted); margin-bottom: var(--space-4);">
+              A PRC (Permanent Resident Certificate) is held by long-term non-Bermudian residents. Spouses of Bermudians and PRC holders have broader work rights.
+            </p>
+            <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+              <button class="btn btn-secondary" onclick="window.bmShowQ2Yes()" style="text-align: left; justify-content: flex-start;">
+                ✓ Yes — I'm married to or hold PRC through a Bermudian or PRC holder
+              </button>
+              <button class="btn btn-ghost" onclick="window.bmShowQ3()" style="text-align: left; justify-content: flex-start;">
+                ✗ No — neither applies to me
+              </button>
+            </div>
+            <button onclick="window.bmReset()" style="margin-top: var(--space-4); background: none; border: none; color: var(--color-ocean); cursor: pointer; font-size: var(--text-sm); text-decoration: underline;">
+              ← Back to Q1
+            </button>
+          </div>
+
+          <!-- Result: Spouse / PRC -->
+          <div id="result-spouse" class="question-block" style="display: none;">
+            <div style="background-color: #eff6ff; border: 2px solid #2563eb; border-radius: var(--radius-md); padding: var(--space-6);">
+              <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #1d4ed8; margin-bottom: var(--space-2);">Your pathway</p>
+              <h3 style="font-family: var(--font-serif); font-size: var(--text-xl); color: #1e3a8a; margin-bottom: var(--space-4);">
+                Spouse / PRC pathway
+              </h3>
+              <p style="color: #1e40af; margin-bottom: var(--space-4);">
+                Spouses of Bermudians and holders of a PRC through a Bermudian have broader rights to
+                live and work in Bermuda. This pathway is materially different from the employer-sponsored
+                work permit — consult a Bermuda immigration attorney for your specific situation.
+              </p>
+              <a href="https://www.gov.bm" rel="noopener" target="_blank" class="btn btn-primary" style="background-color: #1d4ed8; border-color: #1d4ed8;">
+                Verify at gov.bm →
+              </a>
+            </div>
+            <button onclick="window.bmReset()" style="margin-top: var(--space-4); background: none; border: none; color: var(--color-ocean); cursor: pointer; font-size: var(--text-sm); text-decoration: underline;">
+              ← Start over
+            </button>
+          </div>
+
+          <!-- Question 3 -->
+          <div id="q3" class="question-block" style="display: none;">
+            <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-ocean); margin-bottom: var(--space-3);">Question 3 of 3</p>
+            <h3 style="font-family: var(--font-serif); font-size: var(--text-xl); margin-bottom: var(--space-5); color: var(--color-ink);">
+              Do you have at least $2.5 million to invest in qualifying Bermuda assets or property?
+            </h3>
+            <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+              <button class="btn btn-secondary" onclick="window.bmShowQ3Yes()" style="text-align: left; justify-content: flex-start;">
+                ✓ Yes — I can invest $2.5M or more
+              </button>
+              <button class="btn btn-ghost" onclick="window.bmShowNoPath()" style="text-align: left; justify-content: flex-start;">
+                ✗ No — not at that level
+              </button>
+            </div>
+            <button onclick="window.bmShowQ2()" style="margin-top: var(--space-4); background: none; border: none; color: var(--color-ocean); cursor: pointer; font-size: var(--text-sm); text-decoration: underline;">
+              ← Back to Q2
+            </button>
+          </div>
+
+          <!-- Result: EIRC -->
+          <div id="result-eirc" class="question-block" style="display: none;">
+            <div style="background-color: #fef3c7; border: 2px solid #d97706; border-radius: var(--radius-md); padding: var(--space-6);">
+              <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #b45309; margin-bottom: var(--space-2);">Your pathway</p>
+              <h3 style="font-family: var(--font-serif); font-size: var(--text-xl); color: #78350f; margin-bottom: var(--space-4);">
+                EIRC — Economic Investment Residential Certificate
+              </h3>
+              <p style="color: #92400e; margin-bottom: var(--space-4);">
+                The EIRC grants residential rights (not automatically work rights) to investors
+                who meet the $2.5M minimum threshold in qualifying Bermuda assets or real property.
+                A separate work permit is still required to work for a Bermuda employer.
+                Verify current EIRC terms at gov.bm — requirements have changed over the years.
+              </p>
+              <a href="https://www.gov.bm" rel="noopener" target="_blank" class="btn btn-primary" style="background-color: #b45309; border-color: #b45309;">
+                Verify at gov.bm →
+              </a>
+            </div>
+            <button onclick="window.bmReset()" style="margin-top: var(--space-4); background: none; border: none; color: var(--color-ocean); cursor: pointer; font-size: var(--text-sm); text-decoration: underline;">
+              ← Start over
+            </button>
+          </div>
+
+          <!-- No path -->
+          <div id="result-no-path" class="question-block" style="display: none;">
+            <div style="background-color: #f3f4f6; border: 2px solid #9ca3af; border-radius: var(--radius-md); padding: var(--space-6);">
+              <p style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #6b7280; margin-bottom: var(--space-2);">Result</p>
+              <h3 style="font-family: var(--font-serif); font-size: var(--text-xl); color: var(--color-ink); margin-bottom: var(--space-4);">
+                No clear pathway at this time
+              </h3>
+              <p style="color: var(--color-muted); margin-bottom: var(--space-4);">
+                Unfortunately, Bermuda has very limited immigration pathways without an employer,
+                a Bermudian family connection, or significant investment. The Work From Bermuda
+                digital-nomad programme closed on 28 February 2025 and is not available.
+              </p>
+              <p style="color: var(--color-muted); margin-bottom: var(--space-4);">
+                The most common path for people in this situation is to secure a Bermuda job offer
+                first. Companies in the international business sector (reinsurance, asset management,
+                fund administration) regularly hire internationally.
+              </p>
+              <a href="https://www.gov.bm" rel="noopener" target="_blank" class="btn btn-secondary">
+                Check gov.bm for updates →
+              </a>
+            </div>
+            <button onclick="window.bmReset()" style="margin-top: var(--space-4); background: none; border: none; color: var(--color-ocean); cursor: pointer; font-size: var(--text-sm); text-decoration: underline;">
+              ← Start over
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <p style="font-size: var(--text-sm); color: var(--color-muted); margin-top: var(--space-6); text-align: center;">
+        This tool is a simplified guide only. Immigration law in Bermuda can change.
+        Always verify at <a href="https://www.gov.bm" rel="noopener" target="_blank">gov.bm</a>
+        and consult a qualified Bermuda immigration attorney before making decisions.
+      </p>
+
+    </div>
+  </div>
+</Base>
+
+<script>
+  function hideAll() {
+    const blocks = document.querySelectorAll('.question-block')
+    blocks.forEach((b) => ((b as HTMLElement).style.display = 'none'))
+  }
+
+  function show(id: string) {
+    hideAll()
+    const el = document.getElementById(id)
+    if (el) el.style.display = 'block'
+  }
+
+  ;(window as any).bmShowQ1Yes = () => show('result-work-permit')
+  ;(window as any).bmShowQ2 = () => show('q2')
+  ;(window as any).bmShowQ2Yes = () => show('result-spouse')
+  ;(window as any).bmShowQ3 = () => show('q3')
+  ;(window as any).bmShowQ3Yes = () => show('result-eirc')
+  ;(window as any).bmShowNoPath = () => show('result-no-path')
+  ;(window as any).bmReset = () => show('q1')
+</script>

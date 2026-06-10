@@ -1,0 +1,198 @@
+---
+import Base from '../layouts/Base.astro'
+---
+
+<Base
+  title="Bermuda, honestly"
+  description="The independent guide to Bermuda for discerning visitors, people making the move, and those who call it home. Real answers to the questions every guide skips."
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__inner">
+      <h1 class="hero-title">Bermuda, honestly.</h1>
+      <p class="hero-subtitle">
+        The guide for discerning visitors, people making the move, and those who call it home.
+      </p>
+      <div class="hero-cta">
+        <a href="/visit" class="btn btn-primary btn-lg">Plan Your Visit</a>
+        <a href="/move" class="btn btn-secondary btn-lg" style="border-color: rgba(255,255,255,0.6); color: #ffffff;">
+          Moving to Bermuda
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Audience cards -->
+  <section class="section" style="background-color: var(--color-sand);">
+    <div class="container">
+      <span class="section-eyebrow">Who is Pilot.BM for?</span>
+      <h2 class="section-title">The Bermuda guide you actually needed</h2>
+      <p class="section-desc">
+        Every other guide was either a tourism board brochure or a budget-backpacker blog.
+        Neither answered the real questions. We built this to fill that gap.
+      </p>
+
+      <div class="card-grid card-grid-3">
+        <!-- Visiting -->
+        <a href="/visit" class="link-card link-card--featured">
+          <p class="link-card__eyebrow">Visiting</p>
+          <h3 class="link-card__title">Planning a trip?</h3>
+          <p class="link-card__desc">
+            How to get around without a rental car. Pink-sand beaches worth the trip.
+            Where to eat without paying resort prices. What to actually do for a week.
+          </p>
+          <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-ocean); font-weight: 600;">
+            Getting Around · Beaches · Eat &amp; Drink · Where to Stay →
+          </p>
+        </a>
+
+        <!-- Moving -->
+        <a href="/move" class="link-card">
+          <p class="link-card__eyebrow">Moving</p>
+          <h3 class="link-card__title">Making the move?</h3>
+          <p class="link-card__desc">
+            Work permits. The real cost of living (hint: it's higher than you think).
+            The one-car-per-household rule nobody tells you about. What salary you actually need.
+          </p>
+          <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-ocean); font-weight: 600;">
+            Work Permits · Cost of Living · Tools →
+          </p>
+        </a>
+
+        <!-- Living -->
+        <a href="/live" class="link-card">
+          <p class="link-card__eyebrow">Living</p>
+          <h3 class="link-card__title">Already here?</h3>
+          <p class="link-card__desc">
+            Local deals, events, and the things you discover after you've been here six months.
+            The residents section is growing — more coming soon.
+          </p>
+          <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-ocean); font-weight: 600;">
+            Directory · Events · Deals →
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Transport spotlight -->
+  <section class="section">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: center;">
+        <div>
+          <span class="section-eyebrow">The thing nobody tells visitors</span>
+          <h2 class="section-title" style="font-size: var(--text-3xl);">
+            You cannot rent a car in Bermuda.
+          </h2>
+          <p style="color: var(--color-muted); font-size: var(--text-lg); line-height: 1.7; margin-bottom: var(--space-6);">
+            Bermuda is one of the few destinations in the world where rental cars for tourists are banned.
+            The island allows one car per household — a quota that dates back decades.
+            Scooters, electric minicars, buses, ferries, and taxis are your actual options.
+          </p>
+          <p style="color: var(--color-muted); margin-bottom: var(--space-6);">
+            Our interactive tool matches you to the right transport for your trip, party size, and budget.
+          </p>
+          <a href="/visit/getting-around" class="btn btn-primary">
+            See the Getting Around guide →
+          </a>
+        </div>
+        <div class="tool-card">
+          <p class="tool-card__label">Flagship Tool</p>
+          <h3 class="tool-card__title">Getting Around Finder</h3>
+          <p class="tool-card__desc">
+            Select your trip type and party size. Get personalised transport recommendations
+            with estimated costs, comfort ratings, and booking links.
+          </p>
+          <a href="/visit/getting-around" class="btn btn-secondary">
+            Open the tool →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Directory CTA -->
+  <section class="section" style="background-color: var(--color-ocean); color: var(--color-white);">
+    <div class="container" style="text-align: center;">
+      <span class="section-eyebrow" style="color: rgba(255,255,255,0.7);">Bermuda Directory</span>
+      <h2 style="font-family: var(--font-serif); color: var(--color-white); margin-bottom: var(--space-4);">
+        Browse Bermuda businesses
+      </h2>
+      <p style="color: rgba(255,255,255,0.8); font-size: var(--text-lg); max-width: 560px; margin: 0 auto var(--space-8);">
+        Hotels, restaurants, transport, real estate, insurance, schools —
+        curated and organised by audience. Free listings, verified information.
+      </p>
+      <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+        <a href="/directory" class="btn btn-primary" style="background-color: white; color: var(--color-ocean);">
+          Browse Directory →
+        </a>
+        <a href="/directory/claim" class="btn btn-secondary" style="border-color: rgba(255,255,255,0.5); color: white;">
+          Claim Your Listing
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mover tools spotlight -->
+  <section class="section" style="background-color: var(--color-sand);">
+    <div class="container">
+      <span class="section-eyebrow">For people making the move</span>
+      <h2 class="section-title" style="font-size: var(--text-3xl);">Tools for movers</h2>
+      <p class="section-desc">
+        Moving to Bermuda is complicated. These tools cut through the complexity.
+      </p>
+
+      <div class="card-grid card-grid-3">
+        <a href="/move/tools/assessment-number" class="link-card">
+          <p class="link-card__eyebrow">Tool</p>
+          <h3 class="link-card__title">The Car Trap</h3>
+          <p class="link-card__desc">
+            One car per household. Assessment Numbers explained — and why this surprises almost every mover.
+          </p>
+        </a>
+        <a href="/move/tools/compensation" class="link-card">
+          <p class="link-card__eyebrow">Calculator</p>
+          <h3 class="link-card__title">What Salary Do You Need?</h3>
+          <p class="link-card__desc">
+            Bermuda costs ~94% more than the US average. Calculate the gross salary you need to maintain your lifestyle.
+          </p>
+        </a>
+        <a href="/move/tools/pathway" class="link-card">
+          <p class="link-card__eyebrow">Decision Tree</p>
+          <h3 class="link-card__title">Immigration Pathway Finder</h3>
+          <p class="link-card__desc">
+            Do you qualify to move to Bermuda? Work through the decision tree — work permit, spousal, or EIRC.
+          </p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial voice / about nudge -->
+  <section class="section">
+    <div class="container" style="max-width: 720px; text-align: center;">
+      <span class="section-eyebrow">Why Pilot.BM?</span>
+      <h2 class="section-title" style="font-size: var(--text-3xl);">
+        We'll tell you when things change.
+      </h2>
+      <p style="color: var(--color-muted); font-size: var(--text-lg); line-height: 1.7; margin-bottom: var(--space-6);">
+        The Work From Bermuda digital-nomad programme closed on 28 February 2025.
+        Most guides still describe it as available. We updated on the day it closed.
+        That's the editorial standard Pilot.BM holds itself to.
+      </p>
+      <p style="color: var(--color-muted); margin-bottom: var(--space-8);">
+        We research, we cite sources, we flag what's unverified, and we update when things change.
+        Read more about who we are and how we work.
+      </p>
+      <a href="/about" class="btn btn-secondary">About Pilot.BM →</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  @media (max-width: 767px) {
+    section > .container > div[style*='grid-template-columns: 1fr 1fr'] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>

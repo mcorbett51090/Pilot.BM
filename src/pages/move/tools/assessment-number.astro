@@ -1,0 +1,191 @@
+---
+import Base from '../../../layouts/Base.astro'
+import Disclaimer from '../../../components/Disclaimer.astro'
+import VerifyBadge from '../../../components/VerifyBadge.astro'
+---
+
+<Base
+  title="The Bermuda Car Trap: Assessment Numbers Explained"
+  description="Bermuda allows only one car per household via an Assessment Number system. Moving into an existing household? You can't bring your own car. Full explainer."
+>
+  <section class="hero" style="padding-block: var(--space-16);">
+    <div class="hero__inner">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb" style="justify-content: center; color: rgba(255,255,255,0.6);">
+          <li><a href="/" style="color: rgba(255,255,255,0.6);">Home</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li><a href="/move" style="color: rgba(255,255,255,0.6);">Moving</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li style="color: rgba(255,255,255,0.9);">Assessment Numbers</li>
+        </ol>
+      </nav>
+      <h1 class="hero-title">The Bermuda Car Trap</h1>
+      <p class="hero-subtitle">
+        One car per household. Assessment Numbers explained — and why this surprises almost every mover.
+      </p>
+    </div>
+  </section>
+
+  <div class="container" style="padding-block: var(--space-12);">
+    <div style="max-width: 800px; margin: 0 auto;">
+
+      <!-- REQUIRED disclaimer -->
+      <Disclaimer variant="relocation" />
+
+      <h2>What is an Assessment Number?</h2>
+      <p>
+        An <strong>Assessment Number</strong> is a government-issued quota that allows a household to
+        register one private car in Bermuda. Every household with car access needs one.
+        The system exists to enforce Bermuda's strict <strong>one-car-per-household policy</strong>,
+        which has been in place for decades as part of the island's traffic management strategy.
+      </p>
+      <p>
+        The rule is simple but has a consequence that catches nearly every mover off-guard:
+      </p>
+
+      <div
+        style="background-color: #fee2e2; border: 2px solid #dc2626; border-radius: var(--radius-lg); padding: var(--space-6); margin-block: var(--space-8); text-align: center;"
+        role="alert"
+      >
+        <p style="font-size: var(--text-xl); font-weight: 700; color: #991b1b; margin-bottom: var(--space-2); font-family: var(--font-serif);">
+          If the household you're moving into already has a car, you cannot import another one.
+        </p>
+        <p style="color: #7f1d1d; font-size: var(--text-sm); margin: 0;">
+          One Assessment Number = one car. Period.
+        </p>
+      </div>
+
+      <p>
+        This means: if you're moving in with a partner, spouse, or family member who already has a car
+        registered in Bermuda, <strong>your car stays behind.</strong> The Assessment Number for that
+        household is already allocated.
+      </p>
+
+      <!-- Car import duty -->
+      <h2>Car import duty</h2>
+      <p>
+        Even if you do have an Assessment Number available, importing a car from overseas is expensive:
+      </p>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Assessed value band</th>
+              <th>Duty rate</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>First $10,000 of assessed value</td>
+              <td>75%</td>
+            </tr>
+            <tr>
+              <td>Above $10,000</td>
+              <td>150%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: var(--text-sm); color: var(--color-muted); margin-top: var(--space-2);">
+        Plus freight, shipping insurance, Bermuda Customs clearance fees, and annual licence fees.
+        <span class="unverified">[duty rates — verify at Bermuda Customs and Excise, <a href="https://www.gov.bm" rel="noopener" target="_blank">gov.bm</a>]</span>
+        <VerifyBadge date="2026-06-10" />
+      </p>
+      <p>
+        For most movers, it's more economical to sell your car before moving and buy locally —
+        though the local used car market reflects the import duty cost in its pricing.
+      </p>
+
+      <!-- Interactive tool -->
+      <h2 style="margin-top: var(--space-8);">Does this apply to me?</h2>
+      <p>Answer one question to understand your situation:</p>
+
+      <!-- CSS-only state machine using radio inputs -->
+      <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); margin-top: var(--space-4);">
+        <p style="font-weight: 600; color: var(--color-ink); margin-bottom: var(--space-4);">
+          Are you moving into an existing household where someone already has a car registered in Bermuda?
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+          <label
+            for="car-yes"
+            style="display: flex; align-items: center; gap: var(--space-3); cursor: pointer; padding: var(--space-3) var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md); background-color: var(--color-white);"
+          >
+            <input type="radio" id="car-yes" name="car-situation" value="yes" />
+            <span><strong>Yes</strong> — I'm joining an existing household (partner, family, existing residents)</span>
+          </label>
+
+          <label
+            for="car-no"
+            style="display: flex; align-items: center; gap: var(--space-3); cursor: pointer; padding: var(--space-3) var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md); background-color: var(--color-white);"
+          >
+            <input type="radio" id="car-no" name="car-situation" value="no" />
+            <span><strong>No</strong> — I'm setting up a new household (fresh tenancy, no existing residents)</span>
+          </label>
+        </div>
+
+        <!-- Conditional results using :has() or just always show both -->
+        <div id="result-yes" style="display: none; margin-top: var(--space-5);" class="car-result">
+          <div class="alert alert-warning">
+            <strong>You are affected by the one-car rule.</strong>
+            <p style="margin-top: var(--space-2); margin-bottom: 0;">
+              The household's Assessment Number is already allocated to the existing car.
+              You will not be able to import your own car. Your options are:
+            </p>
+            <ul style="margin-top: var(--space-2); padding-left: var(--space-5);">
+              <li>Share the household car</li>
+              <li>Use scooters, minicars, and public transport as your second vehicle</li>
+              <li>If the existing car is sold or de-registered, the Assessment Number becomes available again</li>
+            </ul>
+            <p style="margin-top: var(--space-2); margin-bottom: 0; font-size: var(--text-sm);">
+              Verify current rules at the <a href="https://www.gov.bm" rel="noopener" target="_blank">Bermuda Department of Transport</a>.
+            </p>
+          </div>
+        </div>
+
+        <div id="result-no" style="display: none; margin-top: var(--space-5);" class="car-result">
+          <div class="alert alert-info">
+            <strong>You may be able to apply for an Assessment Number.</strong>
+            <p style="margin-top: var(--space-2); margin-bottom: 0;">
+              As the sole/first resident of a new household, you can apply to the
+              Bermuda Department of Transport for an Assessment Number.
+              This allows you to register one car in Bermuda.
+              Factor in the import duty costs if bringing a car from abroad.
+            </p>
+            <p style="margin-top: var(--space-2); margin-bottom: 0; font-size: var(--text-sm);">
+              Verify the current application process and requirements at the
+              <a href="https://www.gov.bm" rel="noopener" target="_blank">Bermuda Department of Transport</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: var(--space-8); padding: var(--space-5) var(--space-6); background-color: var(--color-ocean-muted); border-radius: var(--radius-md);">
+        <p style="font-size: var(--text-sm); margin: 0; color: var(--color-ink);">
+          <strong>This is a simplified explainer.</strong>
+          The Assessment Number rules have nuances around household composition, corporate vehicles,
+          and scooter/minicar registration. Rules may have changed since this page was last updated.
+          Verify at the
+          <a href="https://www.gov.bm" rel="noopener" target="_blank">Bermuda Department of Transport</a>
+          before making any decisions.
+          <VerifyBadge date="2026-06-10" />
+        </p>
+      </div>
+
+    </div>
+  </div>
+</Base>
+
+<script>
+  // Simple radio-driven reveal — no framework needed
+  const radios = document.querySelectorAll('input[name="car-situation"]')
+  radios.forEach((radio) => {
+    radio.addEventListener('change', (e) => {
+      const value = (e.target as HTMLInputElement).value
+      const resultYes = document.getElementById('result-yes')
+      const resultNo = document.getElementById('result-no')
+      if (resultYes) resultYes.style.display = value === 'yes' ? 'block' : 'none'
+      if (resultNo) resultNo.style.display = value === 'no' ? 'block' : 'none'
+    })
+  })
+</script>

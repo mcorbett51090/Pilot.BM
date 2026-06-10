@@ -1,0 +1,100 @@
+---
+const currentPath = Astro.url.pathname
+
+function isActive(path: string): boolean {
+  if (path === '/') return currentPath === '/'
+  return currentPath.startsWith(path)
+}
+---
+
+<nav class="nav" aria-label="Main navigation">
+  <!-- CSS-only mobile menu toggle -->
+  <input type="checkbox" id="nav-toggle" class="visually-hidden" aria-hidden="true" />
+
+  <div class="nav__inner">
+    <a href="/" class="nav-logo" aria-label="Pilot.BM — Home">Pilot.BM</a>
+
+    <ul class="nav-links" role="list">
+      <li>
+        <a
+          href="/visit"
+          class="nav-link"
+          aria-current={isActive('/visit') ? 'page' : undefined}
+        >
+          Visiting
+        </a>
+      </li>
+      <li>
+        <a
+          href="/move"
+          class="nav-link"
+          aria-current={isActive('/move') ? 'page' : undefined}
+        >
+          Moving
+        </a>
+      </li>
+      <li>
+        <a
+          href="/live"
+          class="nav-link"
+          aria-current={isActive('/live') ? 'page' : undefined}
+        >
+          Living
+        </a>
+      </li>
+      <li>
+        <a
+          href="/directory"
+          class="nav-link"
+          aria-current={isActive('/directory') ? 'page' : undefined}
+        >
+          Directory
+        </a>
+      </li>
+    </ul>
+
+    <label for="nav-toggle" class="nav-hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+
+  <!-- Mobile menu — shown when checkbox checked -->
+  <div class="nav-mobile" role="navigation" aria-label="Mobile navigation">
+    <a
+      href="/visit"
+      class="nav-link"
+      aria-current={isActive('/visit') ? 'page' : undefined}
+    >
+      Visiting
+    </a>
+    <a
+      href="/move"
+      class="nav-link"
+      aria-current={isActive('/move') ? 'page' : undefined}
+    >
+      Moving
+    </a>
+    <a
+      href="/live"
+      class="nav-link"
+      aria-current={isActive('/live') ? 'page' : undefined}
+    >
+      Living
+    </a>
+    <a
+      href="/directory"
+      class="nav-link"
+      aria-current={isActive('/directory') ? 'page' : undefined}
+    >
+      Directory
+    </a>
+  </div>
+</nav>
+
+<style>
+  #nav-toggle:checked ~ .nav-mobile {
+    display: flex;
+  }
+</style>

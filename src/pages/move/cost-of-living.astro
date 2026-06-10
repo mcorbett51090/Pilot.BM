@@ -1,0 +1,190 @@
+---
+import Base from '../../layouts/Base.astro'
+import Disclaimer from '../../components/Disclaimer.astro'
+import VerifyBadge from '../../components/VerifyBadge.astro'
+---
+
+<Base
+  title="Bermuda Cost of Living — Real Figures"
+  description="The real cost of living in Bermuda: rent, groceries, health insurance, school fees, and car costs. Figures with sources and verification dates."
+>
+  <section class="hero" style="padding-block: var(--space-16);">
+    <div class="hero__inner">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb" style="justify-content: center; color: rgba(255,255,255,0.6);">
+          <li><a href="/" style="color: rgba(255,255,255,0.6);">Home</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li><a href="/move" style="color: rgba(255,255,255,0.6);">Moving</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li style="color: rgba(255,255,255,0.9);">Cost of Living</li>
+        </ol>
+      </nav>
+      <h1 class="hero-title">Cost of Living in Bermuda</h1>
+      <p class="hero-subtitle">
+        The real numbers. Not brochure copy.
+      </p>
+    </div>
+  </section>
+
+  <div class="container" style="padding-block: var(--space-12);">
+    <div style="max-width: 800px; margin: 0 auto;">
+
+      <!-- REQUIRED disclaimer above the fold -->
+      <Disclaimer variant="relocation" />
+
+      <!-- Headline figure -->
+      <div style="background-color: var(--color-ink); color: var(--color-white); border-radius: var(--radius-lg); padding: var(--space-8); margin-bottom: var(--space-10); text-align: center;">
+        <p style="font-size: var(--text-sm); color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-2);">The headline figure</p>
+        <p style="font-size: var(--text-4xl); font-family: var(--font-serif); color: var(--color-white); margin-bottom: var(--space-2);">~94% above US average</p>
+        <p style="color: rgba(255,255,255,0.7); font-size: var(--text-lg); margin-bottom: var(--space-2);">
+          Bermuda's overall cost of living compared to the United States
+        </p>
+        <p style="color: rgba(255,255,255,0.5); font-size: var(--text-sm); margin: 0;">
+          <span class="unverified">[composite estimate from multiple cost-of-living indices — verify independently]</span>
+        </p>
+      </div>
+
+      <!-- Rent -->
+      <h2>Rent</h2>
+      <p>
+        Rent is the largest single cost difference. Bermuda's rental market is tight — demand from the
+        international business sector competes with a limited housing stock on a small island.
+      </p>
+      <div class="table-wrapper" style="margin-bottom: var(--space-6);">
+        <table>
+          <thead>
+            <tr>
+              <th>Property type</th>
+              <th>Monthly range</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1-bedroom apartment, Hamilton area</td>
+              <td>$2,500–3,500/mo</td>
+              <td>Entry-level expat accommodation</td>
+            </tr>
+            <tr>
+              <td>2-bedroom apartment/cottage</td>
+              <td>$3,500–5,500/mo</td>
+              <td>Most common for couples/small families</td>
+            </tr>
+            <tr>
+              <td>3+ bedroom house/detached</td>
+              <td>$5,000–8,000+/mo</td>
+              <td>Family homes; pool adds significantly</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="unverified" style="font-size: var(--text-sm);">
+        [Figures represent typical 2026 market range — verify with local real estate agents. Bermuda rental law restricts rent increases; ask about current tenant protections.]
+      </p>
+      <VerifyBadge date="2026-06-10" sourceLabel="local agents" sourceUrl="https://www.gov.bm" />
+
+      <!-- Groceries -->
+      <h2 style="margin-top: var(--space-8);">Groceries</h2>
+      <p>
+        Almost all food is imported. Bermuda has no agricultural sector of scale. The customs duty on
+        imported goods adds significantly to retail prices.
+        <strong>Expect grocery bills 40–60% higher than equivalent US spending</strong> — and more for premium/imported items.
+      </p>
+      <ul class="prose" style="padding-left: var(--space-6); margin-bottom: var(--space-4);">
+        <li>Bread, dairy, and produce: imported, prices reflect shipping costs</li>
+        <li>US brands widely available; UK and Canadian goods also stocked</li>
+        <li>Weekly groceries for one: $150–250 depending on diet</li>
+        <li>Eating out adds up fast — a mid-range restaurant runs $40–60 per person</li>
+      </ul>
+      <p class="unverified" style="font-size: var(--text-sm);">[Range estimates — verify with current Bermuda grocery prices]</p>
+
+      <!-- Health insurance -->
+      <h2 style="margin-top: var(--space-8);">Mandatory health insurance (SHB)</h2>
+      <p>
+        The <strong>Standard Health Benefit (SHB)</strong> is mandatory for all Bermuda residents under the
+        Health Insurance Act 1970. It covers a defined set of hospital and medical services.
+        Most employers contribute to the cost as required by law.
+      </p>
+      <div style="background-color: var(--color-surface); border-radius: var(--radius-md); padding: var(--space-5) var(--space-6); margin-bottom: var(--space-4);">
+        <p style="font-size: var(--text-2xl); font-family: var(--font-serif); color: var(--color-ink); margin-bottom: var(--space-1);">
+          $400.31 per adult per month
+        </p>
+        <p style="font-size: var(--text-sm); color: var(--color-muted); margin: 0;">
+          Standard Health Benefit rate
+          <VerifyBadge
+            date="2026-06-10"
+            sourceLabel="Bermuda Health Council"
+            sourceUrl="https://www.bhec.bm"
+          />
+        </p>
+      </div>
+      <p style="font-size: var(--text-sm); color: var(--color-muted);">
+        Most employers offer supplemental insurance above the SHB baseline.
+        Confirm your employer's health plan before negotiating compensation.
+      </p>
+
+      <!-- Education -->
+      <h2 style="margin-top: var(--space-8);">Private school fees</h2>
+      <p>
+        Bermuda has a public school system, but most expat families use the private schools.
+        There are several strong options:
+      </p>
+      <ul class="prose" style="padding-left: var(--space-6); margin-bottom: var(--space-4);">
+        <li><strong>Saltus Grammar School</strong> — co-educational, IB and A-Levels, strong university placement</li>
+        <li><strong>Bermuda High School</strong> — girls' school, IB programme</li>
+        <li><strong>Warwick Academy</strong> — co-educational, IB, more affordable</li>
+        <li><strong>The Bermuda Institute</strong> — Adventist, K–12</li>
+      </ul>
+      <p>
+        Annual fees at the competitive private schools run approximately <strong>$24,000 per student per year</strong>.
+        <span class="unverified">[figure approximate — verify with individual schools]</span>
+        <VerifyBadge date="2026-06-10" sourceLabel="school fees (verify directly)" sourceUrl="https://www.saltus.bm" />
+      </p>
+
+      <!-- Car import duty -->
+      <h2 style="margin-top: var(--space-8);">Cars and the Assessment Number system</h2>
+      <p>
+        <strong>One car per household.</strong> Bermuda restricts car ownership to one vehicle per
+        household via an "Assessment Number" system.
+        If you move into an existing household where a car is already registered, you cannot import
+        another vehicle. This surprises almost every mover.
+      </p>
+      <p>
+        If you do bring a car, import duty is steep:
+      </p>
+      <ul class="prose" style="padding-left: var(--space-6); margin-bottom: var(--space-4);">
+        <li><strong>75% duty</strong> on the first $10,000 of assessed vehicle value</li>
+        <li><strong>150% duty</strong> on assessed value above $10,000</li>
+        <li>Plus freight, clearance, and registration fees</li>
+      </ul>
+      <p style="font-size: var(--text-sm); color: var(--color-muted);">
+        Example: a car valued at $30,000 would incur approximately $37,500 in duty alone
+        ($7,500 at 75% on first $10k + $30,000 at 150% on remaining $20k).
+        <span class="unverified">[duty rates — verify at Bermuda Customs and Excise, gov.bm]</span>
+      </p>
+      <p>
+        <a href="/move/tools/assessment-number">Full Assessment Number explainer →</a>
+      </p>
+
+      <!-- Eating out -->
+      <h2 style="margin-top: var(--space-8);">Eating out</h2>
+      <p>
+        A mid-range restaurant in Hamilton runs <strong>$40–60 per person</strong> including a drink.
+        Fine dining runs $80–120+ per person. There are value options — local cafes, the
+        <a href="https://www.table.bm" rel="noopener" target="_blank">Restaurant Week prix-fixe deals</a>,
+        and lunch spots in Hamilton are more affordable than dinner at a resort hotel.
+      </p>
+
+      <!-- Summary / CTA -->
+      <div style="margin-top: var(--space-10); padding: var(--space-8); background-color: var(--color-ocean-muted); border-radius: var(--radius-lg);">
+        <h2 style="margin-bottom: var(--space-4); font-size: var(--text-2xl);">What salary do you actually need?</h2>
+        <p style="color: var(--color-ink); margin-bottom: var(--space-4);">
+          Our compensation calculator works backwards from your lifestyle requirements —
+          rent band, household size, school, health plan — to give you a required Bermuda gross.
+        </p>
+        <a href="/move/tools/compensation" class="btn btn-primary">Open the Compensation Calculator →</a>
+      </div>
+
+    </div>
+  </div>
+</Base>
