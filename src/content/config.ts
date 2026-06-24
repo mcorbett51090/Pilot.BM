@@ -49,6 +49,10 @@ const directory = defineCollection({
     status: z.enum(['active', 'inactive', 'pending']).default('active'),
     featured_image: z.string().optional(),
     verified_on: z.string().optional(), // ISO date string
+    // Custom maps search string. Defaults to "<name>, <parish>, Bermuda".
+    map_query: z.string().optional(),
+    // Set true for online-only services with no visitable location (no directions link).
+    no_directions: z.boolean().default(false),
   }),
 })
 

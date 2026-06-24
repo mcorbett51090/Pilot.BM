@@ -121,13 +121,13 @@ h6 {
 }
 
 h1 {
-  font-size: var(--text-4xl);
+  font-size: clamp(var(--text-3xl), 6vw, var(--text-5xl));
 }
 h2 {
-  font-size: var(--text-3xl);
+  font-size: clamp(var(--text-2xl), 4.5vw, var(--text-4xl));
 }
 h3 {
-  font-size: var(--text-2xl);
+  font-size: clamp(var(--text-xl), 3.5vw, var(--text-3xl));
 }
 h4 {
   font-size: var(--text-xl);
@@ -137,18 +137,6 @@ h5 {
 }
 h6 {
   font-size: var(--text-base);
-}
-
-@media (min-width: 768px) {
-  h1 {
-    font-size: var(--text-5xl);
-  }
-  h2 {
-    font-size: var(--text-4xl);
-  }
-  h3 {
-    font-size: var(--text-3xl);
-  }
 }
 
 p {
@@ -178,25 +166,46 @@ a:hover {
 .container {
   max-width: var(--container-max);
   margin-inline: auto;
-  padding-inline: var(--space-6);
+  padding-inline: var(--space-4);
 }
 
 .container-prose {
   max-width: var(--container-prose);
   margin-inline: auto;
-  padding-inline: var(--space-6);
+  padding-inline: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .container,
+  .container-prose {
+    padding-inline: var(--space-6);
+  }
 }
 
 .section {
-  padding-block: var(--space-16);
+  padding-block: var(--space-10);
 }
 
 .section-sm {
-  padding-block: var(--space-8);
+  padding-block: var(--space-6);
 }
 
 .section-lg {
-  padding-block: var(--space-24);
+  padding-block: var(--space-16);
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding-block: var(--space-16);
+  }
+
+  .section-sm {
+    padding-block: var(--space-8);
+  }
+
+  .section-lg {
+    padding-block: var(--space-24);
+  }
 }
 
 /* --- Visibility ------------------------------------------- */
@@ -320,6 +329,7 @@ a:hover {
   justify-content: center;
   gap: var(--space-2);
   padding: var(--space-3) var(--space-6);
+  min-height: 44px;
   border-radius: var(--radius-md);
   font-family: var(--font-sans);
   font-size: var(--text-sm);
@@ -513,7 +523,7 @@ a:hover {
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
-  padding: var(--space-2);
+  /* Sizing + padding handled in Navigation.astro component styles */
   background: none;
   border: none;
 }
@@ -522,14 +532,6 @@ a:hover {
   .nav-hamburger {
     display: none;
   }
-}
-
-.nav-hamburger span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background-color: var(--color-ink);
-  transition: transform var(--transition-base);
 }
 
 /* Mobile nav */
@@ -550,10 +552,22 @@ a:hover {
 .hero {
   background: linear-gradient(135deg, var(--color-ocean) 0%, var(--color-ocean-light) 100%);
   color: var(--color-white);
-  padding-block: var(--space-24);
+  padding-block: var(--space-12);
   text-align: center;
   position: relative;
   overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .hero {
+    padding-block: var(--space-20);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    padding-block: var(--space-24);
+  }
 }
 
 /* Photo-backed hero: pass the image via inline --hero-image: url('...') */
@@ -590,33 +604,43 @@ a:hover {
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: var(--text-5xl);
+  font-size: clamp(var(--text-3xl), 8vw, var(--text-6xl));
   color: var(--color-white);
   margin-bottom: var(--space-4);
   line-height: 1.1;
-}
-
-@media (min-width: 768px) {
-  .hero-title {
-    font-size: var(--text-6xl);
-  }
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .hero-subtitle {
-  font-size: var(--text-xl);
+  font-size: clamp(var(--text-base), 3vw, var(--text-xl));
   color: rgba(255, 255, 255, 0.85);
   max-width: 600px;
   margin-inline: auto;
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
   line-height: 1.5;
   font-weight: 400;
 }
 
+@media (min-width: 640px) {
+  .hero-subtitle {
+    margin-bottom: var(--space-8);
+  }
+}
+
 .hero-cta {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-3);
   justify-content: center;
   flex-wrap: wrap;
+}
+
+/* Full-width CTA buttons on very small screens */
+@media (max-width: 480px) {
+  .hero-cta .btn {
+    width: 100%;
+    max-width: 320px;
+  }
 }
 
 /* --- Audience Tabs ---------------------------------------- */
@@ -632,6 +656,7 @@ a:hover {
 
 .audience-tab {
   padding: var(--space-2) var(--space-5);
+  min-height: 36px;
   border-radius: var(--radius-full);
   font-size: var(--text-sm);
   font-weight: 500;
@@ -641,6 +666,8 @@ a:hover {
     background-color var(--transition-fast),
     color var(--transition-fast);
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
 }
 
 .audience-tab:hover {
@@ -691,15 +718,23 @@ a:hover {
 /* --- Tables ----------------------------------------------- */
 .table-wrapper {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin-bottom: var(--space-6);
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
+  /* Subtle right-fade hint on mobile that content scrolls */
+  background:
+    linear-gradient(to right, var(--color-white) 0%, transparent 2%) 0 0 / 16px 100% no-repeat,
+    linear-gradient(to left, var(--color-border) 0%, transparent 30%) 100% 0 / 32px 100% no-repeat,
+    var(--color-white);
+  background-attachment: local, scroll;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   font-size: var(--text-sm);
+  min-width: 480px;
 }
 
 thead {
@@ -846,7 +881,8 @@ tr:nth-child(even) {
 
 .directory-card__contact {
   display: flex;
-  gap: var(--space-4);
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
   align-items: center;
 }
 
@@ -1372,4 +1408,61 @@ tr:nth-child(even) {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
+}
+
+/* --- Overflow guard (prevent horizontal scroll on mobile) - */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* --- Reduced motion ---------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .card-elevated:hover,
+  .link-card:hover,
+  .photo-card:hover {
+    transform: none;
+  }
+
+  .photo-card:hover .photo-card__media img {
+    transform: none;
+  }
+
+  .nav-link::after {
+    transition: none;
+  }
+
+  .score-bar__fill {
+    transition: none;
+  }
+
+  /* Hamburger span transforms are gated in Navigation.astro styles */
+  .nav-hamburger span {
+    transition: none;
+  }
+}
+
+/* --- Mobile card-grid safety ------------------------------ */
+/* Ensure single-column grid on very small screens */
+@media (max-width: 320px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Nav inner padding on small screens ------------------- */
+@media (max-width: 640px) {
+  .nav__inner {
+    padding-inline: var(--space-4);
+  }
 }

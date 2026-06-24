@@ -12,5 +12,6 @@
   "tier": "free",
   "status": "active",
   "verified_on": "2026-06-10",
-  "featured_image": "/images/shoreline-sm.webp"
+  "featured_image": "/images/shoreline-sm.webp",
+  "no_directions": true
 }

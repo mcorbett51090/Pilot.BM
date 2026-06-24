@@ -13,5 +13,6 @@
   "tier": "standard",
   "status": "active",
   "verified_on": "2026-06-10",
-  "featured_image": "/images/hamilton-harbour-sm.webp"
+  "featured_image": "/images/hamilton-harbour-sm.webp",
+  "map_query": "Hamilton Bus Terminal, Washington Street, Hamilton, Bermuda"
 }

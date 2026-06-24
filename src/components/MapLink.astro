@@ -1,0 +1,76 @@
+---
+// MapLink — a "Get directions" link that opens the visitor's OWN default maps app.
+//
+// The rendered href defaults to the Google Maps universal URL, which works
+// everywhere (Android → Google Maps app, desktop → maps.google.com) and needs no
+// JavaScript. A small inline script in the Base layout then rewrites these links
+// to the Apple Maps URL (maps.apple.com) on Apple devices, where Apple Maps is the
+// platform default. The `data-map-query` attribute is the hook the script uses.
+//
+// Net effect: iPhone/iPad/Mac users route via Apple Maps; everyone else via Google
+// Maps — each in the app they actually use — and it still works with JS disabled.
+interface Props {
+  /** Place to route to, e.g. "Horseshoe Bay Beach, Southampton, Bermuda" */
+  query: string
+  /** Visible label. Defaults to "Directions". */
+  label?: string
+  /** Extra class names to merge onto the anchor. */
+  class?: string
+}
+
+const { query, label = 'Directions', class: className } = Astro.props
+const googleHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`
+---
+
+<a
+  href={googleHref}
+  data-map-query={query}
+  class:list={['map-link', className]}
+  target="_blank"
+  rel="noopener"
+  aria-label={`Get directions to ${query} — opens your maps app`}
+>
+  <svg
+    class="map-link__icon"
+    viewBox="0 0 24 24"
+    width="15"
+    height="15"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+    focusable="false"
+  >
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"></path>
+    <circle cx="12" cy="10" r="3"></circle>
+  </svg>
+  <span>{label}</span>
+</a>
+
+<style>
+  .map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-ocean);
+    text-decoration: none;
+    line-height: 1.2;
+    /* Comfortable mobile tap target without disrupting inline flow */
+    min-height: 32px;
+    white-space: nowrap;
+  }
+
+  .map-link:hover {
+    color: var(--color-ocean-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .map-link__icon {
+    flex-shrink: 0;
+  }
+</style>

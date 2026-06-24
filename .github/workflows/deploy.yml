@@ -6,6 +6,10 @@ on:
     branches: [main]
   # Allow manual runs from the Actions tab
   workflow_dispatch:
+  # Rebuild periodically so build-time feeds (e.g. Bermuda News) stay fresh.
+  # Every 6 hours, offset to :17 to avoid the top-of-hour scheduler rush.
+  schedule:
+    - cron: "17 */6 * * *"
 
 # Permissions required for GitHub Pages deployment
 permissions:

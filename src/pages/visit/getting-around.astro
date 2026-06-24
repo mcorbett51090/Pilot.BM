@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro'
 import GettingAround from '../../components/tools/GettingAround.tsx'
+import MapLink from '../../components/MapLink.astro'
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -193,7 +194,7 @@ const faqSchema = {
       <ul class="prose" style="padding-left: var(--space-6); margin-bottom: var(--space-6);">
         <li><strong>Individual fare:</strong> $4 per ride</li>
         <li><strong>Weekly unlimited:</strong> $62 (bus + ferry)</li>
-        <li><strong>Where to buy:</strong> Ferry Terminal in Hamilton or the Central Bus Station on Washington Street</li>
+        <li><strong>Where to buy:</strong> Ferry Terminal in Hamilton <MapLink query="Hamilton Ferry Terminal, Bermuda" /> or the Central Bus Station on Washington Street <MapLink query="Central Bus Station, Hamilton, Bermuda" /></li>
         <li><strong>Buses accept:</strong> Exact coins, tokens, or passes. No bills. No credit/debit cards on board.</li>
         <li><strong>Hours:</strong> Most routes run 7am–11pm</li>
       </ul>
@@ -262,7 +263,7 @@ const faqSchema = {
       </p>
       <p>
         Fares are approximately $5 per crossing for most routes.
-        Check the current schedule and departure points at the Hamilton Ferry Terminal.
+        Check the current schedule and departure points at the Hamilton Ferry Terminal <MapLink query="Hamilton Ferry Terminal, Bermuda" />.
         St. George's routes are also available in season.
       </p>
 

@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro'
+import MapLink from '../../components/MapLink.astro'
 ---
 
 <Base
@@ -122,7 +123,7 @@ import Base from '../../layouts/Base.astro'
           Southampton or Warwick, budget $50–60.
         </p>
         <p>
-          Check in, then take the afternoon at Horseshoe Bay Beach (Southampton) or Elbow Beach (Paget)
+          Check in, then take the afternoon at Horseshoe Bay Beach (Southampton) <MapLink query="Horseshoe Bay Beach, Bermuda" /> or Elbow Beach (Paget) <MapLink query="Elbow Beach, Paget, Bermuda" />
           depending on where you're staying. Horseshoe is the iconic shot — the pink sand, the turquoise
           curve of water. Go in the late afternoon when the light is good and the midday crowd has thinned.
         </p>
@@ -134,8 +135,8 @@ import Base from '../../layouts/Base.astro'
 
         <h3 style="font-size: var(--text-xl); margin-top: var(--space-6); margin-bottom: var(--space-3);">Day 2 — Full Beach Day and Water</h3>
         <p>
-          This is the day to commit to the south shore. Start at Horseshoe Bay, then walk the beach
-          path east along the shoreline to Warwick Long Bay, Chaplin Bay, and Jobson's Cove. The walk
+          This is the day to commit to the south shore. Start at Horseshoe Bay <MapLink query="Horseshoe Bay Beach, Bermuda" />, then walk the beach
+          path east along the shoreline to Warwick Long Bay <MapLink query="Warwick Long Bay, Bermuda" />, Chaplin Bay <MapLink query="Chaplin Bay, Bermuda" />, and Jobson's Cove <MapLink query="Jobson's Cove, Bermuda" />. The walk
           takes 30–45 minutes depending on how often you stop. Bring water, reef-safe sunscreen
           (oxybenzone and octinoxate are banned on Bermuda beaches — enforce it), and your own snorkel
           if you have one.
@@ -148,19 +149,19 @@ import Base from '../../layouts/Base.astro'
         </p>
         <p>
           Return to Hamilton for the evening. The Bermuda Rum Swizzle at the Swizzle Inn (Bailey's Bay,
-          a slight detour) is a genuine local institution, not a tourist trap — worth the diversion
+          a slight detour) <MapLink query="Swizzle Inn, Bailey's Bay, Bermuda" /> is a genuine local institution, not a tourist trap — worth the diversion
           if you're on a scooter.
         </p>
 
         <h3 style="font-size: var(--text-xl); margin-top: var(--space-6); margin-bottom: var(--space-3);">Day 3 — St. George's and Departure</h3>
         <p>
-          St. George's is a UNESCO World Heritage Site — the oldest continuously inhabited English
+          St. George's <MapLink query="St. George's, Bermuda" /> is a UNESCO World Heritage Site — the oldest continuously inhabited English
           settlement in the New World. It earns that designation. The town centre is compact, walkable,
           and genuinely old: the buildings, the streets, the layout. Walk King's Square, visit
-          St. Peter's Church (founded 1612), walk the fortifications.
+          St. Peter's Church (founded 1612) <MapLink query="St. Peter's Church, St. George's, Bermuda" />, walk the fortifications.
         </p>
         <p>
-          From St. George's, it's a short taxi or scooter ride to <strong>Tobacco Bay</strong> for a
+          From St. George's, it's a short taxi or scooter ride to <strong>Tobacco Bay</strong> <MapLink query="Tobacco Bay, Bermuda" /> for a
           final swim and snorkel in the sheltered, shallow bay. The rock formations here are distinctive
           and the fish activity is good even for casual snorkellers.
         </p>
@@ -197,7 +198,7 @@ import Base from '../../layouts/Base.astro'
 
         <h3 style="font-size: var(--text-xl); margin-top: var(--space-6); margin-bottom: var(--space-3);">Day 4 — Royal Naval Dockyard and the West End</h3>
         <p>
-          Take the ferry from Hamilton to the Royal Naval Dockyard — the 60-minute ride across the Great
+          Take the ferry from Hamilton to the Royal Naval Dockyard <MapLink query="Royal Naval Dockyard, Bermuda" /> — the 60-minute ride across the Great
           Sound is pleasant and the ferry is covered by the weekly bus pass. The Dockyard is Bermuda's
           most substantial cultural attraction beyond the beaches: the former British naval base has been
           repurposed into a working complex with the <strong>Bermuda Maritime Museum</strong>, craft studios,
@@ -209,7 +210,7 @@ import Base from '../../layouts/Base.astro'
           areas are visible even to non-divers. Bring underwater camera gear if you have it.
         </p>
         <p>
-          The Dockyard Craft Market (open seasonally, typically Tuesday–Sunday) is the best place on the
+          The Dockyard Craft Market <MapLink query="Dockyard Craft Market, Bermuda" /> (open seasonally, typically Tuesday–Sunday) is the best place on the
           island to buy something made in Bermuda rather than imported. Bermuda cedar woodwork, hand-painted
           glassware, and island-themed prints are the reliable finds.
         </p>
@@ -263,13 +264,13 @@ import Base from '../../layouts/Base.astro'
           This day goes underwater.
         </p>
         <p>
-          Morning: <strong>Bermuda Underwater Exploration Institute (BUEI)</strong>, on the Hamilton harbour
+          Morning: <strong>Bermuda Underwater Exploration Institute (BUEI)</strong> <MapLink query="Bermuda Underwater Exploration Institute, Bermuda" />, on the Hamilton harbour
           front. It's a genuine museum, not a tourist attraction in the pejorative sense — the
           permanent collection covers Bermuda's shipwreck history, deep-sea exploration, and the island's
           relationship with the ocean in an intelligent, well-curated way. Give it two hours.
         </p>
         <p>
-          Afternoon: if you want to actually get in the water, return to <strong>Tobacco Bay</strong>
+          Afternoon: if you want to actually get in the water, return to <strong>Tobacco Bay</strong> <MapLink query="Tobacco Bay, Bermuda" />
           for proper snorkelling. Rent gear at the bay (or bring your own). The rock formations and
           calm, shallow water make it the most accessible snorkelling on the island. For certified divers,
           several operators run reef and wreck dives out of Hamilton and the Dockyard — book in advance
@@ -283,13 +284,13 @@ import Base from '../../layouts/Base.astro'
           the day and ride without a firm plan.
         </p>
         <p>
-          <strong>John Smith's Bay</strong> (Devonshire) is the beach for today: a long, unhurried
+          <strong>John Smith's Bay</strong> <MapLink query="John Smith's Bay, Bermuda" /> (Devonshire) is the beach for today: a long, unhurried
           stretch of pink sand with no beach bar and no facilities. Bring your own supplies. This is
           where Bermudians go on their days off.
         </p>
         <p>
-          Tonight is the night for the splurge dinner. <strong>The Reefs</strong> (Southampton) for
-          the cliff-side setting and seafood, or <strong>Fourways Inn</strong> (Paget) for a more
+          Tonight is the night for the splurge dinner. <strong>The Reefs</strong> (Southampton) <MapLink query="The Reefs, Southampton, Bermuda" /> for
+          the cliff-side setting and seafood, or <strong>Fourways Inn</strong> (Paget) <MapLink query="Fourways Inn, Paget, Bermuda" /> for a more
           formal, historic-property dinner. Both require advance reservations and are priced at
           $80–120 per person. Neither disappoints at that price point.
           See <a href="/Pilot.BM/visit/eat">Where to Eat</a> for full details and current booking guidance.
