@@ -9,7 +9,7 @@ Allow: /
 # Noindex pages are marked per-page; we do not block crawlers here.
 # The /go/ redirect pages carry noindex meta tags individually.
 
-Sitemap: https://pilot.bm/sitemap.xml
+Sitemap: https://mcorbett51090.github.io/Pilot.BM/sitemap.xml
 `
 
   return new Response(content, {

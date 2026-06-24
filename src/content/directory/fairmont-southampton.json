@@ -3,12 +3,15 @@
   "name": "Fairmont Southampton",
   "category": "accommodation",
   "parish": "Southampton",
-  "audience_tags": ["visit"],
+  "audience_tags": [
+    "visit"
+  ],
   "description": "Bermuda's largest resort, perched on a hilltop with sweeping ocean views. Features a private beach club, golf course, six dining outlets, full spa, tennis, and pools. The flagship luxury hotel experience on the island — the panoramic view from the terrace alone is worth the visit.",
   "phone": "+1-441-238-8000",
   "url": "https://www.fairmont.com/southampton-bermuda",
   "hours": "Front desk: 24 hours",
   "tier": "anchor",
   "status": "active",
-  "verified_on": "2026-06-10"
+  "verified_on": "2026-06-10",
+  "featured_image": "/images/beach-pink-sand-sm.webp"
 }

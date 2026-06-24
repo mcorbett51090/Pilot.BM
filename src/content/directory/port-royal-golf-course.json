@@ -3,12 +3,15 @@
   "name": "Port Royal Golf Course",
   "category": "attraction",
   "parish": "Southampton",
-  "audience_tags": ["visit"],
+  "audience_tags": [
+    "visit"
+  ],
   "description": "Bermuda's most celebrated public golf course — a government-owned 18-hole championship layout perched on the south shore cliffs. The 16th hole is one of the most photographed in golf, with the Atlantic crashing against the rocks below. Green fees are significantly lower than private clubs (around $150–200 for 18 holes including cart), making this the value play for serious golfers. Advance tee times recommended during peak season.",
   "phone": "+1-441-234-0974",
   "url": "https://www.portroyal.bm",
   "hours": "Daily, sunrise to sunset; pro shop 7:30am–6pm",
   "tier": "standard",
   "status": "active",
-  "verified_on": "2026-06-10"
+  "verified_on": "2026-06-10",
+  "featured_image": "/images/coast-cliffs-sm.webp"
 }

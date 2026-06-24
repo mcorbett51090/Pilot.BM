@@ -3,12 +3,15 @@
   "name": "Morgan & Mack International Movers",
   "category": "relocation",
   "parish": "Hamilton",
-  "audience_tags": ["move"],
+  "audience_tags": [
+    "move"
+  ],
   "description": "Bermuda's leading international relocation and moving company, specializing in door-to-door container shipping, air freight, and customs clearance for household effects. Critical context: Bermuda charges 25% customs duty on most imported personal effects above an exemption threshold. Get a quote early — the cost of moving goods often exceeds the value of bringing them.",
   "phone": "+1-441-295-3646",
   "url": "https://www.morganmack.bm",
   "hours": "Mon–Fri 8:30am–5pm",
   "tier": "standard",
   "status": "active",
-  "verified_on": "2026-06-10"
+  "verified_on": "2026-06-10",
+  "featured_image": "/images/hamilton-town-sm.webp"
 }

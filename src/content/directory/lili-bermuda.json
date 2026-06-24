@@ -3,12 +3,16 @@
   "name": "Lili Bermuda",
   "category": "retail",
   "parish": "Hamilton",
-  "audience_tags": ["visit", "live"],
+  "audience_tags": [
+    "visit",
+    "live"
+  ],
   "description": "Bermuda's premier fragrance boutique, creating bespoke scents inspired by the island's landscape — cedar, lily, sea grass. Founded by a Bermudian perfumer, Lili creates a range of artisan perfumes, candles, and body products entirely on-island. A genuine local luxury gift, nothing generic.",
   "phone": "+1-441-296-5454",
   "url": "https://www.lilibermuda.com",
   "hours": "Mon–Sat 10am–6pm",
   "tier": "standard",
   "status": "active",
-  "verified_on": "2026-06-10"
+  "verified_on": "2026-06-10",
+  "featured_image": "/images/garden-sm.webp"
 }

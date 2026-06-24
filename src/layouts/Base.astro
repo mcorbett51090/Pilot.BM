@@ -11,17 +11,19 @@ interface Props {
 }
 
 const { title, description, noindex = false, canonicalUrl } = Astro.props
-const siteUrl = 'https://pilot.bm'
-const canonical = canonicalUrl ?? `${siteUrl}${Astro.url.pathname}`
+// Astro.site is the deploy origin; BASE_URL is the subpath ('/Pilot.BM/' on GitHub Pages, '/' on a root domain).
+const origin = Astro.site?.origin ?? 'https://mcorbett51090.github.io'
+const homeUrl = new URL(import.meta.env.BASE_URL, origin).href
+const canonical = canonicalUrl ?? new URL(Astro.url.pathname, origin).href
 
 const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Pilot.BM',
-  url: siteUrl,
+  url: homeUrl,
   description:
     'Bermuda, honestly. The guide for discerning visitors, people making the move, and those who call it home.',
-  logo: `${siteUrl}/favicon.svg`,
+  logo: new URL(`${import.meta.env.BASE_URL}favicon.svg`, origin).href,
   sameAs: [],
 }
 ---
@@ -45,7 +47,7 @@ const orgSchema = {
     />
 
     <!-- Favicon placeholder -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/Pilot.BM/favicon.svg" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />

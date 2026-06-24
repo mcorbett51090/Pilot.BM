@@ -3,11 +3,15 @@
   "name": "Bermuda Public Transportation (Bus & Ferry)",
   "category": "transport",
   "parish": "Hamilton",
-  "audience_tags": ["visit", "live"],
+  "audience_tags": [
+    "visit",
+    "live"
+  ],
   "description": "Bermuda's government-operated bus and ferry network. Pink buses run 14 routes covering the full length of the island from St. George's to the Royal Naval Dockyard. Ferries connect Hamilton to Dockyard (Somerset), St. George's (seasonal), and Rockaway. A 7-day unlimited pass ($62) is outstanding value for visitors. Buses accept exact coins or tokens only — no bills accepted on board. Ferry passes cover both services.",
   "url": "https://www.gov.bm/bus-and-ferry-services",
   "hours": "Most routes: 7am–11pm; ferry schedules vary by route and season",
   "tier": "standard",
   "status": "active",
-  "verified_on": "2026-06-10"
+  "verified_on": "2026-06-10",
+  "featured_image": "/images/hamilton-harbour-sm.webp"
 }

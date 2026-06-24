@@ -2,6 +2,8 @@
 
 Bermuda, honestly. The independent guide for discerning visitors, people making the move, and those who call it home.
 
+**🌐 <a href="https://mcorbett51090.github.io/Pilot.BM/" target="_blank" rel="noopener noreferrer">Visit the live site →</a>** &nbsp;<sub>(GitHub Pages — until the `pilot.bm` domain is registered)</sub>
+
 ---
 
 ## What this is
@@ -30,6 +32,33 @@ npm run dev      # http://localhost:4321
 npm run build    # static output in dist/
 npm run preview  # preview the built site
 ```
+
+---
+
+## Deployment
+
+The site auto-deploys to **GitHub Pages** on every push to `main` via `.github/workflows/deploy.yml`.
+
+**One-time setup (do this once in the GitHub UI):**
+1. Repo → **Settings → Pages**
+2. Under **Build and deployment → Source**, choose **GitHub Actions**
+3. Push to `main` (or run the *Deploy to GitHub Pages* workflow manually from the Actions tab)
+
+Live URL: **https://mcorbett51090.github.io/Pilot.BM/**
+
+Because it's a project page, the site is served from the `/Pilot.BM/` subpath. `astro.config.mjs` sets `base: '/Pilot.BM'`, and all internal links/assets are prefixed accordingly. Astro bundles (`_astro/*`) are prefixed automatically; `public/.nojekyll` stops Pages from stripping that underscore folder.
+
+### Migrating to the `pilot.bm` custom domain later
+
+When the domain is registered and DNS points at GitHub Pages (or another host that serves from the root):
+
+1. In `astro.config.mjs`: set `site: 'https://pilot.bm'` and `base: '/'` (or remove `base`).
+2. Un-prefix the hardcoded subpath in templates:
+   ```bash
+   grep -rl '/Pilot.BM/' src/ | xargs sed -i "s#/Pilot\.BM/#/#g"
+   ```
+3. Update `siteUrl` in `src/pages/sitemap.xml.ts` and `src/pages/robots.txt.ts`, and the README link above.
+4. Add a `public/CNAME` file containing `pilot.bm`, then rebuild.
 
 ---
 
@@ -92,4 +121,10 @@ See `docs/viability.md` for the full viability assessment. Verdict: **MARGINAL**
 - Tourists cannot rent cars in Bermuda — the Getting Around guide leads with this
 - Mandatory health insurance: SHB $400.31/adult/month (Bermuda Health Council, verified 2026-06-10)
 - Payroll tax rate in Compensation Calculator is `[unverified]` — settling step noted in the tool
+
+---
+
+## Image credits
+
+All photography in `public/images/` is sourced from **Wikimedia Commons** under **CC0 (public domain)** — free to use for any purpose, no attribution required. Images are from the public-domain "Bermuda" photo series. Optimised to WebP (full + `-sm` card variants) via `sharp` at build prep time. No copyright-protected imagery is used anywhere on the site.
 

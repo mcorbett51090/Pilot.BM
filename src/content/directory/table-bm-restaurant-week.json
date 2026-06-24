@@ -3,10 +3,14 @@
   "name": "Table.bm / Bermuda Restaurant Weeks",
   "category": "dining_event",
   "parish": "Hamilton",
-  "audience_tags": ["visit", "live"],
+  "audience_tags": [
+    "visit",
+    "live"
+  ],
   "description": "Bermuda's premier dining discovery platform and Restaurant Week organiser. Table.bm lists prix-fixe menus and special offers from over 40 participating restaurants twice a year (spring and fall editions). One of the best ways to sample high-end Bermudian dining at accessible prices — restaurants that normally run $60–80 per head offer 3-course prix-fixe menus for around $40.",
   "url": "https://www.table.bm",
   "tier": "free",
   "status": "active",
-  "verified_on": "2026-06-10"
+  "verified_on": "2026-06-10",
+  "featured_image": "/images/shoreline-sm.webp"
 }

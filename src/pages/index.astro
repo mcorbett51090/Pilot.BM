@@ -7,15 +7,15 @@ import Base from '../layouts/Base.astro'
   description="The independent guide to Bermuda for discerning visitors, people making the move, and those who call it home. Real answers to the questions every guide skips."
 >
   <!-- Hero -->
-  <section class="hero">
+  <section class="hero hero--image" style="--hero-image: url('/Pilot.BM/images/hero-horseshoe-bay.webp');">
     <div class="hero__inner">
       <h1 class="hero-title">Bermuda, honestly.</h1>
       <p class="hero-subtitle">
         The guide for discerning visitors, people making the move, and those who call it home.
       </p>
       <div class="hero-cta">
-        <a href="/visit" class="btn btn-primary btn-lg">Plan Your Visit</a>
-        <a href="/move" class="btn btn-secondary btn-lg" style="border-color: rgba(255,255,255,0.6); color: #ffffff;">
+        <a href="/Pilot.BM/visit" class="btn btn-primary btn-lg">Plan Your Visit</a>
+        <a href="/Pilot.BM/move" class="btn btn-secondary btn-lg" style="border-color: rgba(255,255,255,0.6); color: #ffffff;">
           Moving to Bermuda
         </a>
       </div>
@@ -34,42 +34,51 @@ import Base from '../layouts/Base.astro'
 
       <div class="card-grid card-grid-3">
         <!-- Visiting -->
-        <a href="/visit" class="link-card link-card--featured">
-          <p class="link-card__eyebrow">Visiting</p>
-          <h3 class="link-card__title">Planning a trip?</h3>
-          <p class="link-card__desc">
-            How to get around without a rental car. Pink-sand beaches worth the trip.
-            Where to eat without paying resort prices. What to actually do for a week.
-          </p>
-          <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-ocean); font-weight: 600;">
-            Getting Around · Beaches · Eat &amp; Drink · Where to Stay →
-          </p>
+        <a href="/Pilot.BM/visit" class="photo-card">
+          <div class="photo-card__media">
+            <img src="/Pilot.BM/images/beach-horseshoe.webp" alt="Pink-sand beach and turquoise water at Horseshoe Bay, Bermuda" width="800" height="500" loading="lazy" decoding="async" />
+          </div>
+          <div class="photo-card__body">
+            <p class="photo-card__eyebrow">Visiting</p>
+            <h3 class="photo-card__title">Planning a trip?</h3>
+            <p class="photo-card__desc">
+              How to get around without a rental car. Pink-sand beaches worth the trip.
+              Where to eat without paying resort prices. What to actually do for a week.
+            </p>
+            <p class="photo-card__cta">Getting Around · Beaches · Eat &amp; Drink · Where to Stay →</p>
+          </div>
         </a>
 
         <!-- Moving -->
-        <a href="/move" class="link-card">
-          <p class="link-card__eyebrow">Moving</p>
-          <h3 class="link-card__title">Making the move?</h3>
-          <p class="link-card__desc">
-            Work permits. The real cost of living (hint: it's higher than you think).
-            The one-car-per-household rule nobody tells you about. What salary you actually need.
-          </p>
-          <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-ocean); font-weight: 600;">
-            Work Permits · Cost of Living · Tools →
-          </p>
+        <a href="/Pilot.BM/move" class="photo-card">
+          <div class="photo-card__media">
+            <img src="/Pilot.BM/images/hamilton-harbour.webp" alt="View over Hamilton Harbour, Bermuda" width="800" height="500" loading="lazy" decoding="async" />
+          </div>
+          <div class="photo-card__body">
+            <p class="photo-card__eyebrow">Moving</p>
+            <h3 class="photo-card__title">Making the move?</h3>
+            <p class="photo-card__desc">
+              Work permits. The real cost of living (hint: it's higher than you think).
+              The one-car-per-household rule nobody tells you about. What salary you actually need.
+            </p>
+            <p class="photo-card__cta">Work Permits · Cost of Living · Tools →</p>
+          </div>
         </a>
 
         <!-- Living -->
-        <a href="/live" class="link-card">
-          <p class="link-card__eyebrow">Living</p>
-          <h3 class="link-card__title">Already here?</h3>
-          <p class="link-card__desc">
-            Local deals, events, and the things you discover after you've been here six months.
-            The residents section is growing — more coming soon.
-          </p>
-          <p style="margin-top: var(--space-4); font-size: var(--text-sm); color: var(--color-ocean); font-weight: 600;">
-            Directory · Events · Deals →
-          </p>
+        <a href="/Pilot.BM/live" class="photo-card">
+          <div class="photo-card__media">
+            <img src="/Pilot.BM/images/hamilton-town.webp" alt="Streets and rooftops of the City of Hamilton, Bermuda" width="800" height="500" loading="lazy" decoding="async" />
+          </div>
+          <div class="photo-card__body">
+            <p class="photo-card__eyebrow">Living</p>
+            <h3 class="photo-card__title">Already here?</h3>
+            <p class="photo-card__desc">
+              Local deals, events, and the things you discover after you've been here six months.
+              The residents section is growing — more coming soon.
+            </p>
+            <p class="photo-card__cta">Directory · Events · Deals →</p>
+          </div>
         </a>
       </div>
     </div>
@@ -92,27 +101,22 @@ import Base from '../layouts/Base.astro'
           <p style="color: var(--color-muted); margin-bottom: var(--space-6);">
             Our interactive tool matches you to the right transport for your trip, party size, and budget.
           </p>
-          <a href="/visit/getting-around" class="btn btn-primary">
+          <a href="/Pilot.BM/visit/getting-around" class="btn btn-primary">
             See the Getting Around guide →
           </a>
         </div>
-        <div class="tool-card">
-          <p class="tool-card__label">Flagship Tool</p>
-          <h3 class="tool-card__title">Getting Around Finder</h3>
-          <p class="tool-card__desc">
-            Select your trip type and party size. Get personalised transport recommendations
-            with estimated costs, comfort ratings, and booking links.
-          </p>
-          <a href="/visit/getting-around" class="btn btn-secondary">
-            Open the tool →
-          </a>
-        </div>
+        <figure class="media-frame">
+          <img src="/Pilot.BM/images/scooters.webp" alt="Scooters and motorcycles parked along a street in Hamilton, Bermuda" width="1600" height="1200" loading="lazy" decoding="async" />
+          <figcaption class="media-frame__caption">
+            Scooters are the most common way visitors get around — no rental car required.
+          </figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
   <!-- Directory CTA -->
-  <section class="section" style="background-color: var(--color-ocean); color: var(--color-white);">
+  <section class="section section--photo" style="--section-image: url('/Pilot.BM/images/hamilton-harbour.webp');">
     <div class="container" style="text-align: center;">
       <span class="section-eyebrow" style="color: rgba(255,255,255,0.7);">Bermuda Directory</span>
       <h2 style="font-family: var(--font-serif); color: var(--color-white); margin-bottom: var(--space-4);">
@@ -123,10 +127,10 @@ import Base from '../layouts/Base.astro'
         curated and organised by audience. Free listings, verified information.
       </p>
       <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
-        <a href="/directory" class="btn btn-primary" style="background-color: white; color: var(--color-ocean);">
+        <a href="/Pilot.BM/directory" class="btn btn-primary" style="background-color: white; color: var(--color-ocean);">
           Browse Directory →
         </a>
-        <a href="/directory/claim" class="btn btn-secondary" style="border-color: rgba(255,255,255,0.5); color: white;">
+        <a href="/Pilot.BM/directory/claim" class="btn btn-secondary" style="border-color: rgba(255,255,255,0.5); color: white;">
           Claim Your Listing
         </a>
       </div>
@@ -143,26 +147,41 @@ import Base from '../layouts/Base.astro'
       </p>
 
       <div class="card-grid card-grid-3">
-        <a href="/move/tools/assessment-number" class="link-card">
-          <p class="link-card__eyebrow">Tool</p>
-          <h3 class="link-card__title">The Car Trap</h3>
-          <p class="link-card__desc">
-            One car per household. Assessment Numbers explained — and why this surprises almost every mover.
-          </p>
+        <a href="/Pilot.BM/move/tools/assessment-number" class="photo-card">
+          <div class="photo-card__media">
+            <img src="/Pilot.BM/images/bus-stop.webp" alt="Pink bus-stop pole on a Bermuda roadside" width="800" height="500" loading="lazy" decoding="async" />
+          </div>
+          <div class="photo-card__body">
+            <p class="photo-card__eyebrow">Tool</p>
+            <h3 class="photo-card__title">The Car Trap</h3>
+            <p class="photo-card__desc">
+              One car per household. Assessment Numbers explained — and why this surprises almost every mover.
+            </p>
+          </div>
         </a>
-        <a href="/move/tools/compensation" class="link-card">
-          <p class="link-card__eyebrow">Calculator</p>
-          <h3 class="link-card__title">What Salary Do You Need?</h3>
-          <p class="link-card__desc">
-            Bermuda costs ~94% more than the US average. Calculate the gross salary you need to maintain your lifestyle.
-          </p>
+        <a href="/Pilot.BM/move/tools/compensation" class="photo-card">
+          <div class="photo-card__media">
+            <img src="/Pilot.BM/images/hamilton-town.webp" alt="City of Hamilton, Bermuda" width="800" height="500" loading="lazy" decoding="async" />
+          </div>
+          <div class="photo-card__body">
+            <p class="photo-card__eyebrow">Calculator</p>
+            <h3 class="photo-card__title">What Salary Do You Need?</h3>
+            <p class="photo-card__desc">
+              Bermuda costs ~94% more than the US average. Calculate the gross salary you need to maintain your lifestyle.
+            </p>
+          </div>
         </a>
-        <a href="/move/tools/pathway" class="link-card">
-          <p class="link-card__eyebrow">Decision Tree</p>
-          <h3 class="link-card__title">Immigration Pathway Finder</h3>
-          <p class="link-card__desc">
-            Do you qualify to move to Bermuda? Work through the decision tree — work permit, spousal, or EIRC.
-          </p>
+        <a href="/Pilot.BM/move/tools/pathway" class="photo-card">
+          <div class="photo-card__media">
+            <img src="/Pilot.BM/images/garden.webp" alt="Pathway through the Botanical Gardens, Bermuda" width="800" height="500" loading="lazy" decoding="async" />
+          </div>
+          <div class="photo-card__body">
+            <p class="photo-card__eyebrow">Decision Tree</p>
+            <h3 class="photo-card__title">Immigration Pathway Finder</h3>
+            <p class="photo-card__desc">
+              Do you qualify to move to Bermuda? Work through the decision tree — work permit, spousal, or EIRC.
+            </p>
+          </div>
         </a>
       </div>
     </div>
@@ -184,7 +203,7 @@ import Base from '../layouts/Base.astro'
         We research, we cite sources, we flag what's unverified, and we update when things change.
         Read more about who we are and how we work.
       </p>
-      <a href="/about" class="btn btn-secondary">About Pilot.BM →</a>
+      <a href="/Pilot.BM/about" class="btn btn-secondary">About Pilot.BM →</a>
     </div>
   </section>
 </Base>

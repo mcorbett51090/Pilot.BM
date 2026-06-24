@@ -556,6 +556,23 @@ a:hover {
   overflow: hidden;
 }
 
+/* Photo-backed hero: pass the image via inline --hero-image: url('...') */
+.hero--image {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(13, 79, 92, 0.74) 0%,
+      rgba(13, 79, 92, 0.55) 45%,
+      rgba(10, 40, 48, 0.82) 100%
+    ),
+    var(--hero-image) center / cover no-repeat;
+  background-color: var(--color-ocean);
+}
+
+.hero--image::before {
+  opacity: 0.5;
+}
+
 .hero::before {
   content: '';
   position: absolute;
@@ -1171,6 +1188,175 @@ tr:nth-child(even) {
   font-size: var(--text-sm);
   color: #92400e;
   font-weight: 500;
+}
+
+/* --- Photo Cards ------------------------------------------ */
+.photo-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--color-ink);
+  box-shadow: var(--shadow-sm);
+  transition:
+    box-shadow var(--transition-base),
+    transform var(--transition-base),
+    border-color var(--transition-base);
+}
+
+.photo-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-3px);
+  border-color: var(--color-ocean);
+  text-decoration: none;
+}
+
+.photo-card__media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-ocean-muted);
+}
+
+.photo-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+.photo-card:hover .photo-card__media img {
+  transform: scale(1.05);
+}
+
+.photo-card__body {
+  padding: var(--space-6);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.photo-card__eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-ocean);
+  margin-bottom: var(--space-2);
+}
+
+.photo-card__title {
+  font-family: var(--font-serif);
+  font-size: var(--text-xl);
+  color: var(--color-ink);
+  margin-bottom: var(--space-2);
+}
+
+.photo-card__desc {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.photo-card__cta {
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--color-ocean);
+  font-weight: 600;
+}
+
+/* --- Media Frame (split-section photo) -------------------- */
+.media-frame {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 4 / 3;
+}
+
+.media-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media-frame__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: var(--space-6) var(--space-5) var(--space-4);
+  background: linear-gradient(0deg, rgba(10, 40, 48, 0.85) 0%, rgba(10, 40, 48, 0) 100%);
+  color: var(--color-white);
+  font-size: var(--text-sm);
+}
+
+/* --- Photo section (full-bleed photo band) --------------- */
+.section--photo {
+  position: relative;
+  color: var(--color-white);
+  background-color: var(--color-ocean);
+  background-image: var(--section-image);
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.section--photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(13, 79, 92, 0.92) 0%, rgba(10, 40, 48, 0.78) 100%);
+}
+
+.section--photo > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Figure (inline article image) ----------------------- */
+.figure {
+  margin-block: var(--space-6);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.figure img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.figure figcaption {
+  font-size: var(--text-xs);
+  color: var(--color-muted);
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+/* --- Directory card media --------------------------------- */
+.directory-card {
+  overflow: hidden;
+}
+
+.directory-card__media {
+  margin: calc(-1 * var(--space-5)) calc(-1 * var(--space-6)) var(--space-4);
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+  background-color: var(--color-ocean-muted);
+}
+
+.directory-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* --- Closed badge ----------------------------------------- */

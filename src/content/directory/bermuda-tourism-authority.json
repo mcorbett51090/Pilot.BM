@@ -3,12 +3,15 @@
   "name": "Bermuda Tourism Authority",
   "category": "tourism",
   "parish": "Hamilton",
-  "audience_tags": ["visit"],
+  "audience_tags": [
+    "visit"
+  ],
   "description": "The official tourism body for Bermuda, operating the visitor centre at the Hamilton Ferry Terminal. The BTA publishes visitor spending data, runs the signature Bermuda Heroes Weekend festival (May), and manages the gotobermuda.com official tourism portal. Annual air visitor spend averages approximately $2,051 per person (BTA data). Walk-in visitor centre has free maps, activity booking assistance, and transport passes.",
   "phone": "+1-441-296-9200",
   "url": "https://www.gotobermuda.com",
   "hours": "Mon–Fri 9am–5pm",
   "tier": "free",
   "status": "active",
-  "verified_on": "2026-06-10"
+  "verified_on": "2026-06-10",
+  "featured_image": "/images/hamilton-town-sm.webp"
 }

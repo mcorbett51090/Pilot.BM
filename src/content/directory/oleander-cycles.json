@@ -3,12 +3,15 @@
   "name": "Oleander Cycles",
   "category": "transport",
   "parish": "Hamilton",
-  "audience_tags": ["visit"],
+  "audience_tags": [
+    "visit"
+  ],
   "description": "Bermuda's largest scooter and electric minicar rental operator — the first stop for visitors who want to explore independently. Tourists cannot rent cars in Bermuda, so scooters (from ~$55/day) and Renault Twizy electric minicars (from ~$70/day for two people) are the go-to. Oleander includes a helmet, lock, rain gear, and an orientation on left-hand driving. Locations in Hamilton, Paget (Elbow Beach), and Southampton (Fairmont).",
   "phone": "+1-441-295-0919",
   "url": "https://www.oleandercycles.bm",
   "hours": "Daily 8:30am–5:30pm",
   "tier": "featured",
   "status": "active",
-  "verified_on": "2026-06-10"
+  "verified_on": "2026-06-10",
+  "featured_image": "/images/scooters-sm.webp"
 }

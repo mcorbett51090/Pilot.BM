@@ -3,10 +3,13 @@
   "name": "Horseshoe Bay Beach",
   "category": "attraction",
   "parish": "Southampton",
-  "audience_tags": ["visit"],
+  "audience_tags": [
+    "visit"
+  ],
   "description": "Bermuda's most famous beach — known worldwide for its iconic pink sand, shaped by crushed coral and shell. Horseshoe-shaped bay with calm turquoise water, seasonal lifeguards, beach bar, and rental facilities. Busiest in summer; arrive early or off-season for a quieter experience. Accessible by Bus Route 7 from Hamilton.",
   "hours": "Open year-round; beach bar and lifeguard service seasonal (May–October)",
   "tier": "free",
   "status": "active",
-  "verified_on": "2026-06-10"
+  "verified_on": "2026-06-10",
+  "featured_image": "/images/beach-horseshoe-sm.webp"
 }

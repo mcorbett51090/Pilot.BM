@@ -1,7 +1,8 @@
 // Static sitemap generation
 // All main pages — noindex pages are intentionally excluded
 
-const siteUrl = 'https://pilot.bm'
+// Origin + base subpath ('/Pilot.BM' on GitHub Pages). Keep in sync with astro.config.mjs.
+const siteUrl = 'https://mcorbett51090.github.io/Pilot.BM'
 
 const pages = [
   { url: '/', priority: '1.0', changefreq: 'weekly' },

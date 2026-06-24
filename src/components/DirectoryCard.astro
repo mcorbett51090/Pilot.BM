@@ -80,6 +80,18 @@ const ldJson = {
 
 <article class={cardClass}>
   <script type="application/ld+json" set:html={JSON.stringify(ldJson)} />
+  {data.featured_image && (
+    <div class="directory-card__media">
+      <img
+        src={import.meta.env.BASE_URL.replace(/\/$/, '') + data.featured_image}
+        alt={`${data.name} — ${categoryLabels[data.category] ?? data.category} in ${data.parish}, Bermuda`}
+        width="640"
+        height="274"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  )}
   <div class="directory-card__header">
     <div>
       <h3 class="directory-card__name">{data.name}</h3>

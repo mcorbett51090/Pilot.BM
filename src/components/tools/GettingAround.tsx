@@ -372,7 +372,7 @@ function TransportCard({ option }: { option: TransportOption }) {
 
       {option.affiliateCta && (
         <a
-          href="/go/oleander-cycles"
+          href="/Pilot.BM/go/oleander-cycles"
           style={{
             display: 'inline-block',
             marginTop: '12px',
