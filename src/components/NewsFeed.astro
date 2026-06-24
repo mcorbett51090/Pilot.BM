@@ -1,0 +1,236 @@
+---
+// Build-time Bermuda news aggregator.
+// Fetches a set of local RSS feeds at build time, normalizes them, and renders
+// link-only cards back to the original source. No runtime backend — the feed is
+// only as fresh as the most recent build (see the scheduled GitHub Action).
+//
+// ETIQUETTE: we link every item back to its source, show source attribution,
+// and use ONLY feed-provided headlines. We do NOT republish article bodies.
+import { XMLParser } from 'fast-xml-parser'
+
+interface NewsItem {
+  title: string
+  link: string
+  source: string
+  pubDate: string
+}
+
+const FEEDS: { url: string; source: string }[] = [
+  { url: 'https://www.royalgazette.com/feeds', source: 'The Royal Gazette' },
+  { url: 'https://bernews.com/feed/', source: 'Bernews' },
+  { url: 'https://www.gov.bm/news/rss', source: 'Government of Bermuda' },
+]
+
+const MAX_ITEMS = 12
+const FETCH_TIMEOUT_MS = 8000
+const USER_AGENT = 'Pilot.BM news aggregator (+https://pilot.bm)'
+
+const parser = new XMLParser({
+  ignoreAttributes: false,
+  attributeNamePrefix: '@_',
+  trimValues: true,
+})
+
+// Feeds vary: <item> may be a single object or an array, or absent. Always
+// return an array so callers can map safely.
+function toArray<T>(value: T | T[] | undefined | null): T[] {
+  if (value == null) return []
+  return Array.isArray(value) ? value : [value]
+}
+
+async function fetchFeed(url: string, source: string): Promise<NewsItem[]> {
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS)
+  try {
+    const res = await fetch(url, {
+      headers: { 'User-Agent': USER_AGENT, Accept: 'application/rss+xml, application/xml, text/xml' },
+      signal: controller.signal,
+    })
+    if (!res.ok) {
+      console.warn(`[NewsFeed] ${source} returned HTTP ${res.status}`)
+      return []
+    }
+    const xml = await res.text()
+    const parsed = parser.parse(xml)
+    // RSS 2.0 shape: rss > channel > item[]
+    const rawItems = toArray(parsed?.rss?.channel?.item)
+    return rawItems
+      .map((item: any): NewsItem | null => {
+        const title = typeof item?.title === 'string' ? item.title.trim() : item?.title?.['#text']?.trim?.()
+        const link = typeof item?.link === 'string' ? item.link.trim() : item?.link?.['#text']?.trim?.()
+        const pubDate = item?.pubDate ?? item?.['dc:date'] ?? ''
+        if (!title || !link) return null
+        return { title, link, source, pubDate }
+      })
+      .filter((i): i is NewsItem => i !== null)
+  } catch (err) {
+    // One dead/slow feed must never fail the build — log and move on.
+    console.warn(`[NewsFeed] failed to fetch ${source} (${url}):`, (err as Error)?.message ?? err)
+    return []
+  } finally {
+    clearTimeout(timer)
+  }
+}
+
+// Fetch all feeds in parallel; each is independently guarded above.
+const results = await Promise.all(FEEDS.map((f) => fetchFeed(f.url, f.source)))
+
+const allItems = results
+  .flat()
+  .sort((a, b) => {
+    const ta = new Date(a.pubDate).getTime()
+    const tb = new Date(b.pubDate).getTime()
+    // Push invalid/empty dates to the bottom rather than NaN-sorting.
+    return (isNaN(tb) ? 0 : tb) - (isNaN(ta) ? 0 : ta)
+  })
+  .slice(0, MAX_ITEMS)
+
+const showEmpty = allItems.length === 0
+
+function relativeAge(dateStr: string): string {
+  if (!dateStr) return ''
+  const now = new Date()
+  const then = new Date(dateStr)
+  if (isNaN(then.getTime())) return ''
+  const diffDays = Math.floor((now.getTime() - then.getTime()) / (1000 * 60 * 60 * 24))
+  if (diffDays < 1) return 'today'
+  if (diffDays === 1) return 'yesterday'
+  if (diffDays < 30) return `${diffDays}d ago`
+  if (diffDays < 365) return `${Math.floor(diffDays / 30)}mo ago`
+  return `${Math.floor(diffDays / 365)}y ago`
+}
+---
+
+<section class="news-feed">
+  <div class="container">
+    <span class="section-eyebrow">Latest</span>
+    <h2 class="news-feed__heading">Bermuda news headlines</h2>
+    <p class="news-feed__sub">
+      Recent headlines from local outlets. Click any headline to read the full story at its source.
+    </p>
+
+    {
+      showEmpty ? (
+        <div class="news-feed__empty">
+          <p>Bermuda news will appear here.</p>
+        </div>
+      ) : (
+        <div class="news-feed__list">
+          {allItems.map((item) => (
+            <a href={item.link} rel="noopener noreferrer" target="_blank" class="news-card">
+              <p class="news-card__title">{item.title}</p>
+              <div class="news-card__meta">
+                <span class="news-card__source">Source: {item.source}</span>
+                {relativeAge(item.pubDate) && (
+                  <span class="news-card__age">{relativeAge(item.pubDate)}</span>
+                )}
+              </div>
+            </a>
+          ))}
+        </div>
+      )
+    }
+
+    <div class="news-feed__attribution">
+      <p>
+        Headlines aggregated from The Royal Gazette, Bernews, and the Government of Bermuda.
+        All rights remain with the original publishers; every headline links back to its source.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .news-feed {
+    padding-block: var(--space-16);
+    background-color: var(--color-ocean-muted);
+  }
+
+  .news-feed__heading {
+    font-size: var(--text-2xl);
+    margin-top: var(--space-3);
+    margin-bottom: var(--space-2);
+  }
+
+  .news-feed__sub {
+    color: var(--color-muted);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-8);
+  }
+
+  .news-feed__empty {
+    padding: var(--space-8);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    text-align: center;
+  }
+
+  .news-feed__empty p {
+    color: var(--color-muted);
+    font-size: var(--text-sm);
+    margin: 0;
+  }
+
+  .news-feed__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .news-card {
+    display: block;
+    padding: var(--space-4) var(--space-5);
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    text-decoration: none;
+    transition:
+      box-shadow var(--transition-base),
+      transform var(--transition-base);
+  }
+
+  .news-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  .news-card__title {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-ink);
+    margin: 0 0 var(--space-2);
+    line-height: 1.4;
+  }
+
+  .news-card__meta {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .news-card__source {
+    font-size: var(--text-xs);
+    color: var(--color-ocean);
+    font-weight: 500;
+  }
+
+  .news-card__age {
+    font-size: var(--text-xs);
+    color: var(--color-muted);
+  }
+
+  .news-feed__attribution {
+    margin-top: var(--space-6);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .news-feed__attribution p {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    margin: 0;
+  }
+</style>

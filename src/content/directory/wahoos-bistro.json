@@ -8,7 +8,9 @@
   "phone": "+1-441-297-1307",
   "url": "https://www.wahoosbermuda.com",
   "hours": "Daily 11am–9pm (seasonal hours — call ahead Oct–Mar)",
-  "tier": "free",
+  "tier": "standard",
   "status": "active",
-  "verified_on": "2026-06-10"
+  "verified_on": "2026-06-10",
+  "featured_image": "/images/ocean-rocks-sm.webp",
+  "map_query": "Wahoo's Bistro & Patio, St. George's, Bermuda"
 }

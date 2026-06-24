@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro'
+import NewsFeed from '../../components/NewsFeed.astro'
+---
+
+<Base
+  title="Bermuda News — Latest Headlines"
+  description="The latest Bermuda news headlines, aggregated from The Royal Gazette, Bernews, and the Government of Bermuda. Every headline links back to its original source."
+>
+  <section class="hero" style="padding-block: var(--space-16);">
+    <div class="hero__inner">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb" style="justify-content: center; color: rgba(255,255,255,0.6);">
+          <li><a href="/Pilot.BM/" style="color: rgba(255,255,255,0.6);">Home</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li><a href="/Pilot.BM/live" style="color: rgba(255,255,255,0.6);">Living</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li style="color: rgba(255,255,255,0.9);">News</li>
+        </ol>
+      </nav>
+      <h1 class="hero-title">Bermuda News</h1>
+      <p class="hero-subtitle">
+        Today's headlines from the island, in one place.
+      </p>
+    </div>
+  </section>
+
+  <div class="container" style="padding-block: var(--space-12);">
+    <section style="max-width: 720px; margin: 0 auto;">
+      <p style="color: var(--color-ink); line-height: 1.75;">
+        A simple roundup of recent Bermuda news, pulled from local outlets. Every headline below
+        links directly to the original article on the publisher's own site — we don't republish
+        stories, we just point you to them. Headlines refresh each time the site rebuilds, so
+        they may lag the live feeds by a few hours.
+      </p>
+    </section>
+  </div>
+
+  <NewsFeed />
+</Base>

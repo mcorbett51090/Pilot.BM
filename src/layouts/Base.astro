@@ -74,5 +74,20 @@ const orgSchema = {
       <slot />
     </main>
     <Footer />
+
+    <!-- Platform-aware map links: route Apple-device users via Apple Maps (their
+         default app); everyone else keeps the Google Maps href. Progressive
+         enhancement — links work fine without this script. -->
+    <script is:inline>
+      ;(function () {
+        var ua = navigator.userAgent || ''
+        var isApple = /iPhone|iPad|iPod|Macintosh|Mac OS X/.test(ua)
+        if (!isApple) return
+        document.querySelectorAll('a[data-map-query]').forEach(function (a) {
+          var q = a.getAttribute('data-map-query')
+          if (q) a.href = 'https://maps.apple.com/?q=' + encodeURIComponent(q)
+        })
+      })()
+    </script>
   </body>
 </html>

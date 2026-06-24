@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content'
+import MapLink from './MapLink.astro'
 
 interface Props {
   listing: CollectionEntry<'directory'>
@@ -34,6 +35,7 @@ const categoryLabels: Record<string, string> = {
 }
 
 const isPartner = data.tier === 'featured' || data.tier === 'anchor'
+const mapQuery = data.map_query ?? `${data.name}, ${data.parish}, Bermuda`
 const cardClass = [
   'directory-card',
   data.tier === 'featured' ? 'directory-card--featured' : '',
@@ -117,6 +119,7 @@ const ldJson = {
     {data.phone && (
       <a href={`tel:${data.phone.replace(/\s/g, '')}`}>{data.phone}</a>
     )}
+    {!data.no_directions && <MapLink query={mapQuery} />}
     {data.hours && (
       <span style="font-size: var(--text-xs); color: var(--color-muted);">{data.hours}</span>
     )}

@@ -44,6 +44,15 @@ function isActive(path: string): boolean {
       </li>
       <li>
         <a
+          href="/Pilot.BM/live/news"
+          class="nav-link"
+          aria-current={isActive('/live/news') ? 'page' : undefined}
+        >
+          News
+        </a>
+      </li>
+      <li>
+        <a
           href="/Pilot.BM/directory"
           class="nav-link"
           aria-current={isActive('/directory') ? 'page' : undefined}
@@ -53,10 +62,10 @@ function isActive(path: string): boolean {
       </li>
     </ul>
 
-    <label for="nav-toggle" class="nav-hamburger" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
+    <label for="nav-toggle" class="nav-hamburger" aria-label="Toggle navigation menu">
+      <span class="hamburger-bar hamburger-bar--top"></span>
+      <span class="hamburger-bar hamburger-bar--mid"></span>
+      <span class="hamburger-bar hamburger-bar--bot"></span>
     </label>
   </div>
 
@@ -64,28 +73,35 @@ function isActive(path: string): boolean {
   <div class="nav-mobile" role="navigation" aria-label="Mobile navigation">
     <a
       href="/Pilot.BM/visit"
-      class="nav-link"
+      class="nav-link nav-link--mobile"
       aria-current={isActive('/visit') ? 'page' : undefined}
     >
       Visiting
     </a>
     <a
       href="/Pilot.BM/move"
-      class="nav-link"
+      class="nav-link nav-link--mobile"
       aria-current={isActive('/move') ? 'page' : undefined}
     >
       Moving
     </a>
     <a
       href="/Pilot.BM/live"
-      class="nav-link"
+      class="nav-link nav-link--mobile"
       aria-current={isActive('/live') ? 'page' : undefined}
     >
       Living
     </a>
     <a
+      href="/Pilot.BM/live/news"
+      class="nav-link nav-link--mobile"
+      aria-current={isActive('/live/news') ? 'page' : undefined}
+    >
+      News
+    </a>
+    <a
       href="/Pilot.BM/directory"
-      class="nav-link"
+      class="nav-link nav-link--mobile"
       aria-current={isActive('/directory') ? 'page' : undefined}
     >
       Directory
@@ -94,7 +110,97 @@ function isActive(path: string): boolean {
 </nav>
 
 <style>
-  #nav-toggle:checked ~ .nav-mobile {
+  /* Show mobile menu when checkbox is checked */
+  :global(#nav-toggle:checked ~ .nav-mobile) {
     display: flex;
+  }
+
+  /* --- Hamburger to X animation --------------------------- */
+
+  /* Top bar: rotate +45deg and translate down to center */
+  :global(#nav-toggle:checked ~ .nav__inner .hamburger-bar--top) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  /* Middle bar: fade out and collapse */
+  :global(#nav-toggle:checked ~ .nav__inner .hamburger-bar--mid) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  /* Bottom bar: rotate -45deg and translate up to center */
+  :global(#nav-toggle:checked ~ .nav__inner .hamburger-bar--bot) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Hamburger bar base styles + transitions */
+  :global(.hamburger-bar) {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-ink);
+    transition:
+      transform 200ms ease,
+      opacity 150ms ease;
+    transform-origin: center;
+  }
+
+  /* Hamburger touch target */
+  :global(.nav-hamburger) {
+    padding: var(--space-3);
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+
+  /* Mobile menu container polish */
+  :global(.nav-mobile) {
+    padding: var(--space-2) var(--space-4) var(--space-4);
+    gap: 0;
+  }
+
+  /* --- Mobile nav link touch targets -------------------- */
+  :global(.nav-link--mobile) {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding-block: var(--space-3);
+    padding-inline: var(--space-2);
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--color-ink);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  :global(.nav-link--mobile:last-child) {
+    border-bottom: none;
+  }
+
+  :global(.nav-link--mobile:hover) {
+    color: var(--color-ocean);
+    background-color: var(--color-ocean-muted);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+  }
+
+  :global(.nav-link--mobile[aria-current='page']) {
+    color: var(--color-ocean);
+    font-weight: 600;
+    background-color: var(--color-ocean-muted);
+    border-radius: var(--radius-sm);
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    :global(.hamburger-bar) {
+      transition: none;
+    }
   }
 </style>
