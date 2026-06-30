@@ -14,6 +14,7 @@ const pages = [
   { url: '/visit/eat/', priority: '0.8', changefreq: 'monthly' },
   { url: '/visit/stay/', priority: '0.8', changefreq: 'monthly' },
   { url: '/visit/itineraries/', priority: '0.8', changefreq: 'monthly' },
+  { url: '/visit/best-time-to-visit/', priority: '0.8', changefreq: 'monthly' },
   // Movers section
   { url: '/move/', priority: '0.9', changefreq: 'weekly' },
   { url: '/move/work-permit/', priority: '0.8', changefreq: 'monthly' },
@@ -21,11 +22,13 @@ const pages = [
   { url: '/move/healthcare/', priority: '0.7', changefreq: 'monthly' },
   { url: '/move/schools/', priority: '0.7', changefreq: 'monthly' },
   { url: '/move/banking/', priority: '0.7', changefreq: 'monthly' },
+  { url: '/move/insurance/', priority: '0.7', changefreq: 'monthly' },
   { url: '/move/tools/assessment-number/', priority: '0.7', changefreq: 'monthly' },
   { url: '/move/tools/compensation/', priority: '0.7', changefreq: 'monthly' },
   { url: '/move/tools/pathway/', priority: '0.7', changefreq: 'monthly' },
   // Residents section
   { url: '/live/', priority: '0.6', changefreq: 'weekly' },
+  { url: '/live/news/', priority: '0.7', changefreq: 'daily' },
   { url: '/live/events/', priority: '0.7', changefreq: 'weekly' },
   { url: '/live/deals/', priority: '0.6', changefreq: 'weekly' },
   // Directory
@@ -33,6 +36,7 @@ const pages = [
   { url: '/directory/claim/', priority: '0.6', changefreq: 'monthly' },
   // Info pages
   { url: '/about/', priority: '0.6', changefreq: 'monthly' },
+  { url: '/bermuda-by-the-numbers/', priority: '0.7', changefreq: 'monthly' },
   { url: '/legal/terms/', priority: '0.3', changefreq: 'yearly' },
   { url: '/legal/privacy/', priority: '0.3', changefreq: 'yearly' },
   { url: '/legal/disclaimer/', priority: '0.4', changefreq: 'monthly' },

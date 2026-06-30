@@ -1,5 +1,7 @@
 ---
 import Base from '../layouts/Base.astro'
+import MediaMentions from '../components/MediaMentions.astro'
+import Quotes from '../components/Quotes.astro'
 ---
 
 <Base
@@ -83,6 +85,9 @@ import Base from '../layouts/Base.astro'
       </div>
     </div>
   </section>
+
+  <!-- Recognition strip -->
+  <MediaMentions tone="plain" />
 
   <!-- Transport spotlight -->
   <section class="section">
@@ -187,6 +192,40 @@ import Base from '../layouts/Base.astro'
     </div>
   </section>
 
+  <!-- Bermuda by the Numbers teaser -->
+  <section class="section--photo" style="--section-image: url('/Pilot.BM/images/seascape.webp'); padding-block: var(--space-16);">
+    <div class="container" style="text-align: center;">
+      <span class="section-eyebrow" style="color: rgba(255,255,255,0.7);">Bermuda by the Numbers</span>
+      <h2 style="font-family: var(--font-serif); color: var(--color-white); font-size: var(--text-3xl); margin-bottom: var(--space-8);">
+        The island, in figures you can trust
+      </h2>
+      <div class="home-stats">
+        <div class="home-stat">
+          <span class="home-stat__value">63,356</span>
+          <span class="home-stat__label">residents (2023)</span>
+        </div>
+        <div class="home-stat">
+          <span class="home-stat__value">21%</span>
+          <span class="home-stat__label">non-Bermudian (2016)</span>
+        </div>
+        <div class="home-stat">
+          <span class="home-stat__value">~21</span>
+          <span class="home-stat__label">square miles of island</span>
+        </div>
+        <div class="home-stat">
+          <span class="home-stat__value">$550M</span>
+          <span class="home-stat__label">visitor spend (2025)</span>
+        </div>
+      </div>
+      <a href="/Pilot.BM/bermuda-by-the-numbers" class="btn btn-primary" style="background-color: white; color: var(--color-ocean); margin-top: var(--space-8);">
+        See all the numbers (sourced) →
+      </a>
+    </div>
+  </section>
+
+  <!-- Notable quotes about Bermuda -->
+  <Quotes limit={3} tone="sand" />
+
   <!-- Editorial voice / about nudge -->
   <section class="section">
     <div class="container" style="max-width: 720px; text-align: center;">
@@ -213,5 +252,35 @@ import Base from '../layouts/Base.astro'
     section > .container > div[style*='grid-template-columns: 1fr 1fr'] {
       grid-template-columns: 1fr !important;
     }
+  }
+
+  /* Bermuda-by-the-numbers teaser stats */
+  .home-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+    max-width: 720px;
+    margin-inline: auto;
+  }
+  @media (min-width: 768px) {
+    .home-stats {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .home-stat {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+  .home-stat__value {
+    font-family: var(--font-serif);
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    color: var(--color-white);
+    line-height: 1;
+  }
+  .home-stat__label {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.8);
   }
 </style>

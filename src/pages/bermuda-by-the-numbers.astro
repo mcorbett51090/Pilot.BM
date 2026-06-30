@@ -1,0 +1,361 @@
+---
+import Base from '../layouts/Base.astro'
+import VerifyBadge from '../components/VerifyBadge.astro'
+import Quotes from '../components/Quotes.astro'
+import MediaMentions from '../components/MediaMentions.astro'
+
+// Headline figures for the stat-card row. Each is sourced in the detailed
+// sections below; the year is shown on the card so figures from different
+// surveys are never silently mixed.
+const headline = [
+  { value: '63,356', label: 'Residents', sub: '2023 official estimate' },
+  { value: '~21 sq mi', label: 'Land area', sub: '≈ 54 km²' },
+  { value: '21%', label: 'Non-Bermudian residents', sub: '2016 Census' },
+  { value: '199,193', label: 'Air visitors', sub: '2025' },
+  { value: '~468,000', label: 'Cruise visitors', sub: '2025' },
+  { value: '$550M', label: 'Visitor spending', sub: '2025' },
+]
+---
+
+<Base
+  title="Bermuda by the Numbers — Visitor & Population Statistics"
+  description="Bermuda in statistics: visitor arrivals and tourism spend, resident population, the expatriate workforce, international business, land area and density — every figure sourced and dated."
+>
+  <section class="hero hero--image" style="padding-block: var(--space-16); --hero-image: url('/Pilot.BM/images/hamilton-harbour.webp');">
+    <div class="hero__inner">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb" style="justify-content: center; color: rgba(255,255,255,0.6);">
+          <li><a href="/Pilot.BM/" style="color: rgba(255,255,255,0.6);">Home</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li style="color: rgba(255,255,255,0.9);">Bermuda by the Numbers</li>
+        </ol>
+      </nav>
+      <h1 class="hero-title">Bermuda by the Numbers</h1>
+      <p class="hero-subtitle">
+        The island in statistics — visitors, people, and the economy. Every figure is sourced
+        and dated, because mixing years is how Bermuda stats go wrong.
+      </p>
+    </div>
+  </section>
+
+  <!-- Headline stat cards -->
+  <section class="section" style="background-color: var(--color-sand);">
+    <div class="container">
+      <div class="stat-cards">
+        {headline.map((s) => (
+          <div class="stat-card">
+            <p class="stat-card__value">{s.value}</p>
+            <p class="stat-card__label">{s.label}</p>
+            <p class="stat-card__sub">{s.sub}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="container" style="padding-block: var(--space-12);">
+    <div style="max-width: 820px; margin: 0 auto;">
+
+      <div class="alert alert-info" style="margin-bottom: var(--space-8);">
+        <strong>A note on the numbers.</strong> Bermuda's figures come from several sources that
+        count different things in different years — a census, year-end estimates, a tourism authority,
+        and an employment survey. We label every figure with its year and source. Where a number is
+        a secondary estimate or our own derivation, we flag it.
+      </div>
+
+      <!-- ============================ VISITORS ============================ -->
+      <h2>Visitors &amp; tourism</h2>
+      <p>
+        Bermuda's tourism split is unusual: cruise passengers vastly outnumber air visitors, but air
+        visitors stay longer and spend far more. The recovery from the pandemic has been lopsided —
+        cruise arrivals are back to roughly their 2019 level, while air arrivals remain around
+        three-quarters of the pre-pandemic peak, capped by hotel capacity that is still well below
+        2019.
+      </p>
+
+      <div class="table-wrapper" style="margin-bottom: var(--space-4);">
+        <table>
+          <thead>
+            <tr>
+              <th>Tourism metric</th>
+              <th>2025</th>
+              <th>2024</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Air visitor arrivals</strong></td>
+              <td>199,193</td>
+              <td>203,080</td>
+            </tr>
+            <tr>
+              <td><strong>Cruise visitor arrivals</strong></td>
+              <td>~468,000</td>
+              <td>~535,000</td>
+            </tr>
+            <tr>
+              <td><strong>Total visitor spending</strong></td>
+              <td>$550M</td>
+              <td>$531M</td>
+            </tr>
+            <tr>
+              <td><strong>Average spend per air visitor</strong></td>
+              <td>$2,066.85</td>
+              <td>$2,050.86</td>
+            </tr>
+            <tr>
+              <td><strong>Average air length of stay</strong></td>
+              <td>n/a</td>
+              <td>5.49 days</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: var(--text-sm); color: var(--color-muted);">
+        Air and cruise figures and spending from the Bermuda Tourism Authority year-end measures,
+        as reported by The Royal Gazette and Bernews.
+        <VerifyBadge date="2026-06-30" sourceLabel="BTA / Royal Gazette (2026)" sourceUrl="https://www.royalgazette.com/tourism/news/article/20260217/tourist-visits-drop-10-even-as-spending-increases-to-550m/" />
+      </p>
+
+      <ul class="prose" style="padding-left: var(--space-6); margin-bottom: var(--space-4); margin-top: var(--space-4);">
+        <li>
+          <strong>Fewer visitors, higher spend.</strong> In 2025 arrivals dipped (partly storm-related
+          cancellations and softer US demand) yet total visitor spending hit a record <strong>$550&nbsp;million</strong>,
+          up 3.5% — Bermuda is earning more per visitor.
+        </li>
+        <li>
+          <strong>The US dominates.</strong> Americans make up roughly <strong>three-quarters of air
+          visitors</strong> (144,894 in 2025). Canada is the fastest-growing market, up ~26% to 20,334.
+        </li>
+        <li>
+          <strong>Hotel rooms are the bottleneck.</strong> Hotel inventory remains around
+          <strong>75% of 2019 levels</strong>, which is the main reason air arrivals haven't fully
+          recovered. <span class="unverified">[BTA characterisation — approximate]</span>
+        </li>
+        <li>
+          For context, Bermuda's all-time record was <strong>808,242 total visitors in 2019</strong>
+          (Department of Statistics). Cruise has essentially recovered to that era; air has not.
+        </li>
+      </ul>
+      <p style="font-size: var(--text-sm); color: var(--color-muted);">
+        The air visitor spend figure is why our <a href="/Pilot.BM/visit">Visiting guide</a> opens with
+        “make every dollar count.” See also <a href="/Pilot.BM/visit/best-time-to-visit">when to visit</a>.
+      </p>
+
+      <!-- ============================ POPULATION ============================ -->
+      <h2 style="margin-top: var(--space-12);">People &amp; population</h2>
+      <p>
+        Bermuda is home to roughly <strong>63,000 people on about 21 square miles</strong> — one of
+        the most densely populated places on Earth. The population has edged down for six consecutive
+        years, as deaths have outnumbered births and the island has aged.
+      </p>
+
+      <div class="alert alert-warning" style="margin-bottom: var(--space-6);">
+        <strong>A 2026 Census is underway.</strong> Census Day was 20 May 2026, with collection running
+        into 2027. Until results publish, the <strong>2016 Census</strong> remains Bermuda's most recent
+        full count — so several figures below are necessarily ~10 years old. We'll update them when the
+        new data lands.
+      </div>
+
+      <div class="table-wrapper" style="margin-bottom: var(--space-4);">
+        <table>
+          <thead>
+            <tr>
+              <th>Population metric</th>
+              <th>Figure</th>
+              <th>Source year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Resident population (estimate)</strong></td>
+              <td>63,356</td>
+              <td>2023 estimate</td>
+            </tr>
+            <tr>
+              <td><strong>Resident population (census)</strong></td>
+              <td>63,779</td>
+              <td>2016 Census</td>
+            </tr>
+            <tr>
+              <td><strong>Non-Bermudian residents</strong></td>
+              <td>13,578 (21%)</td>
+              <td>2016 Census</td>
+            </tr>
+            <tr>
+              <td><strong>Median age</strong></td>
+              <td>44 years</td>
+              <td>2016 Census</td>
+            </tr>
+            <tr>
+              <td><strong>Population density</strong></td>
+              <td>~3,086 / sq mi</td>
+              <td>2016 (derived)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: var(--text-sm); color: var(--color-muted);">
+        Population estimate from the Bermuda Digest of Statistics 2024; residency, median age and
+        density from the 2016 Census.
+        <span class="unverified">[Density is a secondary/derived figure (population ÷ land area) — treat as approximate.]</span>
+        <VerifyBadge date="2026-06-30" sourceLabel="Dept of Statistics" sourceUrl="https://www.gov.bm/sites/default/files/2025-05/Bermuda%20Digest%20of%20Statistics%202024.pdf" />
+      </p>
+
+      <h3 style="margin-top: var(--space-8);">Where the expat community comes from</h3>
+      <p>
+        At the 2016 Census, the <strong>foreign-born population was 19,332</strong> (broader than the
+        13,578 non-Bermudian residents, since many foreign-born residents hold Bermudian status). By
+        region of birth:
+      </p>
+      <div class="table-wrapper" style="margin-bottom: var(--space-4);">
+        <table>
+          <thead>
+            <tr>
+              <th>Region / country of birth</th>
+              <th>Foreign-born residents (2016)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>United Kingdom</td><td>4,088</td></tr>
+            <tr><td>United States</td><td>3,598</td></tr>
+            <tr><td>Caribbean</td><td>2,755</td></tr>
+            <tr><td>Asian countries</td><td>2,563</td></tr>
+            <tr><td>Canada</td><td>2,140</td></tr>
+            <tr><td>Azores / Portugal</td><td>1,643</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: var(--text-sm); color: var(--color-muted);">
+        Bermuda Digest of Statistics 2024, Table 1.6 (foreign-born by region of birth, 2016 Census).
+        “Foreign-born” counts country of birth, not current nationality or work-permit status.
+        <VerifyBadge date="2026-06-30" sourceLabel="Dept of Statistics" sourceUrl="https://www.gov.bm/sites/default/files/2025-05/Bermuda%20Digest%20of%20Statistics%202024.pdf" />
+      </p>
+
+      <!-- ============================ WORKFORCE ============================ -->
+      <h2 style="margin-top: var(--space-12);">Jobs &amp; the expat workforce</h2>
+      <p>
+        This is the part that's actually current — Bermuda's annual Employment Survey gives a 2024
+        picture. There were <strong>33,451 filled jobs in 2024</strong>, and non-Bermudians held about
+        <strong>a third of them</strong>. The guest-worker workforce is concentrated in the high-paid
+        international business sector.
+      </p>
+
+      <div class="table-wrapper" style="margin-bottom: var(--space-4);">
+        <table>
+          <thead>
+            <tr>
+              <th>Jobs by status (2024)</th>
+              <th>Filled jobs</th>
+              <th>Share</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Bermudians</strong></td><td>22,369</td><td>67%</td></tr>
+            <tr><td>Other non-Bermudians (guest workers)</td><td>8,677</td><td>26%</td></tr>
+            <tr><td>Non-Bermudian spouses of Bermudians</td><td>1,727</td><td>5%</td></tr>
+            <tr><td>Permanent Resident Certificate holders</td><td>678</td><td>2%</td></tr>
+            <tr><td><strong>Total filled jobs</strong></td><td><strong>33,451</strong></td><td>100%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: var(--text-sm); color: var(--color-muted);">
+        Bermuda Job Market — Employment Briefs 2025 (2024 Employment Survey), Department of Statistics.
+        <VerifyBadge date="2026-06-30" sourceLabel="Dept of Statistics" sourceUrl="https://www.gov.bm/sites/default/files/2025-10/2025%20Employment%20Briefs.pdf" />
+      </p>
+
+      <ul class="prose" style="padding-left: var(--space-6); margin-bottom: var(--space-4); margin-top: var(--space-4);">
+        <li>
+          <strong>International business is the expat engine.</strong> Insurance and reinsurance
+          (“International Business Activity”) accounted for <strong>5,040 jobs — 15% of all jobs</strong>
+          — in 2024, with a median income of <strong>$169,155</strong>, about 2.4× the island-wide median.
+        </li>
+        <li>
+          Some specialist roles are overwhelmingly filled by guest workers — actuaries, for example,
+          were ~82% non-Bermudian. This is the world the <a href="/Pilot.BM/move/work-permit">work-permit system</a> exists to manage.
+        </li>
+        <li>
+          Separately, the Department of Immigration reported <strong>9,826 work permits issued in 2023</strong>.
+          Note this counts permits <em>issued in a year</em>, not people currently on island —
+          the 8,677 guest-worker jobs above is the better “how many expats work here” figure.
+          <span class="unverified">[work-permit issuance is a yearly flow, not a live headcount]</span>
+        </li>
+      </ul>
+      <p style="font-size: var(--text-sm); color: var(--color-muted);">
+        These figures are the backdrop to our <a href="/Pilot.BM/move">Moving to Bermuda</a> guide and the
+        <a href="/Pilot.BM/move/cost-of-living">cost-of-living</a> reality check.
+      </p>
+
+      <!-- Sources block -->
+      <div style="background-color: var(--color-surface); border-radius: var(--radius-lg); padding: var(--space-6) var(--space-8); margin-top: var(--space-10);">
+        <h2 style="font-size: var(--text-xl); margin-bottom: var(--space-3);">Sources</h2>
+        <ul class="prose" style="padding-left: var(--space-6); font-size: var(--text-sm); color: var(--color-muted); margin: 0;">
+          <li>
+            Bermuda Government, Department of Statistics —
+            <a href="https://www.gov.bm/sites/default/files/2025-05/Bermuda%20Digest%20of%20Statistics%202024.pdf" rel="noopener" target="_blank">Digest of Statistics 2024</a>
+            and
+            <a href="https://www.gov.bm/sites/default/files/2025-10/2025%20Employment%20Briefs.pdf" rel="noopener" target="_blank">Employment Briefs 2025</a>.
+          </li>
+          <li>
+            Bermuda Tourism Authority year-end tourism measures, reported by
+            <a href="https://www.royalgazette.com" rel="noopener" target="_blank">The Royal Gazette</a> and
+            <a href="https://bernews.com" rel="noopener" target="_blank">Bernews</a> (2025–2026).
+          </li>
+          <li>
+            2016 Census figures as published by the Department of Statistics and reported by The Royal Gazette.
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Quotes + media recognition: the cultural and credibility numbers -->
+  <MediaMentions tone="sand" />
+  <Quotes tone="plain" />
+</Base>
+
+<style>
+  .stat-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+  @media (min-width: 768px) {
+    .stat-cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .stat-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5) var(--space-4);
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .stat-card__value {
+    font-family: var(--font-serif);
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--color-ocean);
+    line-height: 1.1;
+    margin-bottom: var(--space-2);
+  }
+
+  .stat-card__label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-ink);
+    margin-bottom: var(--space-1);
+    line-height: 1.3;
+  }
+
+  .stat-card__sub {
+    font-size: var(--text-xs);
+    color: var(--color-muted);
+    margin: 0;
+  }
+</style>

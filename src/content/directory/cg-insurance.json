@@ -1,0 +1,16 @@
+{
+  "slug": "cg-insurance",
+  "name": "CG Insurance (Coralisle Group)",
+  "category": "insurance",
+  "parish": "Hamilton",
+  "audience_tags": [
+    "move",
+    "live"
+  ],
+  "description": "Bermuda personal-lines insurer, part of the Coralisle Group (CG). Writes motor (private car and cycle), home and contents, travel, and SHB-compliant health cover. Advertises no-claims discounts of up to 60% on car policies and a discount for bundling home with motor — useful for movers setting up car and home cover at once.",
+  "url": "https://www.cgcoralisle.com",
+  "tier": "free",
+  "status": "active",
+  "verified_on": "2026-06-30",
+  "featured_image": "/images/hamilton-town-sm.webp"
+}
