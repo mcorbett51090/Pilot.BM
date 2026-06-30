@@ -1,0 +1,250 @@
+---
+import Base from '../../layouts/Base.astro'
+import Disclaimer from '../../components/Disclaimer.astro'
+import VerifyBadge from '../../components/VerifyBadge.astro'
+
+// Annual TCD vehicle licence fees (statutory, separate from insurance).
+// Motor Car Act 1951, Schedule 2; rates effective 1 April 2026. A representative
+// subset of the nine car classes (graded by length, not engine size) plus cycles.
+const licenceFees = [
+  { v: 'Private car — Class A (smallest)', fee: '$246.35' },
+  { v: 'Private car — Class E (mid-size)', fee: '$827.93' },
+  { v: 'Private car — Class H (largest)', fee: '$1,359.29' },
+  { v: 'Private car — Class I (electric / hybrid)', fee: '$1,518.26' },
+  { v: 'Motorcycle — up to 100cc', fee: '$91.08' },
+  { v: 'Auxiliary cycle — 50cc (privately owned)', fee: '$61.32' },
+]
+---
+
+<Base
+  title="Insurance in Bermuda: Car, Bike & Home"
+  description="What car and scooter insurance costs in Bermuda, the mandatory third-party motor cover required by law, annual vehicle licensing fees, and home contents insurance — with sources and verification dates."
+>
+  <section class="hero hero--image" style="padding-block: var(--space-16); --hero-image: url('/Pilot.BM/images/scooters.webp');">
+    <div class="hero__inner">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb" style="justify-content: center; color: rgba(255,255,255,0.6);">
+          <li><a href="/Pilot.BM/" style="color: rgba(255,255,255,0.6);">Home</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li><a href="/Pilot.BM/move" style="color: rgba(255,255,255,0.6);">Moving</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li style="color: rgba(255,255,255,0.9);">Insurance</li>
+        </ol>
+      </nav>
+      <h1 class="hero-title">Insurance in Bermuda</h1>
+      <p class="hero-subtitle">
+        Car, scooter, and home — what's legally required, what it roughly costs,
+        and the fees people forget to budget for.
+      </p>
+    </div>
+  </section>
+
+  <div class="container" style="padding-block: var(--space-12);">
+    <div style="max-width: 800px; margin: 0 auto;">
+
+      <!-- REQUIRED disclaimer above the fold -->
+      <Disclaimer variant="relocation" />
+
+      <!-- Honest framing on premiums -->
+      <div class="alert alert-warning" style="margin-bottom: var(--space-8);">
+        <strong>On premiums:</strong> Bermuda's insurers do not publish motor rate tables — every
+        premium depends on the driver, the vehicle, the claims history, and the excess you choose.
+        The ranges on this page are <strong>realistic market estimates, not quoted prices</strong>.
+        Treat them as a budgeting starting point and get a direct quote before you commit.
+      </div>
+
+      <!-- Mandatory cover -->
+      <h2>Third-party motor cover is mandatory — by law</h2>
+      <p>
+        It is illegal to use a motor vehicle on a Bermuda road without third-party liability
+        insurance. This is set out in the <strong>Motor Car Insurance (Third-Party Risks) Act 1943</strong>,
+        and — importantly for new arrivals — it applies to <strong>50cc auxiliary cycles (scooters)</strong>
+        just as it does to cars. The cheap scooter most expats buy or rent still has to be insured.
+      </p>
+      <p>
+        The law sets a statutory minimum your policy must reach — it must cover at least
+        <strong>$375,000 per person</strong> and <strong>$750,000 per accident</strong> for death,
+        injury, or property damage caused by your vehicle. In practice insurers sell far higher
+        third-party limits (commonly up to around $5&nbsp;million on comprehensive policies), so you'll
+        rarely be at the bare legal floor.
+      </p>
+      <p style="font-size: var(--text-sm); color: var(--color-muted);">
+        Legal mandate and minimum limits: Motor Car Insurance (Third-Party Risks) Act 1943, ss.&nbsp;3–4.
+        <VerifyBadge date="2026-06-30" sourceLabel="bermudalaws.bm" sourceUrl="https://www.bermudalaws.bm" />
+      </p>
+
+      <!-- What it costs -->
+      <h2 style="margin-top: var(--space-10);">What car and scooter insurance roughly costs</h2>
+      <p>
+        Two levels of cover are sold: <strong>third-party only</strong> (the legal minimum) and
+        <strong>comprehensive</strong> (adds damage to your own vehicle, plus hurricane/flood, theft,
+        windscreen, and uninsured-driver cover). Most car owners choose comprehensive; many scooter
+        riders run third-party only on an older bike.
+      </p>
+      <div class="table-wrapper" style="margin-bottom: var(--space-4);">
+        <table>
+          <thead>
+            <tr>
+              <th>Vehicle &amp; cover</th>
+              <th>Estimated annual premium</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Scooter / small motorcycle</strong> (50cc, third-party)</td>
+              <td>~$150–450</td>
+            </tr>
+            <tr>
+              <td><strong>Private car — third-party only</strong></td>
+              <td>~$400–900</td>
+            </tr>
+            <tr>
+              <td><strong>Private car — comprehensive</strong></td>
+              <td>~$900–2,500+</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="unverified" style="font-size: var(--text-sm);">
+        [These ranges are editorial market estimates — insurers do not publish motor rates. Your actual
+        premium depends on the driver, the vehicle's value, your claims history, and the excess. Get a
+        direct quote.]
+      </p>
+      <p>
+        The biggest lever on price is the <strong>no-claims discount</strong>, which insurers do
+        advertise: up to roughly <strong>60–65% off a car policy</strong> and up to <strong>20% off a
+        cycle policy</strong> for a clean record built up year by year. Bundling home and motor, paying
+        a higher excess, and buying online can each trim a little more.
+      </p>
+
+      <!-- Licensing fees -->
+      <h2 style="margin-top: var(--space-10);">Don't forget the annual licence fee</h2>
+      <p>
+        Separate from insurance, every vehicle pays an <strong>annual licence (registration) fee</strong>
+        to the Transport Control Department (TCD). For cars this is graded by the vehicle's
+        <strong>length</strong> (not engine size) across nine classes. These are hard statutory figures —
+        the rates below took effect <strong>1 April 2026</strong> (a 10% cut on the prior year):
+      </p>
+      <div class="table-wrapper" style="margin-bottom: var(--space-4);">
+        <table>
+          <thead>
+            <tr>
+              <th>Vehicle</th>
+              <th>Annual licence fee</th>
+            </tr>
+          </thead>
+          <tbody>
+            {licenceFees.map((row) => (
+              <tr>
+                <td>{row.v}</td>
+                <td>{row.fee}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: var(--text-sm); color: var(--color-muted);">
+        Motor Car Act 1951, Schedule 2 (licence duties), effective 1 April 2026; auxiliary-cycle fee
+        per the TCD renewal schedule. One-off examination fees also apply at first licensing
+        ($38 for a cycle/motorcycle, $54 for a car).
+        <VerifyBadge date="2026-06-30" sourceLabel="gov.bm (TCD)" sourceUrl="https://www.gov.bm/online-services/renew-your-vehicle-licence" />
+      </p>
+
+      <!-- One car rule cross-link -->
+      <h2 style="margin-top: var(--space-10);">The one-car rule doesn't apply to scooters</h2>
+      <p>
+        Bermuda restricts car ownership to <strong>one private car per household</strong> (tied to your
+        property's Assessment Number). What surprises people in a good way: <strong>cycles and
+        motorcycles are exempt</strong> from that limit. Each licensed rider in a household can have their
+        own scooter, even if the household's single car slot is already taken. For many couples and
+        shared households, a scooter each is the practical answer.
+      </p>
+      <div class="alert alert-info" style="margin-bottom: var(--space-6);">
+        The one-car rule is the single biggest surprise for movers. We cover it in full —
+        Assessment Numbers, how the slot works, and the import maths — in
+        <a href="/Pilot.BM/move/tools/assessment-number">The Car Trap</a>.
+      </div>
+
+      <!-- Import duty -->
+      <h2 style="margin-top: var(--space-10);">Importing a vehicle: the duty stings</h2>
+      <p>
+        If you ship a car in, import duty dwarfs the insurance cost. Passenger cars are dutiable at
+        roughly <strong>75% on the first $10,000 of assessed value and 150% on the value above that</strong>;
+        motorcycles are lower (around 33.5%). Electric cars get their import duty halved as a concession.
+      </p>
+      <p style="font-size: var(--text-sm); color: var(--color-muted);">
+        Import-duty rates derive from the Customs Tariff Act 1970 (Chapter 87).
+        <span class="unverified">[One source cites the first-band threshold as $12,000 rather than $10,000 — verify the current figure with Bermuda Customs before relying on it.]</span>
+        <VerifyBadge date="2026-06-30" sourceLabel="gov.bm Customs Tariff" sourceUrl="https://www.gov.bm/schedules-customs-tariff-act-1970" />
+      </p>
+
+      <!-- Licence / age -->
+      <h2 style="margin-top: var(--space-10);">Who can ride or drive</h2>
+      <ul class="prose" style="padding-left: var(--space-6); margin-bottom: var(--space-4);">
+        <li>You must be <strong>18</strong> to hold a licence to drive a car or ride a motorcycle (over 50cc).</li>
+        <li>You must be <strong>16</strong> to ride a <strong>50cc auxiliary cycle</strong> — the typical first scooter.</li>
+        <li>
+          New residents register with TCD where they live. Visitors cannot rent or drive cars at all;
+          rental scooter liveries typically set their own minimum age (often 18) and don't require a
+          foreign licence — confirm with the specific operator.
+          <span class="unverified">[rental-age policy varies by livery]</span>
+        </li>
+      </ul>
+      <p style="font-size: var(--text-sm); color: var(--color-muted);">
+        See the visitor view in <a href="/Pilot.BM/visit/getting-around">Getting Around Bermuda</a>.
+      </p>
+
+      <!-- Home insurance -->
+      <h2 style="margin-top: var(--space-10);">Home and contents insurance</h2>
+      <p>
+        If you're renting — which most expats do at first — your landlord insures the building, but
+        <strong>your possessions are your own responsibility</strong>. Home-contents policies are
+        widely available and worth having on an island where hurricane and flood exposure is a real,
+        if infrequent, risk. Bermuda buildings are famously storm-built, but contents cover protects
+        what's inside.
+      </p>
+      <p>
+        The same insurers that write motor cover write home and contents, and most offer a discount
+        (commonly around 10%) for bundling home with your car policy. Get a contents valuation roughly
+        right before you quote, and ask specifically how wind and flood are treated.
+        <span class="unverified">[bundle discounts and terms vary by insurer — confirm directly]</span>
+      </p>
+
+      <!-- Who the insurers are -->
+      <h2 style="margin-top: var(--space-10);">Who to get a quote from</h2>
+      <p>
+        The main personal-lines insurers and brokers in Bermuda are <strong>Argus</strong>,
+        <strong>BF&amp;M</strong>, <strong>Colonial / CG Insurance</strong>, and
+        <strong>Freisenbruch</strong>. Brokers are commonly used and can shop several markets for you.
+      </p>
+      <div class="alert alert-info" style="margin-bottom: var(--space-6);">
+        <strong>Heads up on branding:</strong> Argus and BF&amp;M have been consolidating under the
+        <strong>Allshores</strong> group, so you may encounter either the legacy names or the new one
+        while the transition settles.
+        <span class="unverified">[corporate rebrand in progress — verify the current entity when you apply]</span>
+      </div>
+
+      <!-- Directory CTA -->
+      <div style="background-color: var(--color-surface); border-radius: var(--radius-lg); padding: var(--space-8); margin-top: var(--space-10);">
+        <h2 style="margin-bottom: var(--space-3); font-size: var(--text-2xl);">Insurers in the directory</h2>
+        <p style="margin-bottom: var(--space-4);">
+          Contact details for Bermuda's insurers and brokers — motor, home, and health — are in the
+          Pilot.BM directory.
+        </p>
+        <a href="/Pilot.BM/directory?filter=insurance" class="btn btn-primary">Browse insurers in the directory →</a>
+      </div>
+
+      <!-- Related -->
+      <div style="margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border);">
+        <p style="font-size: var(--text-sm); color: var(--color-muted); margin-bottom: var(--space-2);"><strong>Related</strong></p>
+        <p style="font-size: var(--text-sm);">
+          <a href="/Pilot.BM/move/cost-of-living">Cost of Living</a> ·
+          <a href="/Pilot.BM/move/tools/assessment-number">The Car Trap</a> ·
+          <a href="/Pilot.BM/move/healthcare">Healthcare &amp; the mandatory health benefit</a> ·
+          <a href="/Pilot.BM/move/banking">Banking</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</Base>

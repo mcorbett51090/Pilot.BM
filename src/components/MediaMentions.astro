@@ -1,0 +1,137 @@
+---
+/**
+ * MediaMentions — a compact "recognised by" credibility strip for Bermuda
+ * as a destination. Destination-level recognition only; every item links to
+ * a citation. Data lives in src/data/bermuda-voices.ts.
+ *
+ * Props:
+ *   heading?: string
+ *   eyebrow?: string
+ *   tone?: 'plain' | 'sand'
+ */
+import { awards } from '../data/bermuda-voices.ts'
+
+interface Props {
+  heading?: string
+  eyebrow?: string
+  tone?: 'plain' | 'sand'
+}
+
+const {
+  heading = 'Bermuda in the press',
+  eyebrow = 'Recognised by',
+  tone = 'plain',
+} = Astro.props
+
+const bg = tone === 'sand' ? 'background-color: var(--color-sand);' : ''
+---
+
+<section class="section" style={bg}>
+  <div class="container">
+    <span class="section-eyebrow">{eyebrow}</span>
+    <h2 class="section-title" style="font-size: var(--text-3xl);">{heading}</h2>
+    <p class="section-desc">
+      Bermuda’s destination credentials, with the source for each. We track recognition of the
+      island itself — hotel awards live on each business’s directory listing.
+    </p>
+
+    <ul class="media-grid" role="list">
+      {awards.map((a) => (
+        <li class="media-card">
+          <a href={a.url} rel="noopener" target="_blank" class="media-card__link">
+            <span class={`media-card__kind media-card__kind--${a.kind}`}>
+              {a.kind === 'destination' ? 'Destination award' : a.kind === 'event' ? 'Major event' : 'Feature'}
+            </span>
+            <span class="media-card__pub">{a.publication}</span>
+            <span class="media-card__honour">{a.honour}</span>
+            <span class="media-card__year">{a.year} ↗</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .media-grid {
+    display: grid;
+    gap: var(--space-5);
+    grid-template-columns: 1fr;
+    list-style: none;
+  }
+  @media (min-width: 640px) {
+    .media-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (min-width: 1024px) {
+    .media-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .media-card__link {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    height: 100%;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    text-decoration: none;
+    color: var(--color-ink);
+    transition: box-shadow var(--transition-base), border-color var(--transition-base), transform var(--transition-base);
+  }
+  .media-card__link:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-ocean);
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+
+  .media-card__kind {
+    display: inline-block;
+    width: fit-content;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px var(--space-2);
+    border-radius: var(--radius-full);
+  }
+  .media-card__kind--destination {
+    background: var(--color-ocean-muted);
+    color: var(--color-ocean);
+  }
+  .media-card__kind--event {
+    background: var(--color-amber-muted);
+    color: var(--color-amber);
+  }
+  .media-card__kind--feature {
+    background: var(--color-surface);
+    color: var(--color-muted);
+  }
+
+  .media-card__pub {
+    font-family: var(--font-serif);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-ink);
+    line-height: 1.2;
+  }
+
+  .media-card__honour {
+    font-size: var(--text-sm);
+    color: var(--color-muted);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .media-card__year {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    color: var(--color-ocean);
+    margin-top: var(--space-1);
+  }
+</style>

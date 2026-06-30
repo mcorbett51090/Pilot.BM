@@ -1,0 +1,243 @@
+---
+import Base from '../../layouts/Base.astro'
+import VerifyBadge from '../../components/VerifyBadge.astro'
+
+// Month-by-month climate. Air high/low normals derived from L.F. Wade
+// International Airport records (Weather Spark, corroborated by Bermuda4u,
+// agreeing within 1–2°F). Sea temperatures from Bermuda-Attractions citing
+// the Bermuda Weather Service, corroborated by the Bermuda Tourism Authority.
+// Winter sea temps vary 64–68°F between sources; we present the BWS-leaning
+// figure and note the range in the prose.
+const months = [
+  { m: 'January', hi: '69 / 21', lo: '62 / 17', sea: '67 / 19', note: 'Coolest, windier' },
+  { m: 'February', hi: '68 / 20', lo: '61 / 16', sea: '67 / 19', note: 'Coolest, windier' },
+  { m: 'March', hi: '69 / 21', lo: '62 / 17', sea: '67 / 19', note: 'Mild, breezy' },
+  { m: 'April', hi: '71 / 22', lo: '64 / 18', sea: '70 / 21', note: 'Spring shoulder' },
+  { m: 'May', hi: '75 / 24', lo: '69 / 21', sea: '75 / 24', note: 'Beach season begins' },
+  { m: 'June', hi: '81 / 27', lo: '74 / 23', sea: '81 / 27', note: 'Warm, swimmable' },
+  { m: 'July', hi: '84 / 29', lo: '78 / 26', sea: '84 / 29', note: 'Peak summer' },
+  { m: 'August', hi: '85 / 29', lo: '78 / 26', sea: '86 / 30', note: 'Warmest, busiest' },
+  { m: 'September', hi: '83 / 28', lo: '77 / 25', sea: '84 / 29', note: 'Warm sea, fewer crowds' },
+  { m: 'October', hi: '79 / 26', lo: '73 / 23', sea: '79 / 26', note: 'Fall shoulder' },
+  { m: 'November', hi: '74 / 23', lo: '68 / 20', sea: '74 / 23', note: 'Mild, quiet' },
+  { m: 'December', hi: '71 / 22', lo: '64 / 18', sea: '69 / 21', note: 'Cool, festive' },
+]
+---
+
+<Base
+  title="Best Time to Visit Bermuda — Climate & Seasons"
+  description="Bermuda's climate month by month: average temperatures, sea temperatures, the seasons explained, hurricane season, and honest advice on the best time to visit for beaches, value, and golf."
+>
+  <section class="hero hero--image" style="padding-block: var(--space-16); --hero-image: url('/Pilot.BM/images/beach-horseshoe.webp');">
+    <div class="hero__inner">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb" style="justify-content: center; color: rgba(255,255,255,0.6);">
+          <li><a href="/Pilot.BM/" style="color: rgba(255,255,255,0.6);">Home</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li><a href="/Pilot.BM/visit" style="color: rgba(255,255,255,0.6);">Visiting</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li style="color: rgba(255,255,255,0.9);">Best Time to Visit</li>
+        </ol>
+      </nav>
+      <h1 class="hero-title">Best Time to Visit Bermuda</h1>
+      <p class="hero-subtitle">
+        Bermuda is subtropical and mid-Atlantic — not Caribbean. Here's what that means
+        for your trip, month by month.
+      </p>
+    </div>
+  </section>
+
+  <div class="container" style="padding-block: var(--space-12);">
+    <div style="max-width: 800px; margin: 0 auto;">
+
+      <!-- Quick answer -->
+      <div class="alert alert-info" style="margin-bottom: var(--space-8);">
+        <strong>The short answer:</strong> for warm sea and beach weather, come
+        <strong>July–September</strong>. For mild days, fewer crowds, and better value,
+        come in the <strong>shoulder seasons (April–May or October–November)</strong>.
+        <strong>December–March</strong> is the cheapest but the coolest and windiest — many
+        hotels and restaurants scale back. Lowest hurricane risk is <strong>late spring to
+        early summer</strong>.
+      </div>
+
+      <!-- Climate type -->
+      <h2>Bermuda is not the Caribbean</h2>
+      <p>
+        This is the single most important thing to understand before you book. Bermuda sits about
+        650 miles off the coast of North Carolina in the North Atlantic — roughly 1,000 miles north
+        of the Caribbean. It shares a latitude with Cape Hatteras, not with the Bahamas.
+      </p>
+      <p>
+        What saves it is the <strong>Gulf Stream</strong>, the warm Atlantic current that flows past
+        the island and keeps it far milder than its latitude would otherwise allow. The result is a
+        <strong>humid subtropical climate</strong>: genuinely warm, beach-worthy summers, and a real —
+        if mild — cool season in winter. Winter highs sit in the mid-to-high 60s°F, the wind picks up,
+        and the sea drops to the mid-60s. It never gets cold the way the US Northeast does, but it is
+        not swimming weather in January. Pack for it accordingly.
+      </p>
+
+      <!-- Month-by-month table -->
+      <h2 style="margin-top: var(--space-10);">Bermuda weather, month by month</h2>
+      <p>
+        Average air highs and lows, and average sea-surface temperature, for each month.
+        Figures are shown as <strong>°F / °C</strong>.
+      </p>
+      <div class="table-wrapper" style="margin-bottom: var(--space-4);">
+        <table>
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Avg high</th>
+              <th>Avg low</th>
+              <th>Sea temp</th>
+              <th>In a word</th>
+            </tr>
+          </thead>
+          <tbody>
+            {months.map((row) => (
+              <tr>
+                <td><strong>{row.m}</strong></td>
+                <td>{row.hi}</td>
+                <td>{row.lo}</td>
+                <td>{row.sea}</td>
+                <td style="color: var(--color-muted);">{row.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: var(--text-sm); color: var(--color-muted);">
+        <span class="unverified">[Air normals derived from L.F. Wade International Airport records; sea temperatures per the Bermuda Weather Service. Winter sea temperatures vary 64–68°F between sources — treat as a range. Verify current conditions before travel.]</span>
+        <VerifyBadge date="2026-06-30" sourceLabel="Bermuda Weather Service" sourceUrl="https://www.weather.bm" />
+      </p>
+
+      <!-- Rainfall -->
+      <h2 style="margin-top: var(--space-10);">Rain: there's no rainy season</h2>
+      <p>
+        Bermuda gets roughly <strong>55–59 inches (1,400–1,500&nbsp;mm) of rain a year</strong>, but —
+        unlike the tropics — it falls fairly evenly across all twelve months. There is
+        <strong>no distinct wet or dry season</strong>. Rain tends to come as short, heavy showers
+        rather than all-day washouts, and it clears quickly. October and the winter months are
+        marginally wetter, but no month is reliably dry or reliably soaked. Don't plan a trip around
+        avoiding rain — plan it around temperature and the sea.
+      </p>
+
+      <!-- The seasons -->
+      <h2 style="margin-top: var(--space-10);">The seasons, honestly</h2>
+
+      <h3 style="margin-top: var(--space-6); color: var(--color-ocean);">Peak season — roughly May to September</h3>
+      <p>
+        The warmest air and sea, the full beach-and-water season, and every hotel, restaurant, and
+        ferry running at full tilt. It is also the busiest and the most expensive — especially July
+        and August, which overlap with North American school holidays and <a href="/Pilot.BM/live/events">Cup Match</a>
+        (late July/early August). If you want guaranteed swimming weather and don't mind the crowds
+        or the prices, this is your window. Book accommodation early — Bermuda's hotel capacity is
+        still well below pre-pandemic levels.
+      </p>
+
+      <h3 style="margin-top: var(--space-6); color: var(--color-ocean);">Shoulder season — April–May and October–November</h3>
+      <p>
+        The sweet spot for many travellers. Days are mild to warm (low-to-mid 70s°F), the island is
+        quieter, prices ease, and outdoor activities — hiking the <a href="/Pilot.BM/visit/do">Railway Trail</a>,
+        golf, exploring St.&nbsp;George's — are at their best without summer's heat and humidity. Late
+        May warms the sea enough for comfortable swimming; October still holds summer's warmth in the
+        water even as the air cools. If you want the best balance of weather, value, and breathing room,
+        come in the shoulders.
+      </p>
+
+      <h3 style="margin-top: var(--space-6); color: var(--color-ocean);">Off season — December to March</h3>
+      <p>
+        The cheapest time to come, and the quietest — but with real trade-offs. Highs sit in the mid-to-high
+        60s°F, the wind is noticeably stronger, and the sea (mid-60s°F) is too cool for most people to
+        enjoy swimming. Crucially, <strong>many hotels, restaurants, and tour operators reduce their hours
+        or close entirely</strong> over the low season, so check that what you want to do is actually open.
+        Winter Bermuda suits travellers after a calm, scenic, good-value escape — walks, history, spa,
+        restaurants that stay open — rather than a beach holiday.
+      </p>
+
+      <!-- Hurricane season -->
+      <h2 style="margin-top: var(--space-10);">Hurricane season — what to actually expect</h2>
+      <p>
+        The Atlantic hurricane season officially runs <strong>June 1 to November 30</strong>, and for
+        Bermuda the real risk concentrates in <strong>August through October</strong>. That sounds
+        alarming, but the honest picture is more reassuring:
+      </p>
+      <ul class="prose" style="padding-left: var(--space-6); margin-bottom: var(--space-4);">
+        <li>
+          Bermuda is a tiny target in a vast ocean. A <em>damaging</em> storm affects the island on
+          average only about <strong>once every six to seven years</strong>; direct hits are rarer still.
+        </li>
+        <li>
+          Bermuda's buildings are famously <strong>hurricane-built</strong> — limestone walls, hurricane-rated
+          construction — a 400-year tradition of designing for storms. The island recovers fast.
+        </li>
+        <li>
+          Forecasting gives days of warning. If a system is tracking toward Bermuda during your trip,
+          you'll know well in advance.
+        </li>
+      </ul>
+      <p>
+        The sensible approach: if you're travelling in late summer or autumn, keep an eye on the
+        <a href="https://www.weather.bm" rel="noopener" target="_blank">Bermuda Weather Service</a> forecast
+        and consider <a href="/Pilot.BM/go/travel-insurance-bermuda" rel="sponsored">travel insurance</a> —
+        but don't write off the season. August and September also have the warmest sea of the year.
+      </p>
+
+      <!-- Best time for X -->
+      <h2 style="margin-top: var(--space-10);">When to come, by what you want</h2>
+      <div class="table-wrapper" style="margin-bottom: var(--space-4);">
+        <table>
+          <thead>
+            <tr>
+              <th>If you want…</th>
+              <th>Best window</th>
+              <th>Why</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Beach &amp; swimming</strong></td>
+              <td>July–September</td>
+              <td>Warmest sea (84–86°F) and warmest air</td>
+            </tr>
+            <tr>
+              <td><strong>Value &amp; fewer crowds</strong></td>
+              <td>April–May, October–November</td>
+              <td>Mild, quieter, lower prices, sea still pleasant</td>
+            </tr>
+            <tr>
+              <td><strong>Golf &amp; the outdoors</strong></td>
+              <td>Spring &amp; autumn</td>
+              <td>Mild temps, low humidity, courses uncrowded</td>
+            </tr>
+            <tr>
+              <td><strong>Lowest hurricane risk</strong></td>
+              <td>Late spring–early summer</td>
+              <td>Ahead of the Aug–Oct peak</td>
+            </tr>
+            <tr>
+              <td><strong>Rock-bottom prices</strong></td>
+              <td>December–March</td>
+              <td>Off season — but cool, windy, reduced services</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Cross-links -->
+      <div style="background-color: var(--color-surface); border-radius: var(--radius-lg); padding: var(--space-8); margin-top: var(--space-10);">
+        <h2 style="margin-bottom: var(--space-3); font-size: var(--text-2xl);">Once you've picked your dates</h2>
+        <p style="margin-bottom: var(--space-4);">
+          Sort the thing that surprises most first-timers — you can't rent a car here — then line up
+          beaches, food, and a plan.
+        </p>
+        <div style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+          <a href="/Pilot.BM/visit/getting-around" class="btn btn-primary">Getting Around →</a>
+          <a href="/Pilot.BM/visit/itineraries" class="btn btn-secondary">Itineraries →</a>
+          <a href="/Pilot.BM/visit/beaches" class="btn btn-secondary">Beaches →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</Base>

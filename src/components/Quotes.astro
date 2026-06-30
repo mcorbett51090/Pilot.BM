@@ -1,0 +1,134 @@
+---
+/**
+ * Quotes — a band of notable, sourced quotes about Bermuda.
+ * Data + transparency notes live in src/data/bermuda-voices.ts.
+ *
+ * Props:
+ *   limit?: number     — how many quotes to show (default: all)
+ *   heading?: string   — section title
+ *   eyebrow?: string   — small label above the title
+ *   tone?: 'sand' | 'plain'  — background treatment
+ */
+import { quotes } from '../data/bermuda-voices.ts'
+
+interface Props {
+  limit?: number
+  heading?: string
+  eyebrow?: string
+  tone?: 'sand' | 'plain'
+}
+
+const {
+  limit,
+  heading = 'In Bermuda’s words',
+  eyebrow = 'Four centuries of admirers',
+  tone = 'sand',
+} = Astro.props
+
+const shown = typeof limit === 'number' ? quotes.slice(0, limit) : quotes
+const bg = tone === 'sand' ? 'background-color: var(--color-sand);' : ''
+---
+
+<section class="section" style={bg}>
+  <div class="container">
+    <span class="section-eyebrow">{eyebrow}</span>
+    <h2 class="section-title" style="font-size: var(--text-3xl);">{heading}</h2>
+    <p class="section-desc">
+      Writers, explorers, and musicians have been quotable about Bermuda since the 1600s.
+      Where a quote’s wording or attribution is uncertain, we say so.
+    </p>
+
+    <div class="quote-grid">
+      {shown.map((q) => (
+        <figure class="quote-card">
+          <blockquote class="quote-card__text">“{q.text}”</blockquote>
+          <figcaption class="quote-card__cite">
+            <span class="quote-card__author">{q.attribution}</span>
+            <span class="quote-card__context">{q.context} · {q.year}</span>
+            {q.note && <span class="quote-card__note">⚠ {q.note}</span>}
+            {q.url && (
+              <a class="quote-card__source" href={q.url} rel="noopener" target="_blank">
+                Source ↗
+              </a>
+            )}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .quote-grid {
+    display: grid;
+    gap: var(--space-6);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 768px) {
+    .quote-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .quote-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-ocean);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6) var(--space-6) var(--space-5);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .quote-card__text {
+    font-family: var(--font-serif);
+    font-size: var(--text-xl);
+    line-height: 1.4;
+    color: var(--color-ink);
+    font-style: italic;
+    margin: 0;
+  }
+
+  .quote-card__cite {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    font-style: normal;
+  }
+
+  .quote-card__author {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    color: var(--color-ink);
+  }
+
+  .quote-card__context {
+    font-size: var(--text-xs);
+    color: var(--color-muted);
+    line-height: 1.5;
+  }
+
+  .quote-card__note {
+    font-size: var(--text-xs);
+    color: var(--color-amber);
+    background: var(--color-amber-muted);
+    border-radius: var(--radius-sm);
+    padding: var(--space-1) var(--space-2);
+    line-height: 1.4;
+    margin-top: var(--space-1);
+  }
+
+  .quote-card__source {
+    font-size: var(--text-xs);
+    color: var(--color-muted);
+    text-decoration: underline;
+    width: fit-content;
+    margin-top: var(--space-1);
+  }
+  .quote-card__source:hover {
+    color: var(--color-ocean);
+  }
+</style>
