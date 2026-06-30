@@ -1,0 +1,16 @@
+{
+  "slug": "freisenbruch",
+  "name": "Freisenbruch (FM Group)",
+  "category": "insurance",
+  "parish": "Hamilton",
+  "audience_tags": [
+    "move",
+    "live"
+  ],
+  "description": "Long-established Bermuda insurance group that both brokes and underwrites. Offers motor cover at two levels — third-party only (meets TCD licensing requirements) and comprehensive (up to ~$5m injury and $500k third-party property) — plus home, travel, and health. As a broker it can shop several markets, which helps when comparing premiums.",
+  "url": "https://www.freisenbruch.bm",
+  "tier": "free",
+  "status": "active",
+  "verified_on": "2026-06-30",
+  "featured_image": "/images/hamilton-harbour-sm.webp"
+}
