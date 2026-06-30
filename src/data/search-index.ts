@@ -51,6 +51,15 @@ export const searchIndex: SearchEntry[] = [
     section: 'Reference',
     keywords: 'about author matt corbett editorial standard contact who we are',
   },
+  {
+    title: 'Bermuda Hurricane Season',
+    description:
+      'The live NOAA tropical outlook, an interactive weather map, a season-status indicator, live webcams, and preparedness resources for visitors and residents.',
+    url: '/hurricane-season',
+    section: 'Reference',
+    keywords:
+      'hurricane storm tropical cyclone season cone nhc noaa ventusky forecast tracker map radar webcam shelter belco outage 955 100.1 fm 911 emergency preparedness evacuation weather warning watch august september october',
+  },
 
   // ---- Visit ----
   {

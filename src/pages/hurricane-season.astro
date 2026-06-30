@@ -1,0 +1,431 @@
+---
+import Base from '../layouts/Base.astro'
+import VerifyBadge from '../components/VerifyBadge.astro'
+
+// External endpoints — all verified in-session 2026-06-30.
+// NHC Tropical Weather Outlook graphics are U.S. public domain (no ToS/attribution/cookie
+// restriction) and are hot-linked unaltered. Ventusky's embed allows iframing (no frame-block)
+// and is loaded only on explicit user consent. See .ravenclaude/runs/forge for the research.
+const nhc2day = 'https://www.nhc.noaa.gov/xgtwo/two_atl_2d0.png'
+const nhc7day = 'https://www.nhc.noaa.gov/xgtwo/two_atl_7d0.png'
+const ventuskyUrl = 'https://embed.ventusky.com/?p=32.3;-64.7;7&l=gust'
+
+// FAQPage structured data — answers drawn only from verified facts already cited on the site.
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: "When is Bermuda's hurricane season?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The Atlantic hurricane season runs from June 1 to November 30. For Bermuda, the highest-risk window is concentrated in August through October.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How often does a hurricane hit Bermuda?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'A damaging tropical storm affects Bermuda on average about once every six to seven years. Direct hits are rarer still, because the island is a very small target in a vast ocean.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: "Are Bermuda's buildings hurricane-proof?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Bermuda has a roughly 400-year tradition of limestone and hurricane-rated construction. The island is built for storms and typically recovers quickly.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What should I do if a hurricane is forecast during my trip?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Monitor the Bermuda Weather Service at weather.bm and follow Government of Bermuda guidance at gov.bm. Consider travel insurance that covers trip interruption and named-storm scenarios.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'What is the emergency number in Bermuda?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Call 911 for all emergencies. To report a power outage, contact BELCO on 955. Official emergency broadcasts air on 100.1 FM.',
+      },
+    },
+  ],
+}
+---
+
+<Base
+  title="Bermuda Hurricane Season — Live Tracker, Maps & Prep"
+  description="An interactive guide to Bermuda's hurricane season: the live NOAA tropical outlook, an interactive weather map, a season-status indicator, live webcams, and preparedness resources for visitors and residents."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  </Fragment>
+
+  <!-- Hero -->
+  <section class="hero hero--image" style="padding-block: var(--space-16); --hero-image: url('/Pilot.BM/images/shoreline.webp');">
+    <div class="hero__inner">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb" style="justify-content: center; color: rgba(255,255,255,0.6);">
+          <li><a href="/Pilot.BM/" style="color: rgba(255,255,255,0.6);">Home</a></li>
+          <li class="breadcrumb__sep" aria-hidden="true">›</li>
+          <li style="color: rgba(255,255,255,0.9);">Hurricane Season</li>
+        </ol>
+      </nav>
+      <h1 class="hero-title">Bermuda Hurricane Season</h1>
+      <p class="hero-subtitle">
+        Is anything brewing, and what do you do about it? The live outlook, an interactive map,
+        and the resources that matter — for visitors and residents alike.
+      </p>
+      <div class="hero-cta">
+        <a href="#current-outlook" class="btn btn-primary">Current Outlook</a>
+        <a href="#visitor-prep" class="btn btn-secondary" style="border-color: rgba(255,255,255,0.6); color:#fff;">For Visitors</a>
+        <a href="#resident-prep" class="btn btn-secondary" style="border-color: rgba(255,255,255,0.6); color:#fff;">For Residents</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container" style="padding-block: var(--space-12);">
+    <div style="max-width: 860px; margin: 0 auto;">
+
+      <!-- Safety notice (NOT the /move legal disclaimer) -->
+      <div class="alert alert-warning" role="note" style="margin-bottom: var(--space-8);">
+        <strong>This is an information and planning page — not an emergency service.</strong>
+        In an emergency, call <strong>911</strong>. For official watches and warnings, follow the
+        <a href="https://www.weather.bm" rel="noopener" target="_blank">Bermuda Weather Service</a>
+        and the <a href="https://www.gov.bm" rel="noopener" target="_blank">Government of Bermuda</a>.
+      </div>
+
+      <!-- ============ CURRENT OUTLOOK ============ -->
+      <h2 id="current-outlook" style="scroll-margin-top: 80px;">Current outlook</h2>
+
+      <!-- Season status indicator (client-date enhanced; static default is always correct) -->
+      <div id="season-status" class="alert alert-info" data-default="1" style="margin-bottom: var(--space-6);">
+        <strong>Atlantic hurricane season runs June 1 – November 30.</strong>
+        Bermuda's highest-risk window is <strong>August through October</strong>. There is no active
+        local advisory shown here — check the official outlook below and at the Bermuda Weather Service.
+      </div>
+
+      <p>
+        The clearest "is anything coming" signal is NOAA's National Hurricane Center
+        <strong>Atlantic Tropical Weather Outlook</strong>. These graphics are issued by the NHC and
+        update continuously; we show them unaltered, straight from the source.
+      </p>
+
+      <!-- NHC 2-day outlook -->
+      <figure class="figure" style="margin-bottom: var(--space-4);">
+        <img
+          class="nhc-img"
+          src={nhc2day}
+          alt="NOAA National Hurricane Center 2-day Atlantic Tropical Weather Outlook map"
+          loading="eager"
+          decoding="async"
+        />
+        <p class="nhc-fallback unverified" hidden style="padding: var(--space-3);">
+          Outlook graphic unavailable —
+          <a href="https://www.nhc.noaa.gov" rel="noopener" target="_blank">view it directly at nhc.noaa.gov →</a>
+        </p>
+        <figcaption>
+          NHC 2-day Atlantic Tropical Weather Outlook · Source: NOAA NHC · graphic updates continuously,
+          see nhc.noaa.gov for issuance time
+        </figcaption>
+      </figure>
+
+      <!-- NHC 7-day outlook -->
+      <figure class="figure" style="margin-bottom: var(--space-4);">
+        <img
+          class="nhc-img"
+          src={nhc7day}
+          alt="NOAA National Hurricane Center 7-day Atlantic Tropical Weather Outlook map"
+          loading="lazy"
+          decoding="async"
+        />
+        <p class="nhc-fallback unverified" hidden style="padding: var(--space-3);">
+          Outlook graphic unavailable —
+          <a href="https://www.nhc.noaa.gov" rel="noopener" target="_blank">view it directly at nhc.noaa.gov →</a>
+        </p>
+        <figcaption>
+          NHC 7-day Atlantic Tropical Weather Outlook · Source: NOAA NHC
+        </figcaption>
+      </figure>
+
+      <p style="font-size: var(--text-sm); color: var(--color-muted);">
+        Graphics are public-domain products of the U.S. National Hurricane Center, shown unaltered.
+        For the live interactive cone and advisories, visit
+        <a href="https://www.nhc.noaa.gov" rel="noopener" target="_blank">nhc.noaa.gov</a>.
+        <VerifyBadge date="2026-06-30" sourceLabel="NOAA NHC" sourceUrl="https://www.nhc.noaa.gov" />
+      </p>
+
+      <!-- ============ INTERACTIVE MAP (consent-gated) ============ -->
+      <h2 style="margin-top: var(--space-10);">Interactive weather map</h2>
+      <p>
+        Explore live wind, gust, rain, and wave layers over Bermuda. This map is provided by
+        <strong>Ventusky</strong>, a third party — to protect your privacy we load it only when you
+        ask. It shows general conditions, <strong>not</strong> an official forecast cone.
+      </p>
+
+      <div id="ventusky-wrap" style="margin-bottom: var(--space-4);">
+        <div id="ventusky-placeholder" class="vk-card">
+          <p class="vk-card__title">Interactive Bermuda weather map</p>
+          <p class="vk-card__note">
+            Loads an interactive map from <strong>ventusky.com</strong>, a third party that may store
+            data on your device per its own privacy policy. Nothing loads until you choose.
+          </p>
+          <div class="vk-card__actions">
+            <button id="ventusky-load" class="btn btn-primary" type="button" data-vk={ventuskyUrl}>
+              Load interactive map
+            </button>
+            <a class="btn btn-ghost" href={ventuskyUrl} target="_blank" rel="noopener">Open in a new tab ↗</a>
+          </div>
+        </div>
+      </div>
+      <p style="font-size: var(--text-sm); color: var(--color-muted);">
+        Map data © Ventusky. General conditions only — for tropical-cyclone forecasts use the NHC outlook above.
+      </p>
+
+      <!-- ============ THE HONEST PICTURE ============ -->
+      <h2 style="margin-top: var(--space-10);">The honest picture</h2>
+      <p>
+        Hurricane season sounds alarming, but Bermuda's real exposure is more reassuring than most
+        first-timers expect:
+      </p>
+      <ul class="prose" style="padding-left: var(--space-6); margin-bottom: var(--space-4);">
+        <li>
+          Bermuda is a tiny target in a vast ocean. A <em>damaging</em> storm affects the island on
+          average only about <strong>once every six to seven years</strong>; direct hits are rarer still.
+        </li>
+        <li>
+          Buildings are famously <strong>hurricane-built</strong> — limestone walls and hurricane-rated
+          construction, a roughly 400-year tradition. The island recovers fast.
+        </li>
+        <li>
+          Forecasting gives <strong>days of warning</strong>. If a system is tracking toward Bermuda
+          during your trip, you'll know well in advance.
+        </li>
+      </ul>
+      <p style="font-size: var(--text-sm); color: var(--color-muted);">
+        For the month-by-month context and when to visit, see
+        <a href="/Pilot.BM/visit/best-time-to-visit">Best Time to Visit &amp; Climate</a>.
+      </p>
+
+      <!-- ============ LIVE WEBCAMS ============ -->
+      <h2 style="margin-top: var(--space-10);">Live Bermuda webcams</h2>
+      <p>
+        Want to see conditions for yourself? These live cams open in a new tab. (They're run by third
+        parties that don't permit embedding, so we link out rather than frame them.)
+      </p>
+      <div class="card-grid card-grid-3" style="margin-bottom: var(--space-4);">
+        <a href="https://www.ptztv.live/port-bermuda-webcam/" class="link-card" rel="noopener" target="_blank">
+          <p class="link-card__eyebrow">Live · opens ptztv.live</p>
+          <h3 class="link-card__title">Port of Bermuda (Dockyard)</h3>
+          <p class="link-card__desc">24/7 full-motion HD cam over the Royal Naval Dockyard, by PTZtv with the National Museum of Bermuda.</p>
+        </a>
+        <a href="https://www.skylinewebcams.com/en/webcam/bermuda/st-george-s-parish/st-george-s-parish/st-george-s-harbour.html" class="link-card" rel="noopener" target="_blank">
+          <p class="link-card__eyebrow">Live · opens skylinewebcams.com</p>
+          <h3 class="link-card__title">St. George's Harbour</h3>
+          <p class="link-card__desc">Live view over the historic St. George's harbour on the island's East End.</p>
+        </a>
+        <a href="/Pilot.BM/about" class="link-card">
+          <p class="link-card__eyebrow">Help us improve</p>
+          <h3 class="link-card__title">Know a reliable live stream?</h3>
+          <p class="link-card__desc">Bermuda webcams come and go. If you run or know a dependable public live stream, tell us and we'll add it.</p>
+        </a>
+      </div>
+      {/* TODO: recheck for a verified embeddable YouTube live stream of Bermuda at deploy; if one exists, add behind the same click-to-load shell as Ventusky (same privacy contract). */}
+
+      <!-- ============ VISITOR PREP ============ -->
+      <h2 id="visitor-prep" style="margin-top: var(--space-10); scroll-margin-top: 80px;">If you're visiting</h2>
+      <p>
+        Travelling in late summer or autumn? Don't write off the season — August and September also
+        have the warmest sea of the year. Just plan sensibly:
+      </p>
+      <div class="card-grid card-grid-3" style="margin-bottom: var(--space-4);">
+        <a href="/Pilot.BM/go/travel-insurance-bermuda" class="link-card" rel="sponsored">
+          <p class="link-card__eyebrow">Before you book</p>
+          <h3 class="link-card__title">Travel insurance</h3>
+          <p class="link-card__desc">Check your policy covers trip interruption and named-storm cut-off dates. <span style="color: var(--color-muted);">(affiliate link)</span></p>
+        </a>
+        <a href="/Pilot.BM/visit/best-time-to-visit" class="link-card">
+          <p class="link-card__eyebrow">Plan the timing</p>
+          <h3 class="link-card__title">Best Time to Visit</h3>
+          <p class="link-card__desc">Month-by-month climate and the honest trade-offs of each season, including hurricane risk.</p>
+        </a>
+        <a href="https://www.weather.bm" class="link-card" rel="noopener" target="_blank">
+          <p class="link-card__eyebrow">Official · weather.bm</p>
+          <h3 class="link-card__title">Bermuda Weather Service</h3>
+          <p class="link-card__desc">The island's official forecasts, radar, and tropical watches/warnings.</p>
+        </a>
+      </div>
+      <div class="alert alert-info" style="margin-bottom: var(--space-4);">
+        <strong>If a storm is forecast during your trip:</strong> follow your hotel's guidance and the
+        Bermuda Weather Service; expect ferries, the airport, and tours to adjust schedules; keep your
+        phone charged and know your airline's rebooking policy. Bermuda is built for this.
+      </div>
+
+      <!-- ============ RESIDENT PREP ============ -->
+      <h2 id="resident-prep" style="margin-top: var(--space-10); scroll-margin-top: 80px;">If you live here</h2>
+      <p>
+        The official preparedness resources, outage reporting, and emergency channels — bookmark these
+        before the season peaks.
+      </p>
+      <div class="card-grid card-grid-3" style="margin-bottom: var(--space-4);">
+        <a href="https://www.gov.bm/are-you-ready-hurricane-season" class="link-card" rel="noopener" target="_blank">
+          <p class="link-card__eyebrow">Official · gov.bm</p>
+          <h3 class="link-card__title">Are You Ready?</h3>
+          <p class="link-card__desc">The Government's hurricane preparedness guide and household checklist.</p>
+        </a>
+        <a href="https://www.gov.bm/emergency-shelters-and-medical-centres" class="link-card" rel="noopener" target="_blank">
+          <p class="link-card__eyebrow">Official · gov.bm</p>
+          <h3 class="link-card__title">Emergency Shelters</h3>
+          <p class="link-card__desc">Approved shelters and medical centres. Shelters open at the warning stage — listen to 100.1 FM.</p>
+        </a>
+        <a href="https://belco.bm/outage-map/" class="link-card" rel="noopener" target="_blank">
+          <p class="link-card__eyebrow">BELCO</p>
+          <h3 class="link-card__title">Power Outage Map</h3>
+          <p class="link-card__desc">Live outage map. To <strong>report</strong> an outage, call <strong>955</strong>.</p>
+        </a>
+      </div>
+      <div class="alert alert-info" style="margin-bottom: var(--space-4);">
+        <strong>Emergency numbers &amp; channels:</strong>
+        emergencies <strong>911</strong> · power outages (BELCO) <strong>955</strong> ·
+        Government Emergency Broadcast <strong>100.1 FM</strong> ·
+        official updates on X <a href="https://x.com/BdaGovernment" rel="noopener" target="_blank">@BdaGovernment</a>.
+      </div>
+
+      <!-- ============ SHARED: LIVE COVERAGE ============ -->
+      <h2 style="margin-top: var(--space-10);">Live coverage when a storm threatens</h2>
+      <div class="card-grid card-grid-3">
+        <a href="https://www.royalgazette.com/hurricanes/" class="link-card" rel="noopener" target="_blank">
+          <p class="link-card__eyebrow">News</p>
+          <h3 class="link-card__title">Royal Gazette — Hurricanes</h3>
+          <p class="link-card__desc">The Royal Gazette runs a live blog for each named storm affecting Bermuda.</p>
+        </a>
+        <a href="https://bernews.com/weather/" class="link-card" rel="noopener" target="_blank">
+          <p class="link-card__eyebrow">News</p>
+          <h3 class="link-card__title">Bernews — Weather</h3>
+          <p class="link-card__desc">Island-wide storm updates, outage reports, and closures.</p>
+        </a>
+        <a href="https://www.weather.bm" class="link-card" rel="noopener" target="_blank">
+          <p class="link-card__eyebrow">Official · weather.bm</p>
+          <h3 class="link-card__title">Current Warnings</h3>
+          <p class="link-card__desc">The Bermuda Weather Service's official watches and warnings page.</p>
+        </a>
+      </div>
+
+      <!-- Cross-link footer -->
+      <div style="background-color: var(--color-surface); border-radius: var(--radius-lg); padding: var(--space-8); margin-top: var(--space-10);">
+        <h2 style="margin-bottom: var(--space-3); font-size: var(--text-2xl);">Planning around the season</h2>
+        <p style="margin-bottom: var(--space-4);">
+          The best defence is good timing and good logistics.
+        </p>
+        <div style="display: flex; gap: var(--space-3); flex-wrap: wrap;">
+          <a href="/Pilot.BM/visit/best-time-to-visit" class="btn btn-primary">Best Time to Visit →</a>
+          <a href="/Pilot.BM/visit/getting-around" class="btn btn-secondary">Getting Around →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Progressive enhancement: season indicator + NHC image fallback + Ventusky consent.
+       All optional — the page is fully functional with JS disabled. -->
+  <script is:inline>
+    ;(function () {
+      // 1. NHC image graceful degradation: if a graphic fails, show the text fallback.
+      var imgs = document.querySelectorAll('.nhc-img')
+      for (var i = 0; i < imgs.length; i++) {
+        ;(function (img) {
+          img.addEventListener('error', function () {
+            img.hidden = true
+            var fb = img.parentElement.querySelector('.nhc-fallback')
+            if (fb) fb.hidden = false
+          })
+        })(imgs[i])
+      }
+
+      // 2. Season status indicator — refine the static default using the visitor's local date.
+      var el = document.getElementById('season-status')
+      if (el) {
+        var now = new Date()
+        var m = now.getMonth() + 1 // 1–12
+        var inSeason = m >= 6 && m <= 11
+        var peak = m >= 8 && m <= 10
+        var cls = 'alert alert-info'
+        var html = ''
+        if (peak) {
+          cls = 'alert alert-closed'
+          html =
+            '<strong>Peak hurricane risk window (Aug–Oct) is active.</strong> ' +
+            'This is Bermuda’s highest-risk period. Monitor the NHC outlook below and the ' +
+            '<a href="https://www.weather.bm" rel="noopener" target="_blank">Bermuda Weather Service</a> closely.'
+        } else if (inSeason) {
+          cls = 'alert alert-warning'
+          html =
+            '<strong>Atlantic hurricane season is active (Jun 1 – Nov 30).</strong> ' +
+            'Bermuda’s peak window is Aug–Oct. Keep an eye on the outlook below.'
+        } else {
+          cls = 'alert alert-info'
+          html =
+            '<strong>Hurricane season is not currently active.</strong> ' +
+            'The Atlantic season runs Jun 1 – Nov 30, with Bermuda’s peak in Aug–Oct.'
+        }
+        el.className = cls
+        el.innerHTML = html + ' <span style="opacity:.7;font-size:.85em;">(based on your local date)</span>'
+      }
+
+      // 3. Ventusky click-to-load consent — inject the iframe only on request. No storage.
+      var btn = document.getElementById('ventusky-load')
+      if (btn) {
+        btn.addEventListener('click', function () {
+          var url = btn.getAttribute('data-vk')
+          var wrap = document.getElementById('ventusky-placeholder')
+          if (!wrap || !url) return
+          var iframe = document.createElement('iframe')
+          iframe.src = url
+          iframe.title = 'Ventusky interactive weather map centred on Bermuda'
+          iframe.loading = 'lazy'
+          iframe.setAttribute('width', '100%')
+          iframe.setAttribute('height', '520')
+          iframe.style.border = '0'
+          iframe.style.borderRadius = '12px'
+          iframe.style.display = 'block'
+          wrap.replaceWith(iframe)
+        })
+      }
+    })()
+  </script>
+
+  <style>
+    .vk-card {
+      border: 1px dashed var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      text-align: center;
+      background: var(--color-surface);
+    }
+    .vk-card__title {
+      font-family: var(--font-serif);
+      font-size: var(--text-xl);
+      color: var(--color-ink);
+      margin-bottom: var(--space-2);
+    }
+    .vk-card__note {
+      font-size: var(--text-sm);
+      color: var(--color-muted);
+      max-width: 480px;
+      margin: 0 auto var(--space-5);
+      line-height: 1.6;
+    }
+    .vk-card__actions {
+      display: flex;
+      gap: var(--space-3);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</Base>

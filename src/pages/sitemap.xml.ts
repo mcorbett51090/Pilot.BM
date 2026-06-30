@@ -37,6 +37,7 @@ const pages = [
   // Info pages
   { url: '/about/', priority: '0.6', changefreq: 'monthly' },
   { url: '/bermuda-by-the-numbers/', priority: '0.7', changefreq: 'monthly' },
+  { url: '/hurricane-season/', priority: '0.8', changefreq: 'weekly' },
   { url: '/legal/terms/', priority: '0.3', changefreq: 'yearly' },
   { url: '/legal/privacy/', priority: '0.3', changefreq: 'yearly' },
   { url: '/legal/disclaimer/', priority: '0.4', changefreq: 'monthly' },
