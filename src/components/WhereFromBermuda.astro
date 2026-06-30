@@ -1,0 +1,183 @@
+---
+/**
+ * WhereFromBermuda — a small, opt-in "how far are you from Bermuda?" toy.
+ *
+ * Privacy posture (deliberate): this shows the visitor THEIR OWN approximate
+ * location, only to themselves. It is NOT a shared/live map — nothing is sent
+ * to other visitors, nothing is stored, no cookies. The only third-party touch
+ * is an IP-geolocation lookup, which runs **only when the visitor taps the
+ * button** (click-to-consent — same pattern as the Ventusky map embed). The
+ * disclosure + privacy-policy link are shown inline. Verified providers
+ * (HTTPS + CORS, no API key): geojs.io primary, ipwho.is fallback.
+ */
+---
+
+<section class="section" style="background-color: var(--color-ocean-muted);">
+  <div class="container" style="max-width: 640px; text-align: center;">
+    <span class="section-eyebrow">Just for fun</span>
+    <h2 class="section-title" style="font-size: var(--text-3xl);">How far are you from the pink sand?</h2>
+    <p class="section-desc" style="margin-inline: auto;">
+      Tap below and we'll work out roughly how far your seat is from Bermuda's beaches.
+    </p>
+
+    <div id="wfb-card" class="wfb-card">
+      <!-- Default (pre-consent) state -->
+      <div id="wfb-default">
+        <button id="wfb-go" type="button" class="btn btn-primary btn-lg">📍 Show my distance to Bermuda</button>
+        <p class="wfb-note">
+          Looks up your <strong>approximate</strong> location from your IP address via
+          <a href="https://www.geojs.io" rel="noopener" target="_blank">geojs.io</a>, only when you tap.
+          Shown to you only — nothing is stored or shared.
+          <a href="/Pilot.BM/legal/privacy">Privacy</a>.
+        </p>
+      </div>
+
+      <!-- Result state (filled by script) -->
+      <div id="wfb-result" hidden aria-live="polite">
+        <p id="wfb-distance" class="wfb-distance"></p>
+        <p id="wfb-where" class="wfb-where"></p>
+        <p id="wfb-quip" class="wfb-quip"></p>
+        <button id="wfb-again" type="button" class="btn btn-ghost btn-sm" style="margin-top: var(--space-3);">↺ Try again</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  ;(function () {
+    var go = document.getElementById('wfb-go')
+    if (!go) return
+    // Bermuda (Hamilton) reference point.
+    var BDA = { lat: 32.3078, lon: -64.7505 }
+
+    function toRad(d) { return (d * Math.PI) / 180 }
+
+    // Great-circle distance (Haversine), returns km.
+    function distanceKm(lat, lon) {
+      var R = 6371
+      var dLat = toRad(BDA.lat - lat)
+      var dLon = toRad(BDA.lon - lon)
+      var a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(toRad(lat)) * Math.cos(toRad(BDA.lat)) * Math.sin(dLon / 2) * Math.sin(dLon / 2)
+      return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+    }
+
+    // Initial compass bearing from the visitor toward Bermuda.
+    function bearing(lat, lon) {
+      var dLon = toRad(BDA.lon - lon)
+      var y = Math.sin(dLon) * Math.cos(toRad(BDA.lat))
+      var x =
+        Math.cos(toRad(lat)) * Math.sin(toRad(BDA.lat)) -
+        Math.sin(toRad(lat)) * Math.cos(toRad(BDA.lat)) * Math.cos(dLon)
+      var deg = (Math.atan2(y, x) * 180) / Math.PI
+      var dirs = ['north', 'north-east', 'east', 'south-east', 'south', 'south-west', 'west', 'north-west']
+      return dirs[Math.round(((deg + 360) % 360) / 45) % 8]
+    }
+
+    function fmt(n) { return Math.round(n).toLocaleString() }
+
+    function quipFor(mi) {
+      if (mi < 30) return "Wait — are you already here? 🌊 Go find a beach."
+      if (mi < 800) return 'Practically a neighbour. A short hop across the Atlantic.'
+      if (mi < 2500) return 'A comfortable flight from the pink sand.'
+      if (mi < 5000) return 'A proper journey — but worth it.'
+      return 'A long way from the pink sand. Start dreaming. ✈️'
+    }
+
+    function show(data) {
+      var lat = parseFloat(data.latitude)
+      var lon = parseFloat(data.longitude)
+      var city = data.city || data.region || ''
+      var country = data.country || data.country_code || ''
+      var where = [city, country].filter(Boolean).join(', ')
+      var resultEl = document.getElementById('wfb-result')
+      var defaultEl = document.getElementById('wfb-default')
+
+      if (isFinite(lat) && isFinite(lon)) {
+        var km = distanceKm(lat, lon)
+        var mi = km * 0.621371
+        document.getElementById('wfb-distance').innerHTML =
+          '🏝️ You’re about <strong>' + fmt(mi) + ' miles</strong> (' + fmt(km) + ' km) from Bermuda.'
+        document.getElementById('wfb-where').textContent = where
+          ? 'Looks like you’re near ' + where + ' — head ' + bearing(lat, lon) + ' to reach the island.'
+          : ''
+        document.getElementById('wfb-quip').textContent = quipFor(mi)
+      } else {
+        document.getElementById('wfb-distance').textContent =
+          where ? 'Looks like you’re near ' + where + '.' : 'Found you — roughly!'
+        document.getElementById('wfb-where').textContent = ''
+        document.getElementById('wfb-quip').textContent = 'Couldn’t measure the exact distance, but the island’s waiting. 🏝️'
+      }
+      defaultEl.hidden = true
+      resultEl.hidden = false
+    }
+
+    function fail() {
+      var resultEl = document.getElementById('wfb-result')
+      var defaultEl = document.getElementById('wfb-default')
+      document.getElementById('wfb-distance').textContent = "Couldn’t work out your location."
+      document.getElementById('wfb-where').textContent = ''
+      document.getElementById('wfb-quip').textContent = 'No worries — the island’s still here whenever you are. 🏝️'
+      defaultEl.hidden = true
+      resultEl.hidden = false
+    }
+
+    function lookup() {
+      go.disabled = true
+      go.textContent = 'Locating…'
+      // Primary: geojs.io. Fallback: ipwho.is. Both HTTPS + CORS, no key.
+      fetch('https://get.geojs.io/v1/ip/geo.json')
+        .then(function (r) { if (!r.ok) throw new Error('geojs'); return r.json() })
+        .then(show)
+        .catch(function () {
+          return fetch('https://ipwho.is/')
+            .then(function (r) { return r.json() })
+            .then(function (d) { if (d && d.success === false) throw new Error('ipwho'); return show(d) })
+        })
+        .catch(fail)
+    }
+
+    go.addEventListener('click', lookup)
+    document.getElementById('wfb-again').addEventListener('click', function () {
+      document.getElementById('wfb-result').hidden = true
+      document.getElementById('wfb-default').hidden = false
+      go.disabled = false
+      go.textContent = '📍 Show my distance to Bermuda'
+    })
+  })()
+</script>
+
+<style>
+  .wfb-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-sm);
+  }
+  .wfb-note {
+    font-size: var(--text-xs);
+    color: var(--color-muted);
+    margin-top: var(--space-4);
+    margin-bottom: 0;
+    line-height: 1.6;
+    max-width: 460px;
+    margin-inline: auto;
+  }
+  .wfb-distance {
+    font-family: var(--font-serif);
+    font-size: var(--text-2xl);
+    color: var(--color-ink);
+    margin-bottom: var(--space-2);
+  }
+  .wfb-where {
+    color: var(--color-ink);
+    margin-bottom: var(--space-2);
+  }
+  .wfb-quip {
+    color: var(--color-ocean);
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+</style>
