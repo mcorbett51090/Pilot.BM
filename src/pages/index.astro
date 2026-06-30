@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro'
 import MediaMentions from '../components/MediaMentions.astro'
 import Quotes from '../components/Quotes.astro'
+import WhereFromBermuda from '../components/WhereFromBermuda.astro'
 ---
 
 <Base
@@ -225,6 +226,9 @@ import Quotes from '../components/Quotes.astro'
 
   <!-- Notable quotes about Bermuda -->
   <Quotes limit={3} tone="sand" />
+
+  <!-- Fun: opt-in "how far are you from Bermuda?" -->
+  <WhereFromBermuda />
 
   <!-- Editorial voice / about nudge -->
   <section class="section">
